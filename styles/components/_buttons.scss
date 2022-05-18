@@ -1,0 +1,66 @@
+@mixin btn-uroria($ratio) {
+
+  filter: hue-rotate($ratio +  deg);
+  background: #418e51;
+  border-left: 5px solid #397947;
+  border-right: 5px solid #397947;
+
+  &:before {
+    background: #66cb78;
+  }
+
+  &:after {
+    background: #22582f;
+  }
+
+}
+
+.btn-uroria {
+
+  padding: 20px 30px;
+  position: relative;
+  border: none;
+  font-family: 'Uroria', cursive;
+  text-shadow: 0 2px 0 #000;
+  color: #ffffff;
+  text-transform: uppercase;
+  box-shadow: 0 5px 0 rgba(#000, .5);
+
+  &:before {
+    width: 100%;
+    left: 0;
+    top: -5px;
+    height: 5px;
+    position: absolute;
+    content: " ";
+  }
+
+  &:after {
+    width: 100%;
+    right: 0;
+    bottom: -5px;
+    height: 5px;
+    position: absolute;
+    content: " ";
+    box-shadow: 0 5px 0 rgba(#000, .5);
+  }
+
+  &:hover, &:focus {
+    transform: scale(0.98);
+    cursor: pointer;
+  }
+
+  @include btn-uroria(0)
+
+}
+
+.btn-green {
+  @include btn-uroria(0)
+}
+
+.btn-blue {
+  @include btn-uroria(90)
+}
+.btn-red {
+  @include btn-uroria(230)
+}
