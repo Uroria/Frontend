@@ -1,11 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
 @font-face {
   font-family: 'Minecraft';
   src: url("../public/MinecraftTen.ttf") format('opentype');
 }
-@font-face {
-  font-family: 'Uroria';
-  src: url("../public/uroria.ttf") format('opentype');
-}
+
+$breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px
+);
+
+@import "helpers/media";
 
 @import "components/buttons";
+@import "components/header";
+@import "components/navbar";
+@import "components/avatar";
+@import "components/attentiontext";
+@import "components/statusview";
+
+* {
+  font-family: Minecraft, sans-serif;
+}
+
+body {
+  background: black;
+}
