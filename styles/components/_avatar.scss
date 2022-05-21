@@ -1,0 +1,30 @@
+.avatar-list {
+  display: inline-flex;
+  align-items: center;
+  margin: 10px;
+
+
+  > .avatar {
+    margin-left: -4px;
+    display: inline-flex;
+
+    .image {
+      box-shadow: 0 0 0 4px rgba(#000, .5);
+      -webkit-backdrop-filter: blur(10px);
+      background: #000000;
+      color: white;
+      width: 50px;
+      height: 50px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 9999px;
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+.statusview {
+
+  padding: 10px 30px;
+  display: inline-block;
+  text-align: left;
+  margin: 10px;
+  background-clip: padding-box;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 5px 0 rgba(#000, .5);
+  background: #424242;
+  border-left: 5px solid #474745;
+  border-right: 5px solid #343532;
+
+  &:before {
+    width: 100%;
+    left: 0;
+    top: -5px;
+    height: 5px;
+    position: absolute;
+    background: #474745;
+    content: " ";
+  }
+
+  &:after {
+    background: #343532;
+    width: 100%;
+    right: 0;
+    bottom: -5px;
+    height: 5px;
+    position: absolute;
+    content: " ";
+    box-shadow: 0 5px 0 rgba(#000, .5);
+  }
+
+  .headline {
+    color: rgba(255, 255, 255, .5);
+    font-family: Noto Sans, sans-serif;
+    font-size: .5rem;
+    display: block;
+  }
+
+  .subline {
+    font-size: .75rem;
+    color: white;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+  }
+
+  @include respond-below(md) {
+    transform: scale(0.8);
+    margin: -10px;
+    margin-top: 10px;
+  }
+}

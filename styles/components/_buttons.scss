@@ -1,6 +1,6 @@
 @mixin btn-uroria($ratio) {
 
-  filter: hue-rotate($ratio +  deg);
+  filter: hue-rotate($ratio +  deg) !important;
   background: #418e51;
   border-left: 5px solid #397947;
   border-right: 5px solid #397947;
@@ -17,14 +17,28 @@
 
 .btn-uroria {
 
-  padding: 20px 30px;
+  &:first-child {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  &:last-child {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  padding: 5px 10px;
   position: relative;
+  margin: 0 10px;
+  overflow-x: visible;
   border: none;
-  font-family: 'Uroria', cursive;
-  text-shadow: 0 2px 0 #000;
+  font-family: 'Minecraft', cursive;
+  text-shadow: 0 2px 2px #000;
+  font-size: 1rem;
   color: #ffffff;
   text-transform: uppercase;
   box-shadow: 0 5px 0 rgba(#000, .5);
+
 
   &:before {
     width: 100%;
@@ -50,17 +64,24 @@
     cursor: pointer;
   }
 
+  &.btn-icon {
+    width: 50px;
+    height: 40px;
+    margin: 10px !important;
+  }
+
+  &.btn-green {
+    @include btn-uroria(0)
+  }
+
+  &.btn-blue {
+    @include btn-uroria(90)
+  }
+
+  &.btn-red {
+    @include btn-uroria(230)
+  }
+
   @include btn-uroria(0)
 
-}
-
-.btn-green {
-  @include btn-uroria(0)
-}
-
-.btn-blue {
-  @include btn-uroria(90)
-}
-.btn-red {
-  @include btn-uroria(230)
 }
