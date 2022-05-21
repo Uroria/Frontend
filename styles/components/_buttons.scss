@@ -50,17 +50,24 @@
     cursor: pointer;
   }
 
+  &.btn-icon {
+    width: 50px;
+    height: 40px;
+    margin: 10px !important;
+  }
+
+  &.btn-green {
+    @include btn-uroria(0)
+  }
+
+  &.btn-blue {
+    @include btn-uroria(90)
+  }
+
+  &.btn-red {
+    @include btn-uroria(230)
+  }
+
   @include btn-uroria(0)
 
-}
-
-.btn-green {
-  @include btn-uroria(0)
-}
-
-.btn-blue {
-  @include btn-uroria(90)
-}
-.btn-red {
-  @include btn-uroria(230)
 }
