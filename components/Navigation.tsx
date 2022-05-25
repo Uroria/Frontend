@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import Button from "./Button";
 
 const UroriaNavbar = () => {
@@ -17,6 +17,7 @@ const UroriaNavbar = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link href="#features">Startseite</Nav.Link>
+                    <Nav.Link href="#features">Bewerben</Nav.Link>
                     <Nav.Link href="#pricing">Blog</Nav.Link>
                     <Nav.Link href="#pricing">Shop</Nav.Link>
                 </Nav>
