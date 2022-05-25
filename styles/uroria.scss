@@ -6,6 +6,11 @@
   src: url("../public/MinecraftTen.ttf") format('opentype');
 }
 
+@font-face {
+  font-family: 'MinecraftClassic';
+  src: url("../public/MinecraftClassic.otf") format('opentype');
+}
+
 $breakpoints: (
         xs: 0,
         sm: 576px,
@@ -23,6 +28,8 @@ $breakpoints: (
 @import "components/avatar";
 @import "components/attentiontext";
 @import "components/statusview";
+@import "components/tag";
+@import "components/card";
 
 * {
   font-family: Minecraft, sans-serif;
@@ -30,4 +37,12 @@ $breakpoints: (
 
 body {
   background: black;
+}
+
+.model-viewer {
+  position: relative;
+  top: -300px;
+  right: -180px;
+  margin-bottom: -150px;
+  pointer-events: none;
 }

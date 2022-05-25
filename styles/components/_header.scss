@@ -1,15 +1,14 @@
 .header-uroria {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   align-items: center;
   text-align: center;
-
-  background: url("https://wallpaperaccess.com/full/5701771.jpg") no-repeat center;
+  background: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/eb8089125376791.6117dd04b6e5f.png") no-repeat center;
   background-size: cover;
   width: 100%;
   height: 90vh;
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: -96px;
   z-index: -1;
 
   &:before {
@@ -17,7 +16,7 @@
     height: 90vh;
     content: " ";
     top: 0;
-    background: rgba(#000, .8);
+    background: linear-gradient(180deg, transparent 0, rgba(#000, 1) 100%);
     -webkit-backdrop-filter: blur(10px);
     position: absolute;
   }

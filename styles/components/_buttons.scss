@@ -17,6 +17,19 @@
 
 .btn-uroria {
 
+  padding: 5px 10px;
+  position: relative;
+  margin: 0 10px;
+  overflow-x: visible;
+  border: none;
+  font-family: 'Minecraft', cursive;
+  text-shadow: 2px 2px 0 rgba(#000, 0.5);
+  font-size: 1rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  box-shadow: 0 5px 0 rgba(#000, .5);
+  @include btn-uroria(0);
+
   &:first-child {
     margin-right: 0 !important;
     margin-left: 0 !important;
@@ -26,19 +39,6 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-
-  padding: 5px 10px;
-  position: relative;
-  margin: 0 10px;
-  overflow-x: visible;
-  border: none;
-  font-family: 'Minecraft', cursive;
-  text-shadow: 0 2px 2px #000;
-  font-size: 1rem;
-  color: #ffffff;
-  text-transform: uppercase;
-  box-shadow: 0 5px 0 rgba(#000, .5);
-
 
   &:before {
     width: 100%;
@@ -81,7 +81,4 @@
   &.btn-red {
     @include btn-uroria(230)
   }
-
-  @include btn-uroria(0)
-
 }

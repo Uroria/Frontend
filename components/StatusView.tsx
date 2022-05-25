@@ -8,7 +8,7 @@ type StatusViewProps = {
 
 const StatusView: FunctionComponent<StatusViewProps> = ({headline, icon, children}) => <div className={"statusview"}>
     <span className={"headline"}>{headline}</span>
-    <span className={"subline"}>{ icon ? <img className={"icon"} src={icon}/> : ""}{children}</span>
+    <span className={"subline"}>{icon ? <img className={"icon"} src={icon} alt={""}/> : ""}{children}</span>
 </div>
 
 export default StatusView
