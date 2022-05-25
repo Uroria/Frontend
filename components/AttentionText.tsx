@@ -6,8 +6,8 @@ type AttentionTextParams = {
     left: string[]
 }
 
-const AttentionText: FunctionComponent<AttentionTextParams> = ({children, top, left}) => <div style={{
-    "--topXS": top[0],
+// @ts-ignore
+const AttentionText: FunctionComponent<AttentionTextParams> = ({children, top, left}) => <div style={{"--topXS": top[0],
     "--topSM": top[1],
     "--topMD": top[2],
     "--topLG": top[3],
