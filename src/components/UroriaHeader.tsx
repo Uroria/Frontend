@@ -5,6 +5,7 @@ const UroriaHeader = (props: any) => {
         <Container style={{position: "relative"}}>
             {props.children}
         </Container>
+        <div className={"transition"}/>
     </div>
 }
 
