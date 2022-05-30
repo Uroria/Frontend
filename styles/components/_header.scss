@@ -6,18 +6,17 @@
   background: url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/eb8089125376791.6117dd04b6e5f.png") no-repeat center;
   background-size: cover;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   position: relative;
   top: -96px;
   z-index: -1;
 
   &:before {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     content: " ";
     top: 0;
-    background: linear-gradient(180deg, transparent 0, rgba(#000, 1) 100%);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(#000, 0.5);
     position: absolute;
   }
 
@@ -38,5 +37,15 @@
     h1 {
       font-size: 4rem;
     }
+  }
+
+
+  .transition {
+    position: absolute;
+    height: 150px;
+    width: 100%;
+    background: url("/assets/images/transition.svg") repeat-x top;
+    bottom: 0;
+    transform: rotate(180deg);
   }
 }
