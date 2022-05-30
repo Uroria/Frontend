@@ -1,0 +1,103 @@
+[{
+  "itemName": "Amethyst Glaive",
+  "itemDescription": {
+    "de_DE": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"],
+    "en_EN": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"]
+  },
+  "itemSrc": "/amethyst_glaive.gltf",
+  "itemRareness": "epic",
+  "itemMainAbilityStats": 72,
+  "itemAbilities": {
+    "de_DE": [{"name": "Kraft", "progres": 54}, {"name": "Schnelligkeit", "progres": 29}, {"name": "Bereich", "progres": 79}],
+    "en_EN": [{"name": "Power", "progres": 54}, {"name": "Speed", "progres": 29}, {"name": "Area", "progres": 79}]
+  }
+},{
+  "itemName": "Amethyst Hammer",
+  "itemDescription": {
+    "de_DE": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"],
+    "en_EN": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"]
+  },
+  "itemSrc": "/amethyst_hammer.gltf",
+  "itemRareness": "legendary",
+  "itemMainAbilityStats": 59,
+  "itemAbilities": {
+    "de_DE": [{"name": "Kraft", "progres": 54}, {"name": "Schnelligkeit", "progres": 29}, {"name": "Bereich", "progres": 79}],
+    "en_EN": [{"name": "Power", "progres": 54}, {"name": "Speed", "progres": 29}, {"name": "Area", "progres": 79}]
+  }
+},{
+  "itemName": "Amethyst Sword",
+  "itemDescription": {
+    "de_DE": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"],
+    "en_EN": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"]
+  },
+  "itemSrc": "/amethyst_sword.gltf",
+  "itemRareness": "legendary",
+  "itemMainAbilityStats": 59,
+  "itemAbilities": {
+    "de_DE": [{"name": "Kraft", "progres": 54}, {"name": "Schnelligkeit", "progres": 29}, {"name": "Bereich", "progres": 79}],
+    "en_EN": [{"name": "Power", "progres": 54}, {"name": "Speed", "progres": 29}, {"name": "Area", "progres": 79}]
+  }
+},{
+  "itemName": "Amethyst Armor",
+  "itemDescription": {
+    "de_DE": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"],
+    "en_EN": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"]
+  },
+  "itemSrc": "/amethyst_armor.gltf",
+  "itemRareness": "rare",
+  "itemMainAbilityStats": 59,
+  "itemAbilities": {
+    "de_DE": [{"name": "Kraft", "progres": 54}, {"name": "Schnelligkeit", "progres": 29}, {"name": "Bereich", "progres": 79}],
+    "en_EN": [{"name": "Power", "progres": 54}, {"name": "Speed", "progres": 29}, {"name": "Area", "progres": 79}]
+  }
+},{
+  "itemName": "Pilligar Longsword",
+  "itemDescription": {
+    "de_DE": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"],
+    "en_EN": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"]
+  },
+  "itemSrc": "/pilligar_longsword.gltf",
+  "itemRareness": "uncommon",
+  "itemMainAbilityStats": 59,
+  "itemAbilities": {
+    "de_DE": [{"name": "Kraft", "progres": 54}, {"name": "Schnelligkeit", "progres": 29}, {"name": "Bereich", "progres": 79}],
+    "en_EN": [{"name": "Power", "progres": 54}, {"name": "Speed", "progres": 29}, {"name": "Area", "progres": 79}]
+  }
+},{
+  "itemName": "Pilligar Rod",
+  "itemDescription": {
+    "de_DE": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"],
+    "en_EN": ["Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut"]
+  },
+  "itemSrc": "/pilligar_rod.gltf",
+  "itemRareness": "uncommon",
+  "itemMainAbilityStats": 59,
+  "itemAbilities": {
+    "de_DE": [{"name": "Kraft", "progres": 54}, {"name": "Schnelligkeit", "progres": 29}, {"name": "Bereich", "progres": 79}],
+    "en_EN": [{"name": "Power", "progres": 54}, {"name": "Speed", "progres": 29}, {"name": "Area", "progres": 79}]
+  }
+}]
