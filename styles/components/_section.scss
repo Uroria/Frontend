@@ -1,0 +1,21 @@
+.section {
+  margin-bottom: 0;
+  position: relative;
+  padding: 100px 0;
+
+  .transition {
+    position: absolute;
+    height: 150px;
+    width: 100%;
+    background: url("/assets/images/transition.svg") repeat-x center;
+    background-position: top;
+    top: 0;
+
+    &:last-child {
+      top: auto;
+      bottom: 0 !important;
+      transform: rotate(180deg);
+    }
+
+  }
+}

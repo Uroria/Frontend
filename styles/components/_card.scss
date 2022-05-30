@@ -106,7 +106,7 @@
         font-family: Noto Sans, sans-serif;
 
         &:before {
-          content: url("/dot.png");
+          content: url("/assets/icons/dot.png");
           position: absolute;
           left: -20px;
           transform: scale(0.8);
@@ -118,7 +118,7 @@
           color: rgba(#fff, 1);
 
           &:before {
-            content: url("/anchor.png");
+            content: url("/assets/icons/anchor.png");
             position: absolute;
             left: -20px;
           }
