@@ -3,12 +3,12 @@
 
 @font-face {
   font-family: 'Minecraft';
-  src: url("../public/MinecraftTen.ttf") format('opentype');
+  src: url("/assets/fonts/MinecraftTen.ttf") format('opentype');
 }
 
 @font-face {
   font-family: 'MinecraftClassic';
-  src: url("../public/MinecraftClassic.otf") format('opentype');
+  src: url("/assets/fonts/MinecraftClassic.otf") format('opentype');
 }
 
 $breakpoints: (
@@ -21,15 +21,15 @@ $breakpoints: (
 );
 
 @import "helpers/media";
-
 @import "components/buttons";
 @import "components/header";
 @import "components/navbar";
 @import "components/avatar";
-@import "components/attentiontext";
 @import "components/statusview";
 @import "components/tag";
 @import "components/card";
+@import "styles/components/customitempreview";
+@import "components/section";
 
 * {
   font-family: Minecraft, sans-serif;
@@ -39,10 +39,3 @@ body {
   background: black;
 }
 
-.model-viewer {
-  position: relative;
-  top: -300px;
-  right: -180px;
-  margin-bottom: -150px;
-  pointer-events: none;
-}
