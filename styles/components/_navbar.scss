@@ -1,5 +1,7 @@
 .navbar {
   background: transparent;
+  position: relative;
+  z-index: 5;
 
   .nav-link {
     text-shadow: 2px 2px 0 rgba(#000, 0.5);
