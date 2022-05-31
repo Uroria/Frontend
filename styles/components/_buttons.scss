@@ -1,9 +1,8 @@
 @mixin btn-uroria($ratio) {
 
   filter: hue-rotate($ratio +  deg) !important;
-  background: #418e51;
-  border-left: 5px solid #397947;
-  border-right: 5px solid #397947;
+  background: #019046;
+  box-shadow: 0 -5px 0 #29ce3f, -5px 0px 0 #0d6e3d, 0 5px 0 #054d2a, 5px 0px 0 #0d6e3d, 0 0 10px 5px rgba(#000, .5);
 
   &:before {
     background: #66cb78;
@@ -16,18 +15,15 @@
 }
 
 .btn-uroria {
-
-  padding: 5px 10px;
+  padding: 10px 15px;
   position: relative;
   margin: 0 10px;
-  overflow-x: visible;
-  border: none;
   font-family: 'Minecraft', cursive;
-  text-shadow: 2px 2px 0 rgba(#000, 0.5);
+  text-shadow: 0 2px 0 rgba(#000, 0.5);
   font-size: 1rem;
   color: #ffffff;
   text-transform: uppercase;
-  box-shadow: 0 5px 0 rgba(#000, .5);
+  border: none;
   @include btn-uroria(0);
 
   &:first-child {
@@ -40,34 +36,36 @@
     margin-right: 0 !important;
   }
 
-  &:before {
-    width: 100%;
-    left: 0;
-    top: -5px;
-    height: 5px;
-    position: absolute;
-    content: " ";
-  }
+  &.btn-icon {
+    width: 50px;
+    height: 50px;
+    margin: 10px !important;
+    position: relative;
 
-  &:after {
-    width: 100%;
-    right: 0;
-    bottom: -5px;
-    height: 5px;
-    position: absolute;
-    content: " ";
-    box-shadow: 0 5px 0 rgba(#000, .5);
+    &:after {
+      content: attr(data-tooltip);
+      position: absolute;
+      display: none;
+      padding: 5px 10px;
+      width: 150px;
+      white-space: nowrap;
+      top: -3.5rem;
+      left: 50%;
+      margin-left: -75px;
+      box-shadow: 0 -5px 0 rgba(#000, .7), -5px 0px 0 rgba(#000, .7), 0 5px 0 rgba(#000, .7), 5px 0px 0 rgba(#000, .7), 0 0 50px 5px rgba(#000, .5);
+      background: rgba(#000, .75) !important;
+    }
+
+    &:hover {
+      &:after {
+        display: inline-block;
+      }
+    }
   }
 
   &:hover, &:focus {
     transform: scale(0.98);
     cursor: pointer;
-  }
-
-  &.btn-icon {
-    width: 50px;
-    height: 40px;
-    margin: 10px !important;
   }
 
   &.btn-green {
