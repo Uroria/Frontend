@@ -25,7 +25,7 @@ const Home: FunctionComponent<HomeProps> = ({language, customItems}) => {
                 <Avatar image={<img src={"/assets/images/jan.png"}/>}/>
                 <Avatar image={<img src={"/assets/images/gecoded.png"}/>}/>
                 <Avatar image={<img src={"/assets/images/paul.png"}/>}/>
-                <IconButton><IconUsers size={20}/></IconButton>
+                <IconButton tooltip={"Jetzt bewerben"}><IconUsers size={20}/></IconButton>
             </AvatarList>
             <h1>{language["index.section.header.title"]}</h1>
 
