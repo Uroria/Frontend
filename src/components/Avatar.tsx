@@ -10,4 +10,5 @@ const Avatar: FunctionComponent<AvatarProps> = ({image}) => <div className="avat
     </div>
 </div>
 
+
 export default Avatar;
