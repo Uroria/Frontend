@@ -56,4 +56,4 @@ const Home: FunctionComponent<HomeProps> = ({customItems, blogs}) => {
     </div>
 }
 
-export default Home
+export default Home;
