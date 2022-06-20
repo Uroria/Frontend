@@ -4,12 +4,14 @@ import {getLanguage} from "../src/utils/Language";
 import Language from "../src/components/Language";
 import {ILanguage} from "../src/@types/TLanguage";
 interface HomePageProps {
-    language: any,
-    customItems: any[]
+    language: ILanguage,
+    customItems: {[key: string] : any}[],
+    blogs: {[key: string] : any}[]
 }
 
-const HomePage: NextPage<HomePageProps> = ({language, customItems}) => <Home language={language}
-                                                                             customItems={customItems}/>
+const HomePage: NextPage<HomePageProps> = ({language, customItems, blogs}) => {
+    return <Language.Provider value={language}><Home blogs={blogs} customItems={customItems}/></Language.Provider>
+}
 
 export const getServerSideProps: GetServerSideProps = async ({locale}) => {
     const customItems = await getCustomItems();
