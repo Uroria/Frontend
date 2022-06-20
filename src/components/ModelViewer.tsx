@@ -9,10 +9,11 @@ type ModelViewerRotationProps = {
 type ModelViewerProps = {
     rotation: ModelViewerRotationProps,
     src: string,
-    autoRotate?: boolean
+    autoRotate?: boolean,
+    animationName?: string
 }
 
-const ModelViewer: FunctionComponent<ModelViewerProps> = ({rotation, src, autoRotate = false}) => {
+const ModelViewer: FunctionComponent<ModelViewerProps> = ({rotation, src, autoRotate = false, animationName = null}) => {
     // @ts-ignore
     return <>{autoRotate ? <model-viewer
         environment-image={"/assets/3dmodels/Lightroom.hdr"}
@@ -23,6 +24,8 @@ const ModelViewer: FunctionComponent<ModelViewerProps> = ({rotation, src, autoRo
         auto-rotate-delay={0}
         rotation-per-second={"30deg"}
         loading={"eager"}
+        animation-name={animationName}
+        autoplay={!!animationName}
         // @ts-ignore
         reveal={"auto"}/> : <model-viewer
             environment-image={"/assets/3dmodels/Lightroom.hdr"}
@@ -30,7 +33,9 @@ const ModelViewer: FunctionComponent<ModelViewerProps> = ({rotation, src, autoRo
             id={"renderer"}
             camera-orbit={rotation.x + "deg " + rotation.y + "deg " + rotation.z + "%"}
             loading={"eager"}
-            reveal={"auto"}/>}</>
+            reveal={"auto"}
+            animation-name={animationName}
+            autoplay={!!animationName}/>}</>
 }
 
 export default ModelViewer;
