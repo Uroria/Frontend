@@ -2,6 +2,11 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 import Button from "./Button";
 import {FunctionComponent} from "react";
 import {ILanguage} from "../@types/TLanguage";
+import Link from "next/link";
+import {useRouter} from "next/router";
+import {useLanguage} from "../hooks/LanguageHook";
+
+const Navigation: FunctionComponent = () => {
 
 const UroriaNavbar: FunctionComponent<ILanguage> = ({language}) => {
     return <Navbar collapseOnSelect expand="lg">
