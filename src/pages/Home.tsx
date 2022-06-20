@@ -14,8 +14,9 @@ import Footer from "../sections/Footer";
 import {useLanguage} from "../hooks/LanguageHook";
 import {ILanguage} from "../@types/TLanguage";
 
-interface HomeProps extends ILanguage {
-    customItems: any[]
+interface HomeProps {
+    customItems: {[key: string] : any}[],
+    blogs: {[key: string] : any}[]
 }
 
 const Home: FunctionComponent<HomeProps> = ({language, customItems}) => {
