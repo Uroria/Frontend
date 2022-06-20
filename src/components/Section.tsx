@@ -17,7 +17,7 @@ const Section: FunctionComponent<SectionProps> = ({children, src, useContainer =
         padding: paddingY + "px 0 50px 0"
     } : {
         padding: paddingY + "px 0"
-    }
+    };
 
     style["background"] = src ? "linear-gradient(315deg, rgba(0, 0, 0, 0.80) 0, rgba(0, 0, 0, 0.80) 100%), url('" + src + "') center" : "transparent";
     style["marginTop"] = negativeMarginTop ? "-350px" : "0px";
