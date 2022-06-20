@@ -1,15 +1,20 @@
 .section {
-  margin-bottom: 0;
+  margin-bottom: 100px;
   position: relative;
   padding: 100px 0;
+  background: transparent;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .transition {
     position: absolute;
     height: 150px;
     width: 100%;
-    background: url("/assets/images/transition.svg") repeat-x center;
-    background-position: top;
+    background: url("/assets/images/transition.svg") repeat-x top;
     top: 0;
+    left: 0;
 
     &:last-child {
       top: auto;
