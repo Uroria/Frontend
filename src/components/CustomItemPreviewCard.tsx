@@ -38,7 +38,7 @@ const CustomItemPreviewCard: FunctionComponent<CustomItemPreviewCardProps> = ({s
 
     <h2>{itemName}</h2>
     <ul>
-        {description.map(descriptionItem => <li>{descriptionItem}</li>)}
+        {description.map((descriptionItem, index) => <li key={index}>{descriptionItem}</li>)}
     </ul>
 
     <CustomItemPreviewCardAbilities itemAbilities={itemAbilities}/>
@@ -58,7 +58,7 @@ const CustomItemPreviewCardMainAbility: FunctionComponent<CustomItemPreviewCardM
 
 const CustomItemPreviewCardAbilities: FunctionComponent<CustomItemPreviewCardAbilitiesProps> = ({itemAbilities}) =>  <Row>
     {
-        itemAbilities.map(itemAbility => <Col className={"abilities"}>
+        itemAbilities.map(itemAbility => <Col key={itemAbility.name} className={"abilities"}>
                 <CustomItemAbilityGraph progres={itemAbility.progres}>{itemAbility.name}</CustomItemAbilityGraph>
             </Col>)
     }
