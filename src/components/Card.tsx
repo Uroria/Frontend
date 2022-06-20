@@ -6,16 +6,16 @@ type CardTagProps = {
 }
 
 type CardProps = {
-    src?: string,
-    tag: string,
     heading: string,
-    tags?: CardTagProps[]
-    children: ReactNode
+    children: ReactNode,
+    tag?: string,
+    tags?: CardTagProps[],
+    src: string,
 }
 
 const Card: FunctionComponent<CardProps> = ({tag, tags, heading, children, src}) => <div className={"card"}>
-    {src ? <img src={src} alt={""}/> : null}
-    {src ? <div className={"tag"}>{tag}</div> : <div className={"tag margin"}>{tag}</div>}
+    <img src={src} alt={""}/>
+    {tag ? <div className={"tag"}>{tag}</div> : null}
     <img src={"/assets/images/corner.svg"} width={20} style={{opacity: .25, position: "absolute", bottom: 20, right: 20}} alt={""}/>
     <div className={"firstline"}/>
     <div className={"secondline"}/>
