@@ -1,0 +1,47 @@
+.footer {
+  p {
+    color: rgba(#fff, .5);
+    font-size: 1rem;
+    text-shadow: 2px 2px 0 rgba(#000, 0.5);
+    font-family: Noto Sans, sans-serif;
+  }
+
+  .brand-btn {
+    position: relative;
+    color: white;
+    display: inline-block;
+    padding: 4px 6px;
+    width: fit-content;
+    height: fit-content;
+    margin-right: 20px;
+    box-shadow: 0 -5px 0 rgba(#000, .4), -5px 0px 0 rgba(#000, .4), 0 5px 0 rgba(#000, .4), 5px 0px 0 rgba(#000, .4);
+    background: rgba(#000, .4) !important;
+    cursor: pointer;
+    @include respond-below(md) {
+      margin-bottom: 50px;
+    }
+
+    &:hover {
+      transform: scale(1.1) !important;
+    }
+  }
+
+  h5 {
+    text-shadow: 3px 3px 0 rgba(#000, 0.5);
+    color: white;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  li a {
+    color: rgba(#fff, .5);
+    font-size: 1rem;
+    text-shadow: 2px 2px 0 rgba(#000, 0.5);
+    font-family: Noto Sans, sans-serif;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
