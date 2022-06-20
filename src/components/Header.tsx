@@ -1,6 +1,6 @@
 import {Container} from "react-bootstrap";
 
-const UroriaHeader = (props: any) => {
+const Header = (props: any) => {
     return <div className={"header-uroria"}>
         <Container style={{position: "relative"}}>
             {props.children}
@@ -9,4 +9,4 @@ const UroriaHeader = (props: any) => {
     </div>
 }
 
-export default UroriaHeader;
+export default Header;
