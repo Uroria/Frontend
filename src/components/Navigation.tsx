@@ -25,14 +25,14 @@ const Navigation: FunctionComponent = () => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="#features">{language["navbar.item.home"]}</Nav.Link>
-                    <Nav.Link href="#features">{language["navbar.item.apply"]}</Nav.Link>
-                    <Nav.Link href="#pricing">{language["navbar.item.blog"]}</Nav.Link>
-                    <Nav.Link href="#pricing">{language["navbar.item.shop"]}</Nav.Link>
+                    <Link href={"/"} locale={locale} passHref><Nav.Link>{language["navbar.item.home"]}</Nav.Link></Link>
+                    <Link href={"/apply"} locale={locale} passHref><Nav.Link>{language["navbar.item.apply"]}</Nav.Link></Link>
+                    <Link href={"/blog"} locale={locale} passHref><Nav.Link>{language["navbar.item.blog"]}</Nav.Link></Link>
                 </Nav>
                 <Nav>
-                    <Nav.Link href="#pricing"><Button color={"green"} text={"Login"}/></Nav.Link>
-                    <Nav.Link href="#pricing"><Button color={"blue"} text={"Registrieren"}/></Nav.Link>
+                    <Nav.Link><Button disabled={true} color={"green"} text={"Login"}/></Nav.Link>
+                    <Link href={useRouter().route} locale={locale == "en_EN" ? "de_DE" : "./en_EN"} passHref replace><a
+                        className={"btn-uroria btn-blue"}>{locale == "de_DE" ? "Englisch" : "German"}</a></Link>
                 </Nav>
             </Navbar.Collapse>
         </Container>
