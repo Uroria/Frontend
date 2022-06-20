@@ -13,29 +13,25 @@ type SectionProps = {
 
 const Section: FunctionComponent<SectionProps> = ({children, src, useContainer = true, useTransition = true, paddingY= 0, transitionOnlyTop = false, className, negativeMarginTop = false}) => {
 
-    const style: CSSProperties = {
-        background: "linear-gradient(315deg, rgba(0, 0, 0, 0.80) 0, rgba(0, 0, 0, 0.80) 100%), url('" + src + "') center",
+    const style: CSSProperties = transitionOnlyTop ? {
+        padding: paddingY + "px 0 50px 0"
+    } : {
         padding: paddingY + "px 0"
     }
 
+    style["background"] = src ? "linear-gradient(315deg, rgba(0, 0, 0, 0.80) 0, rgba(0, 0, 0, 0.80) 100%), url('" + src + "') center" : "transparent";
+    style["marginTop"] = negativeMarginTop ? "-350px" : "0px";
     useTransition ? children = <>
         <div className={"transition"}/>
         {children}
-        <div className={"transition"}/>
+        {!transitionOnlyTop ? <div className={"transition"}/> : null}
     </> : null;
-
-    const containerNode = <>
-        <div style={{display: "flex", justifyContent: "center"}}>
-            <div className={"tag section-tag"}>{title}</div>
-        </div>
-        {children}
-    </>
 
 
     return <>
         {useContainer ?
-            <Container style={style} className={"section"} children={title ? containerNode : children}/> :
-            <div style={style} className={"section"} children={title ? containerNode : children}/>}
+            <div className={"section" + (className ? " " + className : "")} style={style}><div className={"container"}>{children}</div> </div> :
+            <div className={"section" + (className ? " " + className : "")} style={style} children={children}/>}
     </>
 
 }
