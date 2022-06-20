@@ -5,7 +5,7 @@ import CustomItemPreviewSmall from "../components/CustomItemPreviewSmall";
 import {FunctionComponent, ReactNode, useState} from "react";
 
 type ItemPreviewSectionProps = {
-    customItems: any[]
+    customItems: {[key: string] : any}[]
 }
 
 type ItemPreviewSectionComponentProps = {
