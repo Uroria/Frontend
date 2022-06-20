@@ -25,14 +25,14 @@ const ItemPreviewSection: FunctionComponent<ItemPreviewSectionProps> = ({customI
                         mainAbilityStats={customItemPreviewCard.itemMainAbilityStats}
                         rareness={customItemPreviewCard.itemRareness}
                         itemName={customItemPreviewCard.itemName}
-                        description={customItemPreviewCard.itemDescription.en_EN}
-                        itemAbilities={customItemPreviewCard.itemAbilities.en_EN}/>
+                        description={customItemPreviewCard.itemDescription}
+                        itemAbilities={customItemPreviewCard.itemAbilities}/>
                 </Col>
                 <Col lg={8}>
                     <Row>
                         {
-                            customItems.map(customItem => {
-                                return <Col><CustomItemPreviewSmall
+                            customItems.map((customItem, index) => {
+                                return <Col key={index}><CustomItemPreviewSmall
                                     active={customItemPreviewCard.itemName == customItem.itemName}
                                     onClick={() => setSrc(customItem)} src={"/assets/3dmodels/" + customItem.itemSrc}
                                     rareness={customItem.itemRareness}/></Col>
