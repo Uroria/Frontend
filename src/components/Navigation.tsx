@@ -39,4 +39,4 @@ const Navigation: FunctionComponent = () => {
     </Navbar>
 }
 
-export default UroriaNavbar;
+export default Navigation;
