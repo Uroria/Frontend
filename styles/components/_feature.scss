@@ -1,0 +1,125 @@
+.feature{
+
+  h2 {
+    text-shadow: 3px 3px 0 rgba(#000, 0.5);
+    color: white;
+    margin: 0;
+    position: relative;
+  }
+
+  .col-lg-6 {
+    margin-bottom: 100px;
+  }
+
+  //listing
+  ul {
+
+    padding: 0;
+    margin-top: 20px;
+    position: relative;
+
+    //list element
+    li {
+      color: rgba(#fff, .5);
+      font-size: 1rem;
+      margin-bottom: 10px;
+      margin-left: 30px;
+      list-style-type: none;
+      position: relative;
+      text-shadow: 2px 2px 0 rgba(#000, 0.5);
+      font-family: Noto Sans, sans-serif;
+
+      &:before {
+        content: url("/assets/icons/dot.png");
+        position: absolute;
+        left: -30px;
+        top: 2px;
+
+      }
+
+      &:first-child {
+        color: rgba(#fff, 1);
+
+        &:before {
+          content: url("/assets/icons/anchor.png");
+          position: absolute;
+          left: -30px;
+        }
+      }
+    }
+  }
+
+  .model {
+    position: relative;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .name {
+      font-family: 'Minecraft', cursive;
+      text-shadow: 0 2px 0 rgba(#000, 0.5);
+      font-size: 2rem;
+      color: #ffffff;
+      z-index: 10;
+      position: absolute;
+      bottom: 50px;
+      padding: 0 10px;
+      box-shadow: 0 -5px 0 rgba(#000, .7), -5px 0px 0 rgba(#000, .7), 0 5px 0 rgba(#000, .7), 5px 0px 0 rgba(#000, .7), 0 0 50px 5px rgba(#000, .5);
+      background: rgba(#000, .75) !important;
+
+      //deactivate text selection
+      user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
+    #renderer {
+      position: absolute;
+      height: 100%;
+      pointer-events: none;
+
+      &:nth-child(1) {
+        filter: blur(100px);
+      }
+    }
+
+    .switch-btn {
+      position: relative;
+      z-index: 10;
+      color: white;
+      display: inline;
+      padding: 0 2px;
+      height: fit-content;
+      width: fit-content;
+      box-shadow: 0 -5px 0 rgba(#000, .75), -5px 0px 0 rgba(#000, .75), 0 5px 0 rgba(#000, .75), 5px 0px 0 rgba(#000, .75);
+      background: rgba(#000, .75) !important;
+      cursor: pointer;
+
+      &.right {
+        right: -100px;
+      }
+
+      &.left {
+        left: -100px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &.disabled {
+        opacity: 20%;
+        cursor: not-allowed;
+
+        &:hover {
+          transform: none;
+        }
+      }
+    }
+
+  }
+
+}
