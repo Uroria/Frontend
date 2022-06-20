@@ -76,8 +76,18 @@
   &:hover, &:focus {
     transform: scale(0.98);
     cursor: pointer;
+    color: white;
+    outline: none 0;
   }
 
+  &.disabled {
+    opacity: 20%;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+    }
+  }
   &.btn-green {
     @include btn-uroria(0)
   }
