@@ -15,12 +15,18 @@ const HomePage: NextPage<HomePageProps> = ({language, customItems, blogs}) => {
 
 export const getServerSideProps: GetServerSideProps = async ({locale}) => {
     const customItems = await getCustomItems();
-    const {languageProperties} = await useLanguage(locale);
-    return {props: {"customItems": customItems, "language": languageProperties}}
+    const blogs = await getBlogs();
+    const languageProperties = await getLanguage(locale);
+    return {props: {"customItems": customItems, "blogs": blogs, "language": languageProperties}}
 }
 
 const getCustomItems = async () => {
     const res = await fetch("http://localhost:3000/JSON/CustomItems.json")
+    return await res.json();
+}
+
+const getBlogs = async () => {
+    const res = await fetch("http://localhost:3000/JSON/Blogs.json")
     return await res.json();
 }
 
