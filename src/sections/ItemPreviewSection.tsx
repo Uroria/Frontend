@@ -49,7 +49,6 @@ const ItemPreviewSection: FunctionComponent<ItemPreviewSectionProps> = ({customI
 const ItemPreviewSectionComponent: FunctionComponent<ItemPreviewSectionComponentProps> = ({children}) => <Section
     src={"https://static.planetminecraft.com/files/resource_media/screenshot/1307/2013-02-14_114038_4837850_lrg.jpg"}
     useContainer={false}
-    title={"Custom Items"}
     paddingY={200}>{children}</Section>
 
 export default ItemPreviewSection;
