@@ -1,7 +1,7 @@
 import {FunctionComponent, ReactNode} from "react";
 
 type CardTagProps = {
-    color: 'gray' | 'red',
+    color: 'gray' | 'red' | "common" | "uncommon" | "rare" | "legendary" | "epic",
     text: string
 }
 
