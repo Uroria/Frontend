@@ -19,11 +19,18 @@ interface HomeProps {
     blogs: {[key: string] : any}[]
 }
 
-const Home: FunctionComponent<HomeProps> = ({language, customItems}) => {
-    return <div style={{overflowX: "hidden"}}>
-        <Script type={"module"} src={"https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"}/>
-        <UroriaNavbar language={language}/>
-        <UroriaHeader>
+const Home: FunctionComponent<HomeProps> = ({customItems, blogs}) => {
+
+    const language: ILanguage = useLanguage();
+
+    return <div>
+        <Script type={"module"} src={"https://unpkg.com/@google/model-viewer@1.9.1/dist/model-viewer.min.js"}/>
+        <Script src="https://unpkg.com/react/umd/react.production.min.js"/>
+        <Script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"/>
+        <Script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"/>
+
+        <Navigation/>
+        <Header>
             <AvatarList>
                 <Avatar image={<img src={"/assets/images/ururiabot.png"}/>}/>
                 <Avatar image={<img src={"/assets/images/jan.png"}/>}/>
