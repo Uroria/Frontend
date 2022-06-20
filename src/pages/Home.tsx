@@ -47,10 +47,12 @@ const Home: FunctionComponent<HomeProps> = ({customItems, blogs}) => {
             <StatusView headline={language["index.section.header.infocard.price"]}
                         icon={"/assets/icons/coins.png"}>150</StatusView>
 
-        </UroriaHeader>
+        </Header>
 
-        <TopNewsSection language={language}/>
+        <NewsSection count={3} blogs={blogs}/>
         <ItemPreviewSection customItems={customItems}/>
+        <FeatureSection/>
+        <Footer/>
     </div>
 }
 
