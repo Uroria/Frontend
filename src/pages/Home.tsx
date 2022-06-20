@@ -1,14 +1,17 @@
 import Script from "next/script";
-import UroriaNavbar from "../components/Navigation";
-import UroriaHeader from "../components/UroriaHeader";
+import Navigation from "../components/Navigation";
+import Header from "../components/Header";
 import AvatarList from "../components/AvatarList";
 import Avatar from "../components/Avatar";
 import IconButton from "../components/IconButton";
 import {IconUsers} from "@tabler/icons";
 import StatusView from "../components/StatusView";
-import TopNewsSection from "../sections/TopNewsSection";
+import NewsSection from "../sections/NewsSection";
 import ItemPreviewSection from "../sections/ItemPreviewSection";
 import {FunctionComponent} from "react";
+import FeatureSection from "../sections/FeatureSection";
+import Footer from "../sections/Footer";
+import {useLanguage} from "../hooks/LanguageHook";
 import {ILanguage} from "../@types/TLanguage";
 
 interface HomeProps extends ILanguage {
