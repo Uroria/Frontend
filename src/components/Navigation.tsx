@@ -8,7 +8,9 @@ import {useLanguage} from "../hooks/LanguageHook";
 
 const Navigation: FunctionComponent = () => {
 
-const UroriaNavbar: FunctionComponent<ILanguage> = ({language}) => {
+    const locale: string | undefined = useRouter().locale;
+    const language: ILanguage = useLanguage();
+
     return <Navbar collapseOnSelect expand="lg">
         <Container>
             <Navbar.Brand href="#home">
