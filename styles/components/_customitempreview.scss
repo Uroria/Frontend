@@ -52,12 +52,12 @@
     li {
       color: rgba(#fff, .5);
       font-size: 1rem;
+      text-shadow: 2px 2px 0 rgba(#000, 0.5);
+      font-family: Noto Sans, sans-serif;
       margin-bottom: 10px;
       margin-left: 30px;
       list-style-type: none;
       position: relative;
-      text-shadow: 2px 2px 0 rgba(#000, 0.5);
-      font-family: Noto Sans, sans-serif;
 
       &:before {
         content: url("/assets/icons/dot.png");
