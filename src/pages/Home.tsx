@@ -1,59 +1,82 @@
 import Script from "next/script";
-import Navigation from "../components/Navigation";
-import Header from "../components/Header";
-import AvatarList from "../components/AvatarList";
-import Avatar from "../components/Avatar";
-import IconButton from "../components/IconButton";
-import {IconUsers} from "@tabler/icons";
-import StatusView from "../components/StatusView";
-import NewsSection from "../sections/NewsSection";
-import ItemPreviewSection from "../sections/ItemPreviewSection";
-import {FunctionComponent} from "react";
-import FeatureSection from "../sections/FeatureSection";
-import Footer from "../sections/Footer";
 import {useLanguage} from "../hooks/LanguageHook";
 import {ILanguage} from "../@types/TLanguage";
+import {FunctionComponent} from "react";
+import Header from "../sections/Header";
+import Navigation from "../components/Navigation";
+import FeatureSection from "../sections/home/FeatureSection";
+import GameSection from "../sections/home/GameSection";
+import CosmeticSection from "../sections/home/CosmeticSection";
+import Section from "../components/Section";
+import {Col, Row} from "react-bootstrap";
+import Button from "../components/Button";
+import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube} from "@tabler/icons";
 
-interface HomeProps {
-    customItems: {[key: string] : any}[],
-    blogs: {[key: string] : any}[]
-}
-
-const Home: FunctionComponent<HomeProps> = ({customItems, blogs}) => {
+const Home: FunctionComponent = () => {
 
     const language: ILanguage = useLanguage();
 
-    return <div>
-        <Script type={"module"} src={"https://unpkg.com/@google/model-viewer@1.9.1/dist/model-viewer.min.js"}/>
+    return <>
         <Script src="https://unpkg.com/react/umd/react.production.min.js"/>
         <Script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"/>
         <Script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"/>
 
         <Navigation/>
-        <Header>
-            <AvatarList>
-                <Avatar image={<img src={"/assets/images/ururiabot.png"}/>}/>
-                <Avatar image={<img src={"/assets/images/jan.png"}/>}/>
-                <Avatar image={<img src={"/assets/images/gecoded.png"}/>}/>
-                <Avatar image={<img src={"/assets/images/paul.png"}/>}/>
-                <IconButton tooltip={"Jetzt bewerben"}><IconUsers size={20}/></IconButton>
-            </AvatarList>
-            <h1>{language["index.section.header.title"]}</h1>
-
-            <StatusView headline={language["index.section.header.infocard.status"]}
-                        icon={"/assets/icons/haken.png"}>Active</StatusView>
-            <StatusView headline={language["index.section.header.infocard.nextevent"]}
-                        icon={"/assets/icons/calender.png"}>6ter September, 10 Uhr</StatusView>
-            <StatusView headline={language["index.section.header.infocard.price"]}
-                        icon={"/assets/icons/coins.png"}>150</StatusView>
-
-        </Header>
-
-        <NewsSection count={3} blogs={blogs}/>
-        <ItemPreviewSection customItems={customItems}/>
+        <Header/>
         <FeatureSection/>
-        <Footer/>
-    </div>
+        <GameSection/>
+        <CosmeticSection/>
+        <Section>
+            <h1>Erkunde die Welt</h1><br/>
+            <h1>von <span className="mark">Uroria!</span></h1><br/>
+            <Row>
+                <Col xs={12} sm={4} md={4} lg={4}>
+                    <p>Hier siehst du eine Liste, der von unseren Creator favorisierten Spielmodi, sie verdienen daher
+                        besondere
+                        Aufmerksamkeit und werden von uns jederzeit auf dem Laufenden gehalten. Um mehr über die
+                        jeweiligen Spielmodi zu
+                        erfahren, lese dir einfach die Blogs zu den jeweiligen Modi durch!</p>
+                </Col>
+                <Col xs={4} sm={4} md={3} lg={2}>
+                    <p>Social Media</p>
+                    <Button size={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
+                    <Button size={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
+                    <Button size={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
+                </Col>
+                <Col xs={4} sm={4} md={3} lg={2}>
+                    <ul>
+                        <p>Wichtige Links</p>
+
+                        <a>
+                            <li>Entbannungsantrag stellen</li>
+                        </a>
+                        <a>
+                            <li>Bewerbung einsenden</li>
+                        </a>
+                        <a>
+                            <li>Bug melden</li>
+                        </a>
+
+                    </ul>
+                </Col>
+                <Col xs={4} sm={4} md={2} lg={2}>
+                    <ul>
+                        <p>Datenschutz und ...</p>
+                        <a>
+                            <li>Impressum</li>
+                        </a>
+                        <a>
+                            <li>Datenschutz</li>
+                        </a>
+                        <a>
+                            <li>Allgemeine Geschäftsbedingungen</li>
+                        </a>
+
+                    </ul>
+                </Col>
+            </Row>
+        </Section>
+    </>
 }
 
 export default Home;
