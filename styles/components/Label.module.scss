@@ -1,0 +1,13 @@
+.label {
+  font-size: .75rem;
+  color: black;
+  clip-path: polygon(0% 11%, 100% 0, 90% 88%, 3% 100%);
+  padding: 4px 7px 0 7px;
+  background: #4ae4ff;
+  position: relative;
+
+  &.label-absolute {
+    position: absolute;
+    top: -5px;
+  }
+}

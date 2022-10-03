@@ -2,6 +2,7 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 import styles from '../../styles/components/Navigation.module.scss'
 import {FunctionComponent, ReactNode} from "react";
 import Link from "next/link";
+import Label from "./Label";
 
 const Navigation = () => <Navbar collapseOnSelect fixed={"top"} expand="lg" className={styles.navbar}>
     <Container>
@@ -18,11 +19,11 @@ const Navigation = () => <Navbar collapseOnSelect fixed={"top"} expand="lg" clas
             <Nav className="me-auto my-2 my-lg-0">
             </Nav>
             <Nav className="d-flex">
-                <Link href={"/"} passHref><NavigationItem style={styles.navbar__navItem}>Homepage</NavigationItem></Link>
-                <Link href={"/events"} passHref><NavigationItem style={styles.navbar__navItem}>Events</NavigationItem></Link>
-                <Link href={"/creator"} passHref><NavigationItem style={styles.navbar__navItem}>Creator</NavigationItem></Link>
-                <Link href={"/community"} passHref><NavigationItem style={styles.navbar__navItem}>Community</NavigationItem></Link>
-                <Link href={"/shop"} passHref><NavigationItem style={styles.navbar__navItem}>Shop</NavigationItem></Link>
+                <Link href={"/"} passHref><NavigationItem>Homepage</NavigationItem></Link>
+                <Link href={"/events"} passHref><NavigationItem>Events</NavigationItem></Link>
+                <Link href={"/creator"} passHref><NavigationItem>Creator</NavigationItem></Link>
+                <Link href={"/community"} passHref><NavigationItem>Community</NavigationItem></Link>
+                <Link href={"/shop"} passHref><NavigationItem label={"soon"}>Shop</NavigationItem></Link>
             </Nav>
         </Navbar.Collapse>
     </Container>
@@ -31,15 +32,16 @@ const Navigation = () => <Navbar collapseOnSelect fixed={"top"} expand="lg" clas
 
 /* navigation item */
 
-type NavigationItemProps = {
+interface NavigationItemProps {
     children: ReactNode,
     href?: string,
-    style: string
+    label?: string
 }
 
-const NavigationItem: FunctionComponent<NavigationItemProps> = ({children, style, href}) => <div
+const NavigationItem: FunctionComponent<NavigationItemProps> = ({children, href, label}) => <div
     className={styles.navitem}>
     <a href={href}> {children}</a>
+    {label ? <Label onNavigation={true}>{label}</Label> : null}
 </div>
 
 export default Navigation;
