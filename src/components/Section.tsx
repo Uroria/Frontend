@@ -6,18 +6,8 @@ type SectionProps = {
     children: ReactNode,
 }
 
-const Section: FunctionComponent<SectionProps> = ({children, src, useContainer = true, useTransition = true, paddingY= 0, transitionOnlyTop = false, className, negativeMarginTop = false}) => {
-
-    const style: CSSProperties = transitionOnlyTop ? {
-        padding: paddingY + "px 0 50px 0"
-    } : {
-        padding: paddingY + "px 0"
-    };
-
-    style["background"] = src ? "linear-gradient(315deg, rgba(0, 0, 0, 0.80) 0, rgba(0, 0, 0, 0.80) 100%), url('" + src + "') center" : "transparent";
-    style["marginTop"] = negativeMarginTop ? "-350px" : "0px";
-    useTransition ? children = <>
-        <div className={"transition"}/>
+const Section: FunctionComponent<SectionProps> = ({children}) => <div className={styles.section}>
+    <Container className={styles.section__container}>
         {children}
         {!transitionOnlyTop ? <div className={"transition"}/> : null}
     </> : null;
