@@ -1,0 +1,67 @@
+.section {
+  background: none;
+  position: relative;
+  height: auto;
+  top: calc(100vh + 101px);
+  margin-top: -100px;
+  padding-bottom: 100px;
+  overflow: hidden;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 100%);
+    background: white;
+  }
+
+  &:nth-of-type(odd) {
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0% 0%, 100% 11%, 100% 100%, 0% 100%);
+      background: rgb(0, 0, 0);
+      background: url("/assets/images/2.png") no-repeat center;
+      background-size: cover;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0% 0%, 100% 11%, 100% 100%, 0% 100%);
+      background: #000030;
+      background: radial-gradient(circle, rgba(0, 0, 48, 0.8) 0%, rgba(0, 0, 6, 1) 100%);
+      top: 0;
+      bottom: 0;
+    }
+
+    h1 {
+      color: #000006;
+
+      &:after {
+        background: white;
+      }
+    }
+
+    p {
+      color: white;
+    }
+  }
+
+  .section__container {
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    z-index: 1;
+  }
+
+}

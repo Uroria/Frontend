@@ -1,0 +1,77 @@
+.event {
+  background: url("/assets/images/1.png") no-repeat center;
+  background-size: cover;
+  width: 100%;
+  aspect-ratio: 50/50;
+  position: relative;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  z-index: 1;
+  cursor: pointer;
+  overflow: hidden;
+
+  &.comming_soon {
+    opacity: .2;
+    cursor: not-allowed;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: calc(100% - 14px);
+    height: calc(100% - 14px);
+    transform: skew(0deg) scale(1.1);
+    background: rgba(#000030, .3);
+    transition: transform 250ms ease-in-out;
+  }
+
+  > div {
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    padding: 1.5rem;
+  }
+
+  h2 {
+    position: relative;
+    display: block;
+    font-size: 1.4rem;
+    color: white;
+    font-family: 'Luckiest Guy', cursive;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    transform: translateY(150%);
+    transition: all 250ms ease-in-out;
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    color: rgba(white, .75);
+    font-family: 'Luckiest Guy', cursive;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    transform: translateY(80px);
+    transition: all 250ms ease-in-out;
+  }
+
+  &:hover {
+
+    &:before {
+      transform: skew(-2deg) scale(1);
+    }
+
+    > div > h2 {
+      transform: translateY(0%);
+    }
+    > div > span {
+      transform: translateY(0px);
+    }
+  }
+}
