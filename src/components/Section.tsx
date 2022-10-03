@@ -1,14 +1,9 @@
-import {CSSProperties, FunctionComponent, ReactNode} from "react";
+import {Container} from "react-bootstrap";
+import {FunctionComponent, ReactNode} from "react";
+import styles from "../../styles/components/Section.module.scss";
 
 type SectionProps = {
     children: ReactNode,
-    useContainer?: boolean,
-    useTransition?: boolean
-    src?: string,
-    paddingY?: number
-    transitionOnlyTop?: boolean,
-    className?: string,
-    negativeMarginTop?: boolean
 }
 
 const Section: FunctionComponent<SectionProps> = ({children, src, useContainer = true, useTransition = true, paddingY= 0, transitionOnlyTop = false, className, negativeMarginTop = false}) => {
