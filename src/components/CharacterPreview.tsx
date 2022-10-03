@@ -39,7 +39,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinGltf, s
         </mesh>
         <hemisphereLight intensity={.7} color="white" position={[0, 20, 0]}/>
         <directionalLight castShadow intensity={1} position={[4, 5, 5]} color="#ffffff"/>
-        <OrbitControls enableZoom={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2}/>
+        <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2}/>
     </Canvas>
 }
 
