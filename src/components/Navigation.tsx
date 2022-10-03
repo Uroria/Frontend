@@ -1,42 +1,45 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
-import Button from "./Button";
-import {FunctionComponent} from "react";
-import {ILanguage} from "../@types/TLanguage";
+import styles from '../../styles/components/Navigation.module.scss'
+import {FunctionComponent, ReactNode} from "react";
 import Link from "next/link";
-import {useRouter} from "next/router";
-import {useLanguage} from "../hooks/LanguageHook";
 
-const Navigation: FunctionComponent = () => {
+const Navigation = () => <Navbar collapseOnSelect fixed={"top"} expand="lg" className={styles.navbar}>
+    <Container>
+        <Navbar.Brand href="/">
+            <img
+                src="/assets/images/Uroria.svg"
+                width="70"
+                className="d-inline-block align-top"
+                alt="React Bootstrap logo"
+            />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+        <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto my-2 my-lg-0">
+            </Nav>
+            <Nav className="d-flex">
+                <Link href={"/"} passHref><NavigationItem style={styles.navbar__navItem}>Homepage</NavigationItem></Link>
+                <Link href={"/events"} passHref><NavigationItem style={styles.navbar__navItem}>Events</NavigationItem></Link>
+                <Link href={"/creator"} passHref><NavigationItem style={styles.navbar__navItem}>Creator</NavigationItem></Link>
+                <Link href={"/community"} passHref><NavigationItem style={styles.navbar__navItem}>Community</NavigationItem></Link>
+                <Link href={"/shop"} passHref><NavigationItem style={styles.navbar__navItem}>Shop</NavigationItem></Link>
+            </Nav>
+        </Navbar.Collapse>
+    </Container>
+</Navbar>
 
-    const locale: string | undefined = useRouter().locale;
-    const language: ILanguage = useLanguage();
 
-    return <Navbar collapseOnSelect expand="lg">
-        <Container>
-            <Navbar.Brand href="#home">
-                <img
-                    src="/assets/images/Uroria.svg"
-                    width="70"
-                    height="70"
-                    className="d-inline-block align-top"
-                    alt="React Bootstrap logo"
-                />
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
-                    <Link href={"/"} locale={locale} passHref><Nav.Link>{language["navbar.item.home"]}</Nav.Link></Link>
-                    <Link href={"/apply"} locale={locale} passHref><Nav.Link>{language["navbar.item.apply"]}</Nav.Link></Link>
-                    <Link href={"/blog"} locale={locale} passHref><Nav.Link>{language["navbar.item.blog"]}</Nav.Link></Link>
-                </Nav>
-                <Nav>
-                    <Nav.Link><Button disabled={true} color={"green"} text={"Login"}/></Nav.Link>
-                    <Link href={useRouter().route} locale={locale == "en_EN" ? "de_DE" : "./en_EN"} passHref replace><a
-                        className={"btn-uroria btn-blue"}>{locale == "de_DE" ? "Englisch" : "German"}</a></Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Container>
-    </Navbar>
+/* navigation item */
+
+type NavigationItemProps = {
+    children: ReactNode,
+    href?: string,
+    style: string
 }
+
+const NavigationItem: FunctionComponent<NavigationItemProps> = ({children, style, href}) => <div
+    className={styles.navitem}>
+    <a href={href}> {children}</a>
+</div>
 
 export default Navigation;
