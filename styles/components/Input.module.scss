@@ -1,6 +1,6 @@
 .input {
   background: rgba(0, 0, 6, 1);
-  clip-path: polygon(0% 5%, 95% 0%, 90% 90%, 3% 100%);
+  clip-path: polygon(0% 10%, 100% 0%, 97% 95%, 3% 100%);
   font-family: 'Poppins', sans-serif;
 
   input {
@@ -39,6 +39,7 @@
 .input__description {
   margin: .5rem 0;
   position: relative;
+  font-size: .8rem;
   left: 10px;
 }
 

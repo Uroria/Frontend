@@ -41,7 +41,7 @@ const CosmeticSection = () => {
             <Col lg={"5"} className={"position-relative"}>
                 <CharacterPreview skinGltf={JsonToGltf(data)} skinName={currentSkinName} hatModel={currentHat}/>
                 <div style={{position: "absolute", bottom: ".5rem", left: "50%", transform: "translateX(-50%)"}}>
-                    <Input aria-describedby={"*leave input to enter unsername"} onBlur={event => event.target.value && event.target.value != "" ? setCuurentSkinName(event.target.value.toLocaleLowerCase()) : undefined} width={300} placeholder={"username"}/>
+                    <Input blink={true} description={"leave input to enter unsername"} onBlur={event => event.target.value && event.target.value != "" ? setCuurentSkinName(event.target.value.toLocaleLowerCase()) : undefined} width={300} placeholder={"username"}/>
                 </div>
             </Col>
             <Col lg={"7"}>
