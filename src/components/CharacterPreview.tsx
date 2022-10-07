@@ -1,10 +1,11 @@
-import {FunctionComponent} from "react";
+import {FunctionComponent, useEffect} from "react";
 import Minecraft3DCharacter, {CosmeticsProps} from "./Minecraft3DCharacter";
 import {OrbitControls} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
 import useSWR from "swr";
 import * as THREE from "three";
 import {JsonToGltf} from "../utils/JsonToGltf";
+import {fetcher} from "../utils/Fetcher";
 
 interface CharacterPreviewProps {
     skinGltf: string,
@@ -14,7 +15,7 @@ interface CharacterPreviewProps {
 
 const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinGltf, skinName, hatModel}) => {
 
-    const {data, error} = hatModel ? useSWR("./assets/3dModels/" + hatModel.gltf + ".json") : {
+    const {data, error} = hatModel ? useSWR("./assets/3dModels/" + hatModel.gltf + ".json", fetcher) : {
         data: undefined,
         error: false
     };
@@ -26,7 +27,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinGltf, s
     return <Canvas style={{cursor: "ew-resize"}} shadows>
         <Minecraft3DCharacter
             skinModel={{gltf: skinGltf, texture: "https://mc-heads.net/skin/" + skinName, positionY: -3}}
-            hatModel={hatModel ? {
+            hatModel={(hatModel && data && !error) ? {
                 gltf: JsonToGltf(data),
                 positionX: hatModel.positionX,
                 positionZ: hatModel.positionZ,
