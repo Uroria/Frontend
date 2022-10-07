@@ -2,9 +2,8 @@ import Section from "../../components/Section";
 import {Col, Row} from "react-bootstrap";
 import {useState} from "react";
 import {CosmeticsProps} from "../../components/Minecraft3DCharacter";
-import useSWR from 'swr'
 import {JsonToGltf} from "../../utils/JsonToGltf";
-import {fetcher} from "../../utils/Fetcher";
+import {useAPI} from "../../utils/Fetcher";
 import CharacterPreview from "../../components/CharacterPreview";
 import Input from "../../components/Input";
 import {Tab, Tabs} from "../../components/Tabs";
@@ -34,16 +33,16 @@ const allHats: CosmeticsProps[] = [{
 const CosmeticSection = () => {
 
     const [currentHat, setCurrentHat] = useState(allHats[0]);
-    const [currentSkinName, setCuurentSkinName] = useState("lvckyfelix")
-    const {data, error} = useSWR('./assets/3dModels/player.json', fetcher)
+    const [currentSkinName, setCurrentSkinName] = useState("lvckyfelix")
+    const playerModel = useAPI('./assets/3dModels/player.json');
 
     return <Section>
         <Row>
             <Col lg={"5"} className={"position-relative"}>
-                <CharacterPreview skinGltf={JsonToGltf(data)} skinName={currentSkinName} hatModel={currentHat}/>
+                {playerModel.data && !playerModel.error ? <CharacterPreview skinGltf={JsonToGltf(playerModel.data)} skinName={currentSkinName} hatModel={currentHat}/> : null}
                 <div style={{position: "absolute", bottom: "0", left: "50%", transform: "translateX(-50%)"}}>
                     <Input blink={true} description={"leave input to enter unsername and skin viewer is currently only available for Steve 1.7+ skins"}
-                           onBlur={event => event.target.value && event.target.value != "" ? setCuurentSkinName(event.target.value.toLocaleLowerCase()) : undefined}
+                           onBlur={event => event.target.value && event.target.value != "" ? setCurrentSkinName(event.target.value.toLocaleLowerCase()) : undefined}
                            width={300} placeholder={"username"}/>
                 </div>
             </Col>

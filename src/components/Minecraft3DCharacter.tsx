@@ -68,22 +68,24 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> = ({ski
     useEffect(() => {
         if (!hatModel) return;
 
-        const hat = new GLTFLoader();
         const oldhat = currentHat;
-        hat.load(hatModel.gltf, newHat => {
+        const hat = new GLTFLoader();
+
+        hat.load(hatModel.gltf, async newHat => {
             newHat.scene.castShadow = true;
             newHat.scene.receiveShadow = true;
             newHat.scene.scale.set(hatModel.scale ?? 1, hatModel.scale ?? 1, hatModel.scale ?? 1);
             newHat.scene.position.set((hatModel.positionX ?? 0) * (hatModel.scale ?? 1), (hatModel.positionY ?? 0) * (hatModel.scale ?? 1), (hatModel.positionZ ?? 0) * (hatModel.scale ?? 1))
-            setCurrentHat(newHat.scene);
 
             newHat.scene.traverse(child => child.castShadow = true)
 
-            object?.scene.traverse((child: Object3D) => {
+            await object?.scene.traverse((child: Object3D) => {
                 if (child.name != "phead_0") return;
                 if (oldhat) child.remove(oldhat);
                 child.add(newHat.scene);
             })
+
+            setCurrentHat(newHat.scene);
 
         });
     }, [object, hatModel])

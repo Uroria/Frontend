@@ -1,11 +1,10 @@
-import {FunctionComponent, useEffect} from "react";
+import {FunctionComponent} from "react";
 import Minecraft3DCharacter, {CosmeticsProps} from "./Minecraft3DCharacter";
 import {OrbitControls} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
-import useSWR from "swr";
 import * as THREE from "three";
 import {JsonToGltf} from "../utils/JsonToGltf";
-import {fetcher} from "../utils/Fetcher";
+import {useAPI} from "../utils/Fetcher";
 
 interface CharacterPreviewProps {
     skinGltf: string,
@@ -15,7 +14,7 @@ interface CharacterPreviewProps {
 
 const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinGltf, skinName, hatModel}) => {
 
-    const {data, error} = hatModel ? useSWR("./assets/3dModels/" + hatModel.gltf + ".json", fetcher) : {
+    const playerHatModel = hatModel ? useAPI("./assets/3dModels/" + hatModel.gltf + ".json") : {
         data: undefined,
         error: false
     };
@@ -27,19 +26,19 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinGltf, s
     return <Canvas style={{cursor: "ew-resize"}} shadows>
         <Minecraft3DCharacter
             skinModel={{gltf: skinGltf, texture: "https://mc-heads.net/skin/" + skinName, positionY: -3}}
-            hatModel={(hatModel && data && !error) ? {
-                gltf: JsonToGltf(data),
+            hatModel={(hatModel && playerHatModel.data && !playerHatModel.error) ? {
+                gltf: JsonToGltf(playerHatModel.data),
                 positionX: hatModel.positionX,
                 positionZ: hatModel.positionZ,
                 positionY: hatModel.positionY,
                 scale: hatModel.scale
             } : undefined}
             scale={2.5}/>
-        <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]} material={material}>
+        <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]} material={material}>
             <planeGeometry args={[100, 100]}/>
         </mesh>
         <hemisphereLight intensity={.7} color="white" position={[0, 20, 0]}/>
-        <directionalLight castShadow intensity={1} position={[4, 5, 5]} color="#ffffff"/>
+        <directionalLight castShadow={true} intensity={1} position={[4, 5, 5]} color="#ffffff"/>
         <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2}/>
     </Canvas>
 }
