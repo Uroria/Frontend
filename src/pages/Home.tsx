@@ -39,9 +39,9 @@ const Home: FunctionComponent = () => {
                 </Col>
                 <Col xs={4} sm={4} md={3} lg={2}>
                     <p>Social Media</p>
-                    <Button size={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
-                    <Button size={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
-                    <Button size={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
+                    <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
+                    <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
+                    <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
                 </Col>
                 <Col xs={4} sm={4} md={3} lg={2}>
                     <ul>
