@@ -19,8 +19,8 @@ const Header = () => <div className={styles.header}>
                 Wir haben uns es zu unserer Aufgabe gemacht, unter der Verwendung eines eigen Texturenpakets die
                 Spielfähigkeit und Abwechslung auf unserem Server zu erhöhen, damit erschaffen wir Systeme, die noch
                 über Minecraft selbst hinaus gehen.</p>
-            <Button buttonSize={"lg"} type={"square"}><IconDeviceGamepad2
-                style={{marginRight: "0.5rem", rotate: "-10deg"}}/>Play now!</Button>
+            {/*<Button buttonSize={"lg"} type={"square"}><IconDeviceGamepad2
+                style={{marginRight: "0.5rem", rotate: "-10deg"}}/>Play now!</Button>*/}
             <Button href={"https://dc.uroria.com"} buttonSize={"lg"} type={"square"}><IconBrandDiscord
                 style={{marginRight: "0.5rem", rotate: "-10deg"}}/>Discord</Button>
         </div>
