@@ -28,8 +28,8 @@ const Header = () => <div className={styles.header}>
         <div className={styles.header__bottom}>
             <div className={styles.header__bottom_socialmedia}>
                 <Button href={"https://dc.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
-                <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
-                <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
+                <Button href={"https://yt.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
+                <Button href={"https://ig.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
             </div>
             <div className={styles.header__bottom_moreinfos}>
                 <Button href={"#features"} buttonSize={"md"} type={"round"} color={"white"}>

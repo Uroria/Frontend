@@ -19,9 +19,9 @@ const Footer = () => <Section>
             </Col>
             <Col xs={5} sm={5} md={4} lg={3} xxl={2}>
                 <p>Social Media</p>
-                <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
-                <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
-                <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
+                <Button href={"https://dc.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
+                <Button href={"https://yt.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
+                <Button href={"https://ig.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
             </Col >
             <Col xs={5} sm={5} md={4} lg={3} xxl={2}>
                 <ul>
