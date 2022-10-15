@@ -22,10 +22,22 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
         error: false
     };
 
+    //fetch skin texture for player model
+    const mojangUUID = useAPI("https://mc-heads.net/minecraft/profile/" + skinName);
+    const mojangData = mojangUUID.data ? JSON.parse(new Buffer(mojangUUID?.data?.properties[0]?.value, 'base64').toString()) : undefined;
+    const texture = useImage("https://mc-heads.net/skin/" + skinName + ".png");
+
     // create shadow
     const material = new THREE.ShadowMaterial();
-    material.opacity = 0.2;
+    material.opacity = 0.5;
 
+    //check if data loaded or an error accored
+    if (!mojangData || !playerModel.data || (!playerHatModel.data && hatModel)) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Model...</p>
+    if (!texture.data) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Texture...</p>
+    if (mojangData && mojangData.textures?.SKIN?.metadata?.model == "slim") return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-40%)", left: "50%", top: "40%"}}>Currently we don't support Alex skins.</p>
+    if (texture?.data?.height <= 32) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Currently we don't support 1.7 Steve skins.</p>
+
+    //render for 3d Model
     return <Canvas style={{cursor: "ew-resize"}} shadows>
         <Minecraft3DCharacter
             skinModel={{gltf: skinGltf, texture: "https://mc-heads.net/skin/" + skinName, positionY: -3}}
