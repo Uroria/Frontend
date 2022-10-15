@@ -67,8 +67,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> = ({ski
     //load and set hat cosmetic on minecraft character head
     useEffect(() => {
         if (!hatModel) return;
-
-        const oldhat = currentHat;
+        const oldhat = {"oldhat": currentHat};
         const hat = new GLTFLoader();
 
         hat.load(hatModel.gltf, async newHat => {
@@ -81,7 +80,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> = ({ski
 
             await object?.scene.traverse((child: Object3D) => {
                 if (child.name != "phead_0") return;
-                if (oldhat) child.remove(oldhat);
+                if (oldhat.oldhat) child.remove(oldhat.oldhat);
                 child.add(newHat.scene);
             })
 
