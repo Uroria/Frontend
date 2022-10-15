@@ -2,7 +2,7 @@ import {Col, Row} from "react-bootstrap";
 import Feature from "../../components/Feature";
 import Section from "../../components/Section";
 
-const FeatureSection = () => <Section>
+const FeatureSection = () => <Section id={"features"}>
     <Row>
         <Col lg={"5"}>
             <img src={"/assets/images/uroria_render_gebuildet_cropped.png"} height={600}

@@ -21,18 +21,18 @@ const Header = () => <div className={styles.header}>
                 über Minecraft selbst hinaus gehen.</p>
             <Button buttonSize={"lg"} type={"square"}><IconDeviceGamepad2
                 style={{marginRight: "0.5rem", rotate: "-10deg"}}/>Play now!</Button>
-            <Button buttonSize={"lg"} type={"square"}><IconBrandDiscord
+            <Button href={"https://dc.uroria.com"} buttonSize={"lg"} type={"square"}><IconBrandDiscord
                 style={{marginRight: "0.5rem", rotate: "-10deg"}}/>Discord</Button>
         </div>
 
         <div className={styles.header__bottom}>
             <div className={styles.header__bottom_socialmedia}>
-                <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
+                <Button href={"https://dc.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
                 <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
                 <Button buttonSize={"sm"} type={"round"} icon={true}><IconBrandInstagram/></Button>
             </div>
             <div className={styles.header__bottom_moreinfos}>
-                <Button buttonSize={"md"} type={"round"} color={"white"}>
+                <Button href={"#features"} buttonSize={"md"} type={"round"} color={"white"}>
                     <IconChevronDown size={16} style={{marginRight: "0.5rem"}}/>More Infos
                 </Button>
             </div>

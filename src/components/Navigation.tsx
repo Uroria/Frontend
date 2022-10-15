@@ -20,8 +20,8 @@ const Navigation = () => <Navbar collapseOnSelect fixed={"top"} expand="lg" clas
             </Nav>
             <Nav className="d-flex">
                 <Link href={"/"} passHref><NavigationItem>Homepage</NavigationItem></Link>
-                <Link href={"/creator"} passHref><NavigationItem label={"soon"}>Creator</NavigationItem></Link>
-                <Link href={"/"} passHref><NavigationItem label={"soon"}>Shop</NavigationItem></Link>
+                <Link href={""} passHref><NavigationItem label={"soon"}>Creator</NavigationItem></Link>
+                <Link href={""} passHref><NavigationItem label={"soon"}>Shop</NavigationItem></Link>
             </Nav>
         </Navbar.Collapse>
     </Container>

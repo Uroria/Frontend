@@ -8,8 +8,13 @@
   src: url('../fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf');
 }
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 body {
   height: 100%;
+  scroll-behavior: smooth !important;
 }
 
 h1 {
