@@ -1,0 +1,17 @@
+.footer {
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+
+}
