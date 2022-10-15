@@ -2,8 +2,6 @@ import Section from "../../components/Section";
 import {Col, Row} from "react-bootstrap";
 import {useState} from "react";
 import {CosmeticsProps} from "../../components/Minecraft3DCharacter";
-import {JsonToGltf} from "../../utils/JsonToGltf";
-import {useAPI} from "../../utils/Fetcher";
 import CharacterPreview from "../../components/CharacterPreview";
 import Input from "../../components/Input";
 import {Tab, Tabs} from "../../components/Tabs";
