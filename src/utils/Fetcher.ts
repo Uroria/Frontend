@@ -15,7 +15,7 @@ const toBase64 = (file: Blob) => new Promise((resolve, reject) => {
 });
 
 const getImage = (file: string) => {
-    return new Promise (function (resolved, rejected) {
+    return new Promise (function (resolved) {
         const image = new Image()
         image.onload = () => resolved(image)
         image.src = file
