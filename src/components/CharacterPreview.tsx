@@ -7,13 +7,16 @@ import {JsonToGltf} from "../utils/JsonToGltf";
 import {useAPI} from "../utils/Fetcher";
 
 interface CharacterPreviewProps {
-    skinGltf: string,
     skinName: string,
     hatModel?: CosmeticsProps,
 }
 
-const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinGltf, skinName, hatModel}) => {
+const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, hatModel}) => {
 
+    //fetch animated minecraft player model
+    const playerModel = useAPI('./assets/3dModels/player.json');
+
+    //fetch hat cosmetic when present
     const playerHatModel = hatModel ? useAPI("./assets/3dModels/" + hatModel.gltf + ".json") : {
         data: undefined,
         error: false
