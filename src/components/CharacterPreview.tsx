@@ -32,7 +32,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
     material.opacity = 0.5;
 
     //check if data loaded or an error accored
-    if (!mojangData || !playerModel.data || (!playerHatModel.data && hatModel)) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Model...</p>
+    if (!mojangData || !playerModel.data || !playerHatModel.data) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Model...</p>
     if (!texture.data) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Texture...</p>
     if (mojangData && mojangData.textures?.SKIN?.metadata?.model == "slim") return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-40%)", left: "50%", top: "40%"}}>Currently we don't support Alex skins.</p>
     if (texture?.data?.height <= 32) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Currently we don't support 1.7 Steve skins.</p>
