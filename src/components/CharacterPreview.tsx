@@ -4,7 +4,7 @@ import {OrbitControls} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
 import * as THREE from "three";
 import {JsonToGltf} from "../utils/JsonToGltf";
-import {useAPI} from "../utils/Fetcher";
+import {useAPI, useImage} from "../utils/Fetcher";
 
 interface CharacterPreviewProps {
     skinName: string,
