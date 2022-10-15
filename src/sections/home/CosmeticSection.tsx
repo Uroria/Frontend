@@ -33,16 +33,16 @@ const allHats: CosmeticsProps[] = [{
 const CosmeticSection = () => {
 
     const [currentHat, setCurrentHat] = useState(allHats[0]);
-    const [currentSkinName, setCurrentSkinName] = useState("lvckyfelix")
-    const playerModel = useAPI('./assets/3dModels/player.json');
+    const [currentSkinName, setCurrentSkinName] = useState("sterndecraft");
 
     return <Section>
         <Row>
-            <Col lg={"5"} className={"position-relative"}>
-                {playerModel.data && !playerModel.error ? <CharacterPreview skinGltf={JsonToGltf(playerModel.data)} skinName={currentSkinName} hatModel={currentHat}/> : null}
+            <Col lg={"5"} className={"position-relative"} style={{minHeight: "450px"}}>
+                <CharacterPreview skinName={currentSkinName} hatModel={currentHat}/>
                 <div style={{position: "absolute", bottom: "0", left: "50%", transform: "translateX(-50%)"}}>
-                    <Input blink={true} description={"leave input to enter unsername and skin viewer is currently only available for Steve 1.7+ skins"}
-                           onBlur={event => event.target.value && event.target.value != "" ? setCurrentSkinName(event.target.value.toLocaleLowerCase()) : undefined}
+                    <Input maxLength={16} blink={true}
+                           description={"leave input to enter unsername and skin viewer is currently only available for Steve 1.7+ skins"}
+                           onBlur={event => event.target.value && event.target.value != "" && event.target.value != currentSkinName ? setCurrentSkinName(event.target.value.toLocaleLowerCase()) : undefined}
                            width={300} placeholder={"username"}/>
                 </div>
             </Col>
