@@ -31,7 +31,7 @@ const allHats: CosmeticsProps[] = [{
 const CosmeticSection = () => {
 
     const [currentHat, setCurrentHat] = useState(allHats[0]);
-    const [currentSkinName, setCurrentSkinName] = useState("sterndecraft");
+    const [currentSkinName, setCurrentSkinName] = useState("ninjaschnitzel");
 
     return <Section>
         <Row>
