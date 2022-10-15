@@ -41,4 +41,8 @@
     clip-path: polygon(5% 2%, 100% 5%, 100% 90%, 0% 94%);
     background: white;
   }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
