@@ -40,7 +40,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
     //render for 3d Model
     return <Canvas style={{cursor: "ew-resize"}} shadows>
         <Minecraft3DCharacter
-            skinModel={{gltf: skinGltf, texture: "https://mc-heads.net/skin/" + skinName, positionY: -3}}
+            skinModel={{gltf: JsonToGltf(playerModel.data), texture: texture.data.src, positionY: -3}}
             hatModel={(hatModel && playerHatModel.data && !playerHatModel.error) ? {
                 gltf: JsonToGltf(playerHatModel.data),
                 positionX: hatModel.positionX,
