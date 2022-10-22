@@ -1,6 +1,4 @@
 import Script from "next/script";
-import {useLanguage} from "../hooks/LanguageHook";
-import {ILanguage} from "../@types/TLanguage";
 import {FunctionComponent} from "react";
 import Header from "../sections/Header";
 import Navigation from "../components/Navigation";
@@ -10,10 +8,6 @@ import CosmeticSection from "../sections/home/CosmeticSection";
 import Footer from "../sections/Footer";
 
 const Home: FunctionComponent = () => {
-
-    const language: ILanguage = useLanguage();
-
-    console.log(language)
 
     return <>
         <Script src="https://unpkg.com/react/umd/react.production.min.js"/>
