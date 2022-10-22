@@ -1,0 +1,160 @@
+$button-types: (
+        "white-round": ("color": white, "type": "round", "background": #000006),
+        "black-round": ("color": #000006, "type": "round", "background": white),
+        "white-square": ("color": white, "type": "square", "background": #000006),
+        "black-square": ("color": #000006, "type": "square", "background": white)
+);
+
+@mixin button-round($color, $background) {
+  border-radius: 100rem;
+  color: $color;
+  display: inline-block;
+  position: relative;
+  background: $background;
+  margin-right: 1rem;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
+  line-height: 1;
+
+  &:hover {
+    color: $background;
+    background: $color;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &.btn-icon {
+    transition: transform 250ms ease-in-out;
+    aspect-ratio: 1/1;
+
+    &:hover {
+      -ms-transform: rotate(-20deg);
+      transform: rotate(-20deg);
+    }
+  }
+
+}
+
+@mixin button-square($color, $background, $btn) {
+  font-size: 1rem;
+  font-family: 'Luckiest Guy', cursive;
+  color: $color;
+  outline: none;
+  display: inline-block;
+  background: none;
+  line-height: 1;
+  position: relative;
+  z-index: 0;
+  margin-right: 1rem;
+  text-decoration: none;
+
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    clip-path: polygon(0% 11%, 100% 0, 90% 88%, 3% 100%);
+    transition: clip-path 250ms ease-in-out;
+    background: $background;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    clip-path: polygon(0% 11%, 100% 0, 90% 88%, 3% 100%);
+    transition: all 250ms ease-in-out;
+    opacity: 1;
+    background: transparent;
+    animation: btn-blink-#{$btn} 10s linear infinite;
+  }
+
+  &:hover {
+    color: $color;
+    cursor: pointer;
+
+    &:after {
+      clip-path: polygon(0% 1%, 97% 0, 90% 100%, 6% 90%);
+    }
+
+    &:before {
+      clip-path: polygon(0% 1%, 97% 0, 90% 100%, 6% 90%);
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes btn-blink-#{$btn} {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+      background: transparent;
+    }
+    89% {
+      opacity: 1;
+      transform: scale(1);
+      background: transparent;
+    }
+    90% {
+      opacity: 1;
+      transform: scale(1);
+      background: $background;
+    }
+
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+      background: $background;
+    }
+  }
+}
+
+@each $btn, $btnvalues in $button-types {
+  .btn-#{$btn} {
+    @if (map-get($btnvalues, "type") == "round") {
+      @include button-round(map-get($btnvalues, "color"), map-get($btnvalues, "background"));
+    } @else {
+      @include button-square(map-get($btnvalues, "color"), map-get($btnvalues, "background"), $btn);
+    }
+
+    &.btn-lg {
+      font-size: 1.3rem;
+      padding: 15.6px 20.8px 10.4px 20.8px;
+
+      &.btn-icon {
+        padding: 20.8px !important;
+      }
+    }
+
+    &.btn-md {
+      padding: 12px 16px 8px 16px;
+      font-size: 1rem;
+
+      &.btn-icon {
+        padding: 16px !important;
+      }
+    }
+
+    &.btn-sm {
+      padding: 8.4px 11.2px 5.6px 11.2px;
+      font-size: 0.7rem;
+
+      &.btn-icon {
+        padding: 11.2px !important;
+      }
+    }
+
+  }
+}

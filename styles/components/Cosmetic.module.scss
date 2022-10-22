@@ -1,0 +1,49 @@
+.cosmetic {
+  background: #ffd500;
+  width: 100%;
+  aspect-ratio: 50/50;
+  position: relative;
+  margin: 0;
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: calc(100% - 14px);
+    height: calc(100% - 14px);
+    transform: skew(-2deg);
+    background: rgb(255,213,0);
+    background: radial-gradient(circle, rgba(255,213,0,1) 0%, rgba(219,184,0,1) 100%);
+    transition: all 250ms ease-in-out;
+  }
+
+  > div {
+    position: absolute;
+    z-index: 2;
+  }
+
+  p {
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 1rem;
+    color: rgba(#000006, .5);
+    font-family: 'Luckiest Guy', cursive;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+  }
+
+  &:hover {
+    &:after {
+      transform: skew(0) scale(1.15);
+    }
+  }
+}

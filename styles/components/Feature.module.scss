@@ -1,0 +1,59 @@
+.feature {
+  background: #000006;
+  width: 100%;
+  aspect-ratio: 50/50;
+  position: relative;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  z-index: 1;
+  cursor: not-allowed;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: calc(100% - 14px);
+    height: calc(100% - 14px);
+    transform: skew(-2deg);
+    background: white;
+  }
+
+  > div {
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  span {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    color: rgba(#000006, .5);
+    font-family: 'Luckiest Guy', cursive;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+  }
+
+  h2 {
+    transition: all 250ms ease-in-out;
+    position: relative;
+    display: block;
+    font-size: 1.4rem;
+    color: #4ae4ff;
+    font-family: 'Luckiest Guy', cursive;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+  }
+
+  &:hover {
+    h2 {
+      transform: scale(1.1);
+    }
+  }
+}

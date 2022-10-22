@@ -1,0 +1,80 @@
+.input {
+  background: rgba(0, 0, 6, 1);
+  clip-path: polygon(0% 10%, 100% 0%, 97% 95%, 3% 100%);
+  font-family: 'Poppins', sans-serif;
+
+  input {
+    position: relative;
+    background: none;
+    border: none;
+    color: white;
+    margin: .5rem 1rem;
+    outline: none;
+    font-size: 1rem;
+    box-shadow: none;
+
+    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: rgba(#ffffff, .5);
+      opacity: 1; /* Firefox */
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: rgba(#ffffff, .5);
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+      color: rgba(#ffffff, .5);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.input__wrapper {
+  position: relative;
+}
+
+.input__description {
+  margin: .5rem 0;
+  position: relative;
+  font-size: .8rem;
+  left: 10px;
+  color: #000006;
+  text-shadow: 0 0 5px white;
+}
+
+.input__blink {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  bottom: 0;
+  background: #000006;
+  clip-path: polygon(0% 10%, 100% 0%, 97% 95%, 3% 100%);
+  z-index: -1;
+  animation: blink 10s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  89% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}

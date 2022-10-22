@@ -1,43 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
-
 @font-face {
-  font-family: 'Minecraft';
-  src: url("/assets/fonts/MinecraftTen.ttf") format('opentype');
+  font-family: Poppins;
+  src: url('../fonts/Poppins/Poppins-Medium.ttf');
 }
 
 @font-face {
-  font-family: 'MinecraftClassic';
-  src: url("/assets/fonts/MinecraftClassic.otf") format('opentype');
+  font-family: Luckiest Guy;
+  src: url('../fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf');
 }
 
-$breakpoints: (
-        xs: 0,
-        sm: 576px,
-        md: 768px,
-        lg: 992px,
-        xl: 1200px,
-        xxl: 1400px
-);
-
-@import "helpers/media";
-@import "components/buttons";
-@import "components/header";
-@import "components/navbar";
-@import "components/avatar";
-@import "components/statusview";
-@import "components/tag";
-@import "components/card";
-@import "styles/components/customitempreview";
-@import "components/section";
-@import "components/feature";
-@import "components/footer";
-
-* {
-  font-family: Minecraft, sans-serif;
+html {
+  scroll-behavior: smooth !important;
 }
 
 body {
-  background: black;
+  height: 100%;
+  scroll-behavior: smooth !important;
 }
+
+h1 {
+  color: white;
+  font-family: 'Luckiest Guy', cursive;
+  display: inline-block;
+  padding: 13px 25px 0px 20px;
+  background: none;
+  position: relative;
+  transform: rotate(1deg);
+  margin-bottom: 0;
+  z-index: 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    clip-path: polygon(0% 15%, 100% 0%, 95% 88%, 3% 90%);
+    background: #000006;
+  }
+
+  .mark {
+    background: -webkit-linear-gradient(#4ae4ff, #2a818e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+}
+
+p {
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  margin: 2rem 0;
+}
+
+li {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
 

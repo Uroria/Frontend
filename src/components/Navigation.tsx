@@ -1,42 +1,51 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
-import Button from "./Button";
-import {FunctionComponent} from "react";
-import {ILanguage} from "../@types/TLanguage";
+import styles from '../../styles/components/Navigation.module.scss'
+import {FunctionComponent, ReactNode} from "react";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import Label from "./Label";
 import {useLanguage} from "../hooks/LanguageHook";
 
-const Navigation: FunctionComponent = () => {
+const Navigation = () => {
 
-    const locale: string | undefined = useRouter().locale;
-    const language: ILanguage = useLanguage();
+    const language = useLanguage();
 
-    return <Navbar collapseOnSelect expand="lg">
+    return <Navbar collapseOnSelect fixed={"top"} expand="lg" className={styles.navbar}>
         <Container>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 <img
                     src="/assets/images/Uroria.svg"
                     width="70"
-                    height="70"
                     className="d-inline-block align-top"
                     alt="React Bootstrap logo"
                 />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
-                    <Link href={"/"} locale={locale} passHref><Nav.Link>{language["navbar.item.home"]}</Nav.Link></Link>
-                    <Link href={"/apply"} locale={locale} passHref><Nav.Link>{language["navbar.item.apply"]}</Nav.Link></Link>
-                    <Link href={"/blog"} locale={locale} passHref><Nav.Link>{language["navbar.item.blog"]}</Nav.Link></Link>
+                <Nav className="me-auto my-2 my-lg-0">
                 </Nav>
-                <Nav>
-                    <Nav.Link><Button disabled={true} color={"green"} text={"Login"}/></Nav.Link>
-                    <Link href={useRouter().route} locale={locale == "en_EN" ? "de_DE" : "./en_EN"} passHref replace><a
-                        className={"btn-uroria btn-blue"}>{locale == "de_DE" ? "Englisch" : "German"}</a></Link>
+                <Nav className="d-flex">
+                    <Link href={"/"} passHref><NavigationItem>{language["nav.links.home"]}</NavigationItem></Link>
+                    <Link href={""} passHref><NavigationItem label={language["nav.label.soon"]}>{language["nav.links.creator"]}</NavigationItem></Link>
+                    <Link href={""} passHref><NavigationItem label={language["nav.label.soon"]}>{language["nav.links.shop"]}</NavigationItem></Link>
                 </Nav>
             </Navbar.Collapse>
         </Container>
     </Navbar>
 }
+
+
+/* navigation item */
+
+interface NavigationItemProps {
+    children: ReactNode,
+    href?: string,
+    label?: string
+}
+
+const NavigationItem: FunctionComponent<NavigationItemProps> = ({children, href, label}) => <div
+    className={styles.navitem}>
+    <a href={href}> {children}</a>
+    {label ? <Label onNavigation={true}>{label}</Label> : null}
+</div>
 
 export default Navigation;

@@ -1,14 +1,18 @@
-import {CSSProperties, FunctionComponent, ReactNode} from "react";
+import {DetailedHTMLProps, FunctionComponent, InputHTMLAttributes, ReactNode} from "react";
+import styles from '../../styles/components/Button.module.scss'
 
-type ButtonProps = {
-    color: "green" | "blue" | "red"
-    text: ReactNode | string,
-    style?: CSSProperties | undefined,
-    disabled?: boolean
+interface ButtonProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> {
+    href?: string,
+    buttonSize?: "lg" | "md" | "sm",
+    color?: "white" | "black" | "blue",
+    type?: "round" | "square",
+    icon?: boolean,
+    children: ReactNode,
 }
 
-const Button: FunctionComponent<ButtonProps> = ({text, color,style, disabled = false}) => <button style={style} className={"btn-uroria " + "btn-" + color + " " + (disabled ? "disabled" : "")}>
-    {text}
-</button>
+const Button: FunctionComponent<ButtonProps> = ({children, buttonSize = "md", color = "black", type = "round", icon = false, ...args}) =>
+    <a className={(styles["btn-" + color + "-" + type]) + " " + styles["btn-" + buttonSize] + " " + (icon ? styles["btn-icon"] : "")} {...args}>
+    {children}
+</a>
 
 export default Button;
