@@ -1,5 +1,5 @@
 .event {
-  background: url("/assets/images/1.png") no-repeat center;
+  background: url("/assets/images/starfighter.png") no-repeat center;
   background-size: cover;
   width: 100%;
   aspect-ratio: 50/50;
@@ -12,6 +12,7 @@
 
   &.comming_soon {
     opacity: .2;
+    background: rgba(0,0,0,0);
     cursor: not-allowed;
   }
 
