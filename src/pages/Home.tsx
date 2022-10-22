@@ -13,6 +13,8 @@ const Home: FunctionComponent = () => {
 
     const language: ILanguage = useLanguage();
 
+    console.log(language)
+
     return <>
         <Script src="https://unpkg.com/react/umd/react.production.min.js"/>
         <Script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"/>

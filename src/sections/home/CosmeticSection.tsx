@@ -6,6 +6,7 @@ import CharacterPreview from "../../components/CharacterPreview";
 import Input from "../../components/Input";
 import {Tab, Tabs} from "../../components/Tabs";
 import CosmeticPreview from "../../components/CosmeticPreview";
+import {useLanguage} from "../../hooks/LanguageHook";
 
 const allHats: CosmeticsProps[] = [{
     gltf: "Witch_Hat",
@@ -32,6 +33,7 @@ const CosmeticSection = () => {
 
     const [currentHat, setCurrentHat] = useState(allHats[0]);
     const [currentSkinName, setCurrentSkinName] = useState("ninjaschnitzel");
+    const language = useLanguage();
 
     return <Section>
         <Row>
@@ -39,24 +41,18 @@ const CosmeticSection = () => {
                 <CharacterPreview skinName={currentSkinName} hatModel={currentHat}/>
                 <div style={{position: "absolute", bottom: "0", left: "50%", transform: "translateX(-50%)"}}>
                     <Input maxLength={16} blink={true}
-                           description={"leave input to enter unsername and skin viewer is currently only available for Steve 1.7+ skins"}
+                           description={language["cosmetic.skin.input.description"]}
                            onBlur={event => event.target.value && event.target.value != "" && event.target.value != currentSkinName ? setCurrentSkinName(event.target.value.toLocaleLowerCase()) : undefined}
                            width={300} placeholder={"username"}/>
                 </div>
             </Col>
             <Col lg={"7"}>
-                <h1>Gestalte deinen <span className="mark">Charakter,</span></h1><br/>
-                <h1>wie du es <span className="mark">magst!</span></h1><br/>
-                <p>Kosmetische Gegenstände waren in der Minecraft-Java Version sonst nur durch Client-Modifikationen
-                    möglich oder wurden von Servern als Partikel angezeigt. Beides ist nicht die optimale Lösung, jedoch
-                    haben wir einen Weg zu einer guten Lösung gefunden. Durch unser Texturenpaket, mit welchem wir von
-                    neuen Items über Modelle bis neue Rüstungen hinzufügen können, sind kosmetische Gegenstände ein
-                    zentraler Bestandteil. So können alle Spieler dieses Servers ihren Spielcharakter zusätzlich
-                    verschönern!</p>
-
+                <h1>{language["cosmetic.heading.1"]} <span className="mark">{language["cosmetic.heading.1.mark"]}</span></h1><br/>
+                <h1>{language["cosmetic.heading.2"]} <span className="mark">{language["cosmetic.heading.2.mark"]}</span></h1><br/>
+                <p>{language["cosmetic.description"]}</p>
 
                 <Tabs>
-                    <Tab title="🤠 Hat Cosmetics">
+                    <Tab title={language["cosmetic.tab.hat"]}>
                         <Row>
                             {
                                 allHats.map((hat, index) => {
@@ -68,10 +64,10 @@ const CosmeticSection = () => {
                             }
                         </Row>
                     </Tab>
-                    <Tab title="🎒 Backpack Cosmetics">
+                    <Tab title={language["cosmetic.tab.backpack"]}>
                         <p>Backpack Cosmetics coming soon</p>
                     </Tab>
-                    <Tab title="🎈 Balloon Cosmetics">
+                    <Tab title={language["cosmetic.tab.balloon"]}>
                         <p>Balloon Cosmetics coming soon</p>
                     </Tab>
                 </Tabs>

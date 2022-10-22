@@ -1,27 +1,31 @@
 import {Col, Row} from "react-bootstrap";
 import Event from "../../components/Event";
 import Section from "../../components/Section";
+import {useLanguage} from "../../hooks/LanguageHook";
 
-const GameSection = () => <Section>
-    <h1>Unsere beliebtesten</h1><br/>
-    <h1><span className="mark">Games!</span></h1><br/>
-    <p>Hier siehst du eine Liste, der von unseren Creator favorisierten Spielmodi, sie verdienen daher besondere
-        Aufmerksamkeit und werden von uns jederzeit auf dem Laufenden gehalten. Um mehr über die jeweiligen Spielmodi zu
-        erfahren, lese dir einfach die Blogs zu den jeweiligen Modi durch!</p>
-    <Row>
-        <Col xs={4} sm={4} md={3} lg={2}>
-            <Event description={"escape, ghost, spooky"}>GhostHouse</Event>
-        </Col>
-        <Col xs={4} sm={4} md={3} lg={2}>
-            <Event description={"running or hunting"}>ManHunt</Event>
-        </Col>
-        <Col xs={4} sm={4} md={3} lg={2}>
-            <Event description={"will be launched soon"} commingSoon={true}>Coming soon</Event>
-        </Col>
-        <Col xs={4} sm={4} md={3} lg={2}>
-            <Event description={"will be launched soon"} commingSoon={true}>Coming soon</Event>
-        </Col>
-    </Row>
-</Section>
+const GameSection = () => {
+
+    const language = useLanguage();
+
+    return <Section>
+        <h1>{language["game.heading.1"]}</h1><br/>
+        <h1><span className="mark">{language["game.heading.2"]}</span></h1><br/>
+        <p>{language["game.description"]}</p>
+        <Row>
+            <Col xs={4} sm={4} md={3} lg={2}>
+                <Event description={language["game.ghosthouse.description"]}>{language["game.ghosthouse.heading"]}</Event>
+            </Col>
+            <Col xs={4} sm={4} md={3} lg={2}>
+                <Event description={language["game.manhunt.description"]}>{language["game.manhunt.heading"]}</Event>
+            </Col>
+            <Col xs={4} sm={4} md={3} lg={2}>
+                <Event commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Event>
+            </Col>
+            <Col xs={4} sm={4} md={3} lg={2}>
+                <Event commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Event>
+            </Col>
+        </Row>
+    </Section>
+}
 
 export default GameSection;

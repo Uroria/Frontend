@@ -3,29 +3,35 @@ import styles from '../../styles/components/Navigation.module.scss'
 import {FunctionComponent, ReactNode} from "react";
 import Link from "next/link";
 import Label from "./Label";
+import {useLanguage} from "../hooks/LanguageHook";
 
-const Navigation = () => <Navbar collapseOnSelect fixed={"top"} expand="lg" className={styles.navbar}>
-    <Container>
-        <Navbar.Brand href="/">
-            <img
-                src="/assets/images/Uroria.svg"
-                width="70"
-                className="d-inline-block align-top"
-                alt="React Bootstrap logo"
-            />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-        <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto my-2 my-lg-0">
-            </Nav>
-            <Nav className="d-flex">
-                <Link href={"/"} passHref><NavigationItem>Homepage</NavigationItem></Link>
-                <Link href={""} passHref><NavigationItem label={"soon"}>Creator</NavigationItem></Link>
-                <Link href={""} passHref><NavigationItem label={"soon"}>Shop</NavigationItem></Link>
-            </Nav>
-        </Navbar.Collapse>
-    </Container>
-</Navbar>
+const Navigation = () => {
+
+    const language = useLanguage();
+
+    return <Navbar collapseOnSelect fixed={"top"} expand="lg" className={styles.navbar}>
+        <Container>
+            <Navbar.Brand href="/">
+                <img
+                    src="/assets/images/Uroria.svg"
+                    width="70"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                />
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+            <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="me-auto my-2 my-lg-0">
+                </Nav>
+                <Nav className="d-flex">
+                    <Link href={"/"} passHref><NavigationItem>{language["nav.links.home"]}</NavigationItem></Link>
+                    <Link href={""} passHref><NavigationItem label={language["nav.label.soon"]}>{language["nav.links.creator"]}</NavigationItem></Link>
+                    <Link href={""} passHref><NavigationItem label={language["nav.label.soon"]}>{language["nav.links.shop"]}</NavigationItem></Link>
+                </Nav>
+            </Navbar.Collapse>
+        </Container>
+    </Navbar>
+}
 
 
 /* navigation item */
