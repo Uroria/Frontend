@@ -1,5 +1,5 @@
 import {Col, Row} from "react-bootstrap";
-import Event from "../../components/Event";
+import Game from "../../components/Game";
 import Section from "../../components/Section";
 import {useLanguage} from "../../hooks/LanguageHook";
 
@@ -13,16 +13,16 @@ const GameSection = () => {
         <p>{language["game.description"]}</p>
         <Row>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Event description={language["game.ghosthouse.description"]}>{language["game.ghosthouse.heading"]}</Event>
+                <Game description={language["game.ghosthouse.description"]}>{language["game.ghosthouse.heading"]}</Game>
             </Col>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Event description={language["game.manhunt.description"]}>{language["game.manhunt.heading"]}</Event>
+                <Game description={language["game.manhunt.description"]}>{language["game.manhunt.heading"]}</Game>
             </Col>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Event commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Event>
+                <Game commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Game>
             </Col>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Event commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Event>
+                <Game commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Game>
             </Col>
         </Row>
     </Section>

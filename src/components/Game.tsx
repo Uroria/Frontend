@@ -7,11 +7,11 @@ type EventProps = {
     children: ReactNode
 }
 
-const Event: FunctionComponent<EventProps> = ({description, children, commingSoon = false}) => <div className={styles.event + (commingSoon ? " " + styles.comming_soon : "")}>
+const Game: FunctionComponent<EventProps> = ({description, children, commingSoon = false}) => <div className={styles.event + (commingSoon ? " " + styles.comming_soon : "")}>
     <div>
         <h2>{children}</h2>
         <span>{description}</span>
     </div>
 </div>
 
-export default Event;
+export default Game;
