@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: Luckiest Guy;
-  src: url('../fonts/Luckiest_Guy.ttf');
+  src: url('../fonts/Chunq.ttf');
 }
 
 html {
@@ -21,10 +21,11 @@ h1 {
   color: white;
   font-family: 'Luckiest Guy', cursive;
   display: inline-block;
-  padding: 10px 25px 10px 25px;
+  padding: 7px 25px 7px 25px;
   background: none;
   font-weight: 900;
   position: relative;
+  letter-spacing: 2px;
   margin-bottom: -0.3rem;
   z-index: 0;
 

@@ -34,10 +34,9 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
     //check if data loaded or an error accored
     if (!mojangData || !playerModel.data || !playerHatModel.data) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Model...</p>
     if (!texture.data) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Texture...</p>
-    if (texture?.data?.height <= 32) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Currently we don't support 1.7 Steve skins.</p>
 
-    //get right skin model
-    const skinModel = playerModel.data[mojangData.textures?.SKIN?.metadata?.model == "slim" ? "alex" : "steve_new"];
+    //get right skin model depending on texture
+    const skinModel = playerModel.data[mojangData.textures?.SKIN?.metadata?.model == "slim" ? "alex" : texture?.data?.height <= 32 ? "steve_old" : "steve_new"];
 
     //render for 3d Model
     return <Canvas style={{cursor: "ew-resize"}} shadows>
