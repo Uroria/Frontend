@@ -29,19 +29,20 @@
   }
 
   > div {
-    text-align: center;
+    width: 100%;
     z-index: 2;
     position: absolute;
-    bottom: 0;
-    padding: 1.5rem;
+    bottom: 2rem;
+    text-align: center;
   }
 
   h2 {
     position: relative;
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: white;
     font-family: 'Luckiest Guy', cursive;
+    letter-spacing: 2px;
     padding: 0;
     margin: 0;
     line-height: 1;
