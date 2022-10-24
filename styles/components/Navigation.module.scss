@@ -21,7 +21,7 @@
   }
 }
 
-.navitem {
+.navbar__nav-item {
   padding: 5px 15px 5px 15px;
   font-size: 1rem;
   border: none;
@@ -54,13 +54,13 @@
     background: transparent;
   }
 
-  &:hover {
+  &:hover, &:active, &.navbar__nav-item-active {
     color: #000006;
-  }
 
-  &:hover:before, &:hover:after {
-    clip-path: polygon(5% 2%, 100% 5%, 100% 90%, 0% 94%);
-    background: white;
+    &:before, &:after {
+      clip-path: polygon(5% 2%, 100% 5%, 100% 90%, 0% 94%);
+      background: white;
+    }
   }
 
   &:last-of-type {
