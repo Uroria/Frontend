@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: Luckiest Guy;
-  src: url('../fonts/Chunq.ttf');
+  src: url('../fonts/upheaval/upheavtt.ttf');
 }
 
 html {
@@ -21,11 +21,10 @@ h1 {
   color: white;
   font-family: 'Luckiest Guy', cursive;
   display: inline-block;
-  padding: 7px 25px 7px 25px;
+  padding: 7.5px 20px 7.5px 20px;
   background: none;
   font-weight: 900;
   position: relative;
-  letter-spacing: 2px;
   margin-bottom: -0.3rem;
   z-index: 0;
 
@@ -42,9 +41,8 @@ h1 {
   }
 
   .mark {
-    background: -webkit-linear-gradient(#4ae4ff, #2a818e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #4ae4ff;
+    background: transparent;
   }
 
 }
