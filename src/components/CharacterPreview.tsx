@@ -24,19 +24,22 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
 
     //fetch skin texture for player model
     const mojangUUID = useAPI("https://mc-heads.net/minecraft/profile/" + skinName);
-    const mojangData = mojangUUID.data ? JSON.parse(new Buffer(mojangUUID?.data?.properties[0]?.value, 'base64').toString()) : undefined;
+    const mojangData = mojangUUID.data && !mojangUUID.error ? JSON.parse(new Buffer(mojangUUID?.data?.properties[0]?.value, 'base64').toString()) : undefined;
     const texture = useImage("https://mc-heads.net/skin/" + skinName + ".png");
+
+    if (!mojangUUID.data && !mojangUUID.error) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data...</p>
+    if (mojangUUID.error) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data failed!</p>
+
+    //check if data loaded or an error accored
+    if (!playerModel.data || !playerHatModel.data) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Model...</p>
+    if (!texture.data) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Texture...</p>
 
     // create shadow
     const material = new THREE.ShadowMaterial();
     material.opacity = 0.5;
 
-    //check if data loaded or an error accored
-    if (!mojangData || !playerModel.data || !playerHatModel.data) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Model...</p>
-    if (!texture.data) return <p style={{position: "absolute", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Texture...</p>
-
     //get right skin model depending on texture
-    const skinModel = playerModel.data[mojangData.textures?.SKIN?.metadata?.model == "slim" ? "alex" : texture?.data?.height <= 32 ? "steve_old" : "steve_new"];
+    const skinModel = playerModel.data[mojangData.textures?.SKIN?.metadata?.model == "slim" ? "alex" : texture.data.height < 64 ? "steve_old" : "steve_new"];
 
     //render for 3d Model
     return <Canvas style={{cursor: "ew-resize"}} shadows>

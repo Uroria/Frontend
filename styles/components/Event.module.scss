@@ -32,17 +32,16 @@
     width: 100%;
     z-index: 2;
     position: absolute;
-    bottom: 2rem;
+    bottom: 1.4rem;
     text-align: center;
   }
 
   h2 {
-    position: relative;
     display: block;
     font-size: 1.2rem;
     color: white;
     font-family: 'Luckiest Guy', cursive;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     padding: 0;
     margin: 0;
     line-height: 1;
@@ -51,10 +50,9 @@
   }
 
   span {
-    position: relative;
-    display: inline-block;
+    display: block;
     font-size: 1rem;
-    color: rgba(white, .75);
+    color: rgba(white, .5);
     font-family: 'Luckiest Guy', cursive;
     padding: 0;
     margin: 0;

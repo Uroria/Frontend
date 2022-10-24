@@ -33,12 +33,20 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> = ({ski
     const [mixer] = useState(() => new THREE.AnimationMixer())
     const actions = useRef<{ idle: any } | undefined>();
     const primitiveRef = useRef<Group | undefined>();
+    const [object, setObject] = useState<GLTF | undefined>(undefined);
     const [currentHat, setCurrentHat] = useState<THREE.Group | undefined>(undefined);
 
-    //load model and set place it into primitive component
-    //const object = useGLTFModel("./assets/3dModels/" + skinModel.gltf);
-    const object = useGLTFModel(skinModel.gltf);
-    object?.scene.rotation.set(0, 135.3, 0);
+    //load model
+    useEffect(() => {
+        const loader = new GLTFLoader();
+
+        loader.load(skinModel.gltf, pObject => {
+            pObject.scene.rotation.set(0, 135.3, 0);
+            setObject(pObject)
+
+        });
+
+    }, [skinModel.gltf])
 
     //load texture on minecraft character
     useEffect(() => {
@@ -66,7 +74,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> = ({ski
 
     //load and set hat cosmetic on minecraft character head
     useEffect(() => {
-        if (!hatModel) return;
+        if (!hatModel || !object) return;
         const oldhat = {"oldhat": currentHat};
         const hat = new GLTFLoader();
 
@@ -78,7 +86,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> = ({ski
 
             newHat.scene.traverse(child => child.castShadow = true)
 
-            await object?.scene.traverse((child: Object3D) => {
+            await object.scene.traverse((child: Object3D) => {
                 if (child.name != "phead_0") return;
                 if (oldhat.oldhat) child.remove(oldhat.oldhat);
                 child.add(newHat.scene);
