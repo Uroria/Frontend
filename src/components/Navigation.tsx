@@ -53,10 +53,11 @@ interface NavigationItemProps {
 }
 
 const NavigationItem: FunctionComponent<NavigationItemProps> = (props) => {
-    const {children, href, label} = props;
+    const {children, href = "/", label} = props;
     const router = useRouter();
+    const hrefWithoutLocale = router.locale && href.includes(router.locale) ? href.replace(router.locale, "") : href;
 
-    return <div className={styles["navbar__nav-item"] + (router.pathname == href ? " " + styles["navbar__nav-item-active"] : "")}>
+    return <div className={styles["navbar__nav-item"] + (router.pathname == hrefWithoutLocale ? " " + styles["navbar__nav-item-active"] : "")}>
         <a href={href}> {children}</a>
         {label ? <Label onNavigation={true}>{label}</Label> : null}
     </div>
