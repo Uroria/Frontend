@@ -10,10 +10,6 @@ import Footer from "../sections/Footer";
 const Home: FunctionComponent = () => {
 
     return <>
-        <Script src="https://unpkg.com/react/umd/react.production.min.js"/>
-        <Script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"/>
-        <Script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"/>
-
         <Navigation/>
         <Header/>
         <FeatureSection/>

@@ -56,9 +56,9 @@ const CosmeticSection = () => {
                         <Row>
                             {
                                 allHats.map((hat, index) => {
-                                    return <Col xs={4} sm={4} md={3} lg={3} xxl={2}
+                                    return <Col xs={4} sm={4} md={3} lg={3} xxl={2} key={index}
                                                 onClick={() => currentHat != allHats[index] ? setCurrentHat(allHats[index]) : null}>
-                                        <CosmeticPreview hatModel={{gltf: hat.gltf}} rareness={"Legendeary"}/>
+                                        <CosmeticPreview key={index} hatModel={{gltf: hat.gltf}} rareness={"Legendeary"}/>
                                     </Col>
                                 })
                             }

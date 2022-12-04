@@ -60,7 +60,8 @@ export const Tabs = (props: TabsProps): JSX.Element => {
             {/* show selcted tab by index*/}
             {
                 children.map((value, index) => {
-                    return <Tab title={value.props.title}
+                    return <Tab key={value.props.title}
+                                title={value.props.title}
                                 isActive={index === selectedTabIndex}>{value.props.children}</Tab>
                 })
             }
