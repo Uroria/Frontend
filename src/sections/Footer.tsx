@@ -43,7 +43,7 @@ const Footer = () => {
                 <Col xs={5} sm={5} md={4} lg={3} xxl={2}>
                     <ul>
                         <p>{language["footer.heading.legal"]}</p>
-                        <Link href={"https://dc.uroria.com"}>
+                        <Link href={"/legal"}>
                             <li>{language["footer.legal.legalnotice"]}</li>
                         </Link>
                     </ul>
