@@ -21,8 +21,8 @@ const CosmeticPreview: FunctionComponent<CosmeticProps> = ({rareness = "Common",
         {playerHatModel.data ? <Canvas style={{cursor: "pointer"}} camera={{fov: 75}}>
             <Suspense fallback={null}>
                 <ambientLight intensity={0.5}/>
-                <directionalLight color="rgba(240,240,240, .7)" position={[0, 0, 5]}/>
-                <directionalLight color="rgba(240,240,240, .7)" position={[0, 0, -5]}/>
+                <directionalLight color="rgb(240,240,240)" position={[0, 0, 5]}/>
+                <directionalLight color="rgb(240,240,240)" position={[0, 0, -5]}/>
                 <MinecraftCosmetic hatModel={{gltf: JsonToGltf(playerHatModel.data)}} scale={3}/>
                 <OrbitControls enableZoom={false} enableRotate={false} autoRotate={true}
                                autoRotateSpeed={5}/>
