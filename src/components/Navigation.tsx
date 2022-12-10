@@ -11,16 +11,6 @@ import {Player} from "@lottiefiles/react-lottie-player";
 const Navigation = () => {
 
     const language = useLanguage();
-    const playerref = useRef<Player>();
-    const [checked, setChecked] = useState<boolean>(false);
-
-    useEffect(() => {
-        if (checked) {
-            playerref.current?.setPlayerDirection(1);
-        } else {
-            playerref.current?.setPlayerDirection(-1);
-        }
-    }, [checked])
 
     return <Navbar collapseOnSelect expand="lg" className={styles.navbar}>
         <Container>
@@ -33,19 +23,7 @@ const Navigation = () => {
                 />
             </Navbar.Brand>
             <Navbar.Toggle style={{border: "none"}} aria-controls="responsive-navbar-nav">
-                <Player ref={playerref}
-                        src={menu}
-                        className={styles["nav-menu"]}
-                        renderer={"svg"}
-                        keepLastFrame={true}
-                        onEvent={event => {
-                            if (event != "load") return;
-                            playerref.current?.container?.addEventListener("click", () => {
-                                playerref.current?.play();
-                                setChecked(prevState => !prevState);
-                            })
-                        }}
-                />
+                <NavigationBurger/>
                 {/*<UseAnimations className={styles["nav-menu"]} strokeColor={"white"} reverse={checked} onClick={() => {
                     setChecked(!checked);
                 }} animation={menu} size={56}/>*/}
@@ -65,6 +43,39 @@ const Navigation = () => {
     </Navbar>
 }
 
+
+const NavigationBurger: FunctionComponent = () => {
+
+    const playerref = useRef<Player>();
+    const [checked, setChecked] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (checked) {
+            playerref.current?.setPlayerDirection(1);
+        } else {
+            playerref.current?.setPlayerDirection(-1);
+        }
+
+    }, [checked])
+
+    // @ts-ignore
+    return <Player ref={playerref}
+                   src={menu}
+                   className={styles["nav-menu"]}
+                   renderer={"svg"}
+                   keepLastFrame={true}
+                   speed={2}
+                   onEvent={event => {
+
+                       if (event != "load") return;
+
+                       playerref.current?.container?.addEventListener("click", () => {
+                           playerref.current?.play();
+                           setChecked(prevState => !prevState);
+                       })
+                   }}
+    />;
+}
 
 /* navigation item */
 
