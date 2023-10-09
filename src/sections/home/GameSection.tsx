@@ -1,7 +1,7 @@
 import {Col, Row} from "react-bootstrap";
-import Game from "../../components/Game";
 import Section from "../../components/Section";
 import {useLanguage} from "../../hooks/LanguageHook";
+import {ItemPreview} from "../../components/ItemPreview/ItemPreview";
 
 const GameSection = () => {
 
@@ -13,16 +13,16 @@ const GameSection = () => {
         <p>{language["game.description"]}</p>
         <Row>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Game description={language["game.ghosthouse.description"]}>{language["game.ghosthouse.heading"]}</Game>
+                <ItemPreview name={language["game.ghosthouse.heading"]} image={"./magic_backpack-2.png"} rareness={"legendary"}/>
             </Col>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Game description={language["game.manhunt.description"]}>{language["game.manhunt.heading"]}</Game>
+                <ItemPreview name={language["game.manhunt.heading"]} image={"./magic_backpack-2.png"} rareness={"common"}/>
             </Col>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Game commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Game>
+                <ItemPreview tag={language["game.soon.heading"]} disabled={true} name={language["game.soon.heading"]} image={"./magic_backpack-2.png"} rareness={"common"}/>
             </Col>
             <Col xs={4} sm={4} md={3} lg={2}>
-                <Game commingSoon={true} description={language["game.soon.description"]}>{language["game.soon.heading"]}</Game>
+                <ItemPreview tag={language["game.soon.heading"]} disabled={true} name={language["game.soon.heading"]} image={"./magic_backpack-2.png"} rareness={"common"}/>
             </Col>
         </Row>
     </Section>

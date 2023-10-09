@@ -19,125 +19,183 @@ export interface CosmeticsProps extends ObjectProps {
 interface Minecraft3DCharacterProps {
     skinModel: ObjectProps,
     hatModel?: CosmeticsProps,
+    backpackModel?: CosmeticsProps
+    balloonModel?: CosmeticsProps
     scale?: number
 }
 
-interface MinecraftCosmeticProps {
-    hatModel: CosmeticsProps,
-    scale?: number
-}
+const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
+    ({skinModel, hatModel, backpackModel, balloonModel, scale = 1}) => {
+        //variables
+        // @ts-ignore
+        const [mixer] = useState(() => new THREE.AnimationMixer())
+        const actions = useRef<{ idle: any } | undefined>();
+        const primitiveRef = useRef<Group | undefined>();
+        const [object, setObject] = useState<GLTF | undefined>(undefined);
+        const [currentHat, setCurrentHat] = useState<THREE.Group | undefined>(undefined);
+        const [currentBackpack, setCurrentBackpack] = useState<THREE.Group | undefined>(undefined);
+        const [currentBalloon, setCurrentBalloon] = useState<THREE.Group | undefined>(undefined);
 
-const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> = ({skinModel, hatModel, scale = 1}) => {
-    //variables
-    // @ts-ignore
-    const [mixer] = useState(() => new THREE.AnimationMixer())
-    const actions = useRef<{ idle: any } | undefined>();
-    const primitiveRef = useRef<Group | undefined>();
-    const [object, setObject] = useState<GLTF | undefined>(undefined);
-    const [currentHat, setCurrentHat] = useState<THREE.Group | undefined>(undefined);
+        //load model
+        useEffect(() => {
+            const loader = new GLTFLoader();
 
-    //load model
-    useEffect(() => {
-        const loader = new GLTFLoader();
+            loader.load(skinModel.gltf, pObject => {
+                pObject.scene.rotation.set(0, 135.3, 0);
+                setObject(pObject)
 
-        loader.load(skinModel.gltf, pObject => {
-            pObject.scene.rotation.set(0, 135.3, 0);
-            setObject(pObject)
+            });
 
-        });
+        }, [skinModel.gltf])
 
-    }, [skinModel.gltf])
+        //load texture on minecraft character
+        useEffect(() => {
 
-    //load texture on minecraft character
-    useEffect(() => {
+            if (!skinModel.texture) return;
+            if (object) object.scene.castShadow = true;
+            if (object) object.scene.receiveShadow = true;
 
-        if (!skinModel.texture) return;
-        if (object) object.scene.castShadow = true;
-        if (object) object.scene.receiveShadow = true;
+            const texture = new TextureLoader().load(skinModel.texture);
+            texture.magFilter = THREE.NearestFilter;
+            texture.minFilter = THREE.NearestMipMapNearestFilter;
+            texture.encoding = THREE.sRGBEncoding;
 
-        const texture = new TextureLoader().load(skinModel.texture);
-        texture.magFilter = THREE.NearestFilter;
-        texture.minFilter = THREE.NearestMipMapNearestFilter;
-        texture.encoding = THREE.sRGBEncoding;
+            const material = new THREE.MeshLambertMaterial({map: texture, transparent: true});
 
-        object?.scene.traverse((child) => {
+            material.opacity = 1
 
-            // @ts-ignore
-            if (!child["material"]) return;
-            child.castShadow = true;
-            // @ts-ignore
-            child["material"].map = texture;
+            object?.scene.traverse((child) => {
 
-        });
+                // @ts-ignore
+                if (!child["material"]) return;
+                child.castShadow = true;
 
-    }, [object, skinModel.texture]);
+                // @ts-ignore
+                child["material"] = material;
 
-    //load and set hat cosmetic on minecraft character head
-    useEffect(() => {
-        if (!hatModel || !object) return;
-        const oldhat = {"oldhat": currentHat};
-        const hat = new GLTFLoader();
+            });
 
-        hat.load(hatModel.gltf, async newHat => {
-            newHat.scene.castShadow = true;
-            newHat.scene.receiveShadow = true;
-            newHat.scene.scale.set(hatModel.scale ?? 1, hatModel.scale ?? 1, hatModel.scale ?? 1);
-            newHat.scene.position.set((hatModel.positionX ?? 0) * (hatModel.scale ?? 1), (hatModel.positionY ?? 0) * (hatModel.scale ?? 1), (hatModel.positionZ ?? 0) * (hatModel.scale ?? 1))
+        }, [object, skinModel.texture]);
 
-            newHat.scene.traverse(child => child.castShadow = true)
+        //load and set cosmetics on minecraft character
+        useEffect(() => {
+            if (!hatModel || !backpackModel || !object) return;
+            const oldhat = {"oldhat": currentHat};
+            const hat = new GLTFLoader();
 
-            await object.scene.traverse((child: Object3D) => {
-                if (child.name != "phead_0") return;
-                if (oldhat.oldhat) child.remove(oldhat.oldhat);
-                child.add(newHat.scene);
-            })
+            hat.load(hatModel.gltf, async newHat => {
+                newHat.scene.castShadow = true;
+                newHat.scene.receiveShadow = true;
+                newHat.scene.scale.set(hatModel.scale ?? 1, hatModel.scale ?? 1, hatModel.scale ?? 1);
+                newHat.scene.position.set((hatModel.positionX ?? 0) * (hatModel.scale ?? 1), (hatModel.positionY ?? 0) * (hatModel.scale ?? 1), (hatModel.positionZ ?? 0) * (hatModel.scale ?? 1))
 
-            setCurrentHat(newHat.scene);
+                newHat.scene.traverse(child => child.castShadow = true)
 
-        });
-    }, [object, hatModel])
+                await object.scene.traverse((child: Object3D) => {
+                    console.log(child.name)
+                    if (child.name != "phead_0") return;
+                    if (oldhat.oldhat) child.remove(oldhat.oldhat);
+                    child.add(newHat.scene);
+                })
 
-    //animation
-    useEffect(() => {
-        if (!object) return;
-        actions.current = {idle: mixer.clipAction(object.animations[1], primitiveRef.current)}
-        actions.current.idle.play()
-    }, [object])
-    useFrame((state, delta) => mixer.update(delta))
+                setCurrentHat(newHat.scene);
 
-    return object ? <primitive ref={primitiveRef}
-                               position={[skinModel.positionX ?? 0, skinModel.positionY ?? 0, skinModel.positionZ ?? 0]}
-                               object={object.scene}
-                               scale={scale}/> : null;
-}
+            });
 
-export const MinecraftCosmetic: FunctionComponent<MinecraftCosmeticProps> = ({hatModel, scale}) => {
-    const model = useGLTFModel(hatModel.gltf)
+        }, [object, hatModel]);
 
-    useEffect(() => {
-        if (!model) return;
-        if (model) model.scene.castShadow = true;
-        if (model) model.scene.receiveShadow = true;
-        const bbox = new THREE.Box3().setFromObject(model.scene);
-        const offset = new THREE.Vector3();
-        bbox.getCenter(offset).negate();
-        model.scene.position.set(offset.x, offset.y, offset.z);
-    }, [model])
+        //load and set cosmetics on minecraft character
+        useEffect(() => {
+            if (!backpackModel || !object) return;
+            const oldbackpack = {"oldbackpack": currentBackpack};
+            const backpack = new GLTFLoader();
 
-    return model ? <primitive position={[hatModel.positionX ?? 0, hatModel.positionY ?? 0, hatModel.positionZ ?? 0]}
-                              object={model.scene}
-                              scale={scale}/> : null;
-}
 
-const useGLTFModel = (gltf: string) => {
-    const loader = new GLTFLoader();
-    const [gltfObject, setGltfObject] = useState<GLTF | undefined>(undefined);
+            backpack.load(backpackModel.gltf, async newBackpack => {
+                newBackpack.scene.castShadow = true;
+                newBackpack.scene.receiveShadow = true;
+                newBackpack.scene.scale.set(backpackModel.scale ?? 1, backpackModel.scale ?? 1, backpackModel.scale ?? 1);
+                newBackpack.scene.position.set((backpackModel.positionX ?? 0) * (backpackModel.scale ?? 1), (backpackModel.positionY ?? 0) * (backpackModel.scale ?? 1), (backpackModel.positionZ ?? 0) * (backpackModel.scale ?? 1))
+                //newBackpack.scene.rotateOnAxis(new THREE.Vector3(0, 1, 0), 180 * Math.PI / 180)
+                newBackpack.scene.traverse(child => child.castShadow = true)
 
-    loader.load(gltf, object => {
-        if (!gltfObject) setGltfObject(object)
-    });
+                await object.scene.traverse((child: Object3D) => {
+                    if (child.name != "pbody_2") return;
+                    if (oldbackpack.oldbackpack) child.remove(oldbackpack.oldbackpack);
+                    child.add(newBackpack.scene);
+                })
 
-    return gltfObject;
+                setCurrentBackpack(newBackpack.scene);
+
+            });
+
+        }, [object, backpackModel])
+
+        //load and set cosmetics on minecraft character
+        useEffect(() => {
+            if (!balloonModel || !object) return;
+            const balloon = new GLTFLoader();
+
+            if (currentBalloon) object.scene.remove(currentBalloon);
+
+            balloon.load(balloonModel.gltf, async newBalloon => {
+                newBalloon.scene.castShadow = true;
+                newBalloon.scene.receiveShadow = true;
+                newBalloon.scene.scale.set(balloonModel.scale ?? 1, balloonModel.scale ?? 1, balloonModel.scale ?? 1);
+                newBalloon.scene.position.set((balloonModel.positionX ?? 0) * (balloonModel.scale ?? 1), (balloonModel.positionY ?? 0) * (balloonModel.scale ?? 1), (balloonModel.positionZ ?? 0) * (balloonModel.scale ?? 1))
+                //newBackpack.scene.rotateOnAxis(new THREE.Vector3(0, 1, 0), 180 * Math.PI / 180)
+                newBalloon.scene.traverse(child => child.castShadow = true)
+
+                object.scene.add(newBalloon.scene)
+                setCurrentBalloon(newBalloon.scene);
+
+
+                const position = new THREE.Vector3(balloonModel.positionX, balloonModel.positionY, balloonModel.positionZ)
+
+
+                const geometry = new THREE.BoxGeometry(.5,.5,.5);
+                const color = new THREE.MeshBasicMaterial({color: "#de0000"});
+                const box = new THREE.Mesh(geometry, color);
+
+
+
+                // @ts-ignore
+                box.position.set(balloonModel.scale * position.x + 0.25, balloonModel.scale * position.y + 0.25, balloonModel.scale * position.z + 0.25);
+
+                object.scene.add(box)
+
+
+            });
+
+        }, [object, balloonModel])
+
+        //animation
+        useEffect(() => {
+            if (!object) return;
+            actions.current = {idle: mixer.clipAction(object.animations[1], primitiveRef.current)}
+            actions.current.idle.play()
+        }, [object])
+
+        useFrame((state, delta) => {
+            mixer.update(delta)
+
+        })
+
+        return object ? <primitive ref={primitiveRef}
+                                   position={[skinModel.positionX ?? 0, skinModel.positionY ?? 0, skinModel.positionZ ?? 0]}
+                                   object={object.scene}
+                                   scale={scale}/> : null;
+    }
+
+const getCenterPoint = (mesh: THREE.Mesh): THREE.Vector | null => {
+
+    if (!mesh || !mesh.geometry.boundingBox) return null;
+
+    mesh.geometry.computeBoundingBox();
+    const center = new THREE.Vector3();
+    mesh.geometry.boundingBox.getCenter( center );
+    mesh.localToWorld( center );
+    return center;
 }
 
 export default Minecraft3DCharacter;

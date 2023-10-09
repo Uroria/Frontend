@@ -1,6 +1,6 @@
 .input {
-  background: rgba(0, 0, 6, 1);
-  clip-path: polygon(0% 10%, 100% 0%, 97% 95%, 3% 100%);
+  background: rgba(#202944, .5);
+  outline: 2.5px solid black;
   font-family: 'Poppins', sans-serif;
 
   input {
@@ -15,26 +15,34 @@
     line-height: 1;
 
     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: rgba(#ffffff, .5);
+      color: rgba(white, .5);
       opacity: 1; /* Firefox */
     }
 
     &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: rgba(#ffffff, .5);
+      color: rgba(white, .5);
     }
 
     &::-ms-input-placeholder { /* Microsoft Edge */
-      color: rgba(#ffffff, .5);
+      color: rgba(white, .5);
     }
 
     &:focus {
       outline: none;
     }
   }
+
+  &:hover, &:active, &:focus {
+    outline: 2.5px solid #5c6889;
+  }
 }
 
 .input__wrapper {
   position: relative;
+
+  &__button {
+
+  }
 }
 
 .input__description {
@@ -42,8 +50,7 @@
   position: relative;
   font-size: .8rem;
   left: 10px;
-  color: #000006;
-  text-shadow: 0 0 5px white;
+  color: white !important;
 }
 
 .input__blink {
@@ -54,8 +61,7 @@
   right: 0;
   display: inline-block;
   bottom: 0;
-  background: #000006;
-  clip-path: polygon(0% 10%, 100% 0%, 97% 95%, 3% 100%);
+  background: rgba(#202944, .5);
   z-index: -1;
   animation: blink 10s linear infinite;
 }

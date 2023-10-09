@@ -11,7 +11,7 @@ interface ButtonProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLAnchorEl
 }
 
 const Button: FunctionComponent<ButtonProps> = ({children, buttonSize = "md", color = "black", type = "round", icon = false, ...args}) =>
-    <a className={(styles["btn-" + color + "-" + type]) + " " + styles["btn-" + buttonSize] + " " + (icon ? styles["btn-icon"] : "")} {...args}>
+    <a className={(styles["btn"] + " " + styles["btn--" + buttonSize] + " " + (icon ? styles["btn--icon"] : ""))} {...args}>
     {children}
 </a>
 

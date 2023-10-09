@@ -1,7 +1,7 @@
 import styles from '../../styles/components/Header.module.scss'
 import {Container} from "react-bootstrap";
 import Button from "../components/Button";
-import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube, IconChevronDown} from "@tabler/icons";
+import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube, IconChevronDown} from "@tabler/icons-react";
 import {useLanguage} from "../hooks/LanguageHook";
 
 const Header = () => {

@@ -7,40 +7,31 @@
   font-family: Luckiest Guy;
   src: url('../fonts/heading_font/font.ttf');
 }
-
 html {
-  scroll-behavior: smooth !important;
+  height: 100%;
 }
 
+
 body {
-  height: 100%;
   scroll-behavior: smooth !important;
 }
 
 h1 {
-  color: white;
+  color: black;
   font-family: 'Luckiest Guy', cursive;
   display: inline-block;
-  padding: 7.5px 20px 7.5px 20px;
   background: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
   font-weight: 900;
   position: relative;
-  margin-bottom: -0.3rem;
   z-index: 0;
-
-  &:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    clip-path: polygon(0% 15%, 100% 0%, 95% 88%, 3% 90%);
-    background: #000006;
-  }
+  transform: rotate(-2deg);
+  font-size: 3rem;
 
   .mark {
+    padding: 0;
     color: #4ae4ff;
     background: transparent;
   }
@@ -56,6 +47,11 @@ p {
 li {
   color: white;
   font-family: 'Poppins', sans-serif;
+}
+
+
+a {
+  text-decoration: none;
 }
 
 

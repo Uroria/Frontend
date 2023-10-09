@@ -1,0 +1,12 @@
+@mixin item-card-mixin($color1, $color2) {
+
+  --color-first: #{$color1};
+  --color-second: #{$color2};
+
+
+  &:hover {
+    background: linear-gradient(135deg, $color1, rgba(#3a445f, 1), rgba($color2, 1));
+  }
+
+
+}

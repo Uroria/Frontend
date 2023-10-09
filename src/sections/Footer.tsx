@@ -1,7 +1,7 @@
 import Section from "../components/Section";
 import {Col, Row} from "react-bootstrap";
 import Button from "../components/Button";
-import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube} from "@tabler/icons";
+import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube} from "@tabler/icons-react";
 import styles from '../../styles/components/Footer.module.scss'
 import Link from "next/link";
 import {useLanguage} from "../hooks/LanguageHook";
@@ -43,7 +43,7 @@ const Footer = () => {
                 <Col xs={5} sm={5} md={4} lg={3} xxl={2}>
                     <ul>
                         <p>{language["footer.heading.legal"]}</p>
-                        <Link href={"/legal"}>
+                        <Link href={"/legal"} prefetch>
                             <li>{language["footer.legal.legalnotice"]}</li>
                         </Link>
                     </ul>

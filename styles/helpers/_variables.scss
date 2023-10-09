@@ -1,0 +1,13 @@
+$common: ('color1': #5c6889, 'color2': #5c6889);
+$uncommon: ('color1': #47ff32, 'color2': #47ff32);
+$rare: ('color1': #323cff, 'color2': #323cff);
+$epic: ('color1': #a632ff, 'color2': #a632ff);
+$legendary: ('color1': #a632ff, 'color2': #47ff32);
+
+$rareness: (
+        "legendary": $legendary,
+        "epic": $epic,
+        "rare": $rare,
+        "uncommon": $uncommon,
+        "common": $common,
+) !default;

@@ -1,56 +1,86 @@
 import {FunctionComponent} from "react";
 import Minecraft3DCharacter, {CosmeticsProps} from "./Minecraft3DCharacter";
-import {OrbitControls} from "@react-three/drei";
+import {OrbitControls, PerspectiveCamera} from "@react-three/drei";
 import {Canvas} from "@react-three/fiber";
 import * as THREE from "three";
 import {JsonToGltf} from "../utils/JsonToGltf";
-import {useAPI, useImage} from "../utils/Fetcher";
+import {useAPI, useImage, useMojangProfile} from "../utils/Fetcher";
 
 interface CharacterPreviewProps {
     skinName: string,
     hatModel?: CosmeticsProps,
+    backpackModel?: CosmeticsProps,
+    balloonModel?: CosmeticsProps
 }
 
-const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, hatModel}) => {
+const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, hatModel, backpackModel, balloonModel}) => {
+
+
+    //fetch skin texture for player model
+    const {data: playerProfileData, error: playerProfileError} = useMojangProfile(skinName);
+    const {data: textureData, error: textureError} = useImage("https://mc-heads.net/skin/" + skinName + ".png");
 
     //fetch animated minecraft player model
-    const playerModel = useAPI('./assets/3dModels/player.json');
+    const {data: playerModelData, error: playerModelError} = useAPI(`${__dirname}./assets/3dModels/player.json`);
 
     //fetch hat cosmetic when present
-    const playerHatModel = hatModel ? useAPI("./assets/3dModels/" + hatModel.gltf + ".json") : {
-        data: undefined,
+    const {data: playerHatModelData, error: playerHatModelError} = hatModel ? useAPI(__dirname + "./assets/3dModels/" + hatModel.gltf + ".json") : {
+        data: false,
         error: false
     };
 
-    //fetch skin texture for player model
-    const mojangUUID = useAPI("https://mc-heads.net/minecraft/profile/" + skinName);
-    const mojangData = mojangUUID.data && !mojangUUID.error ? JSON.parse(new Buffer(mojangUUID?.data?.properties[0]?.value, 'base64').toString()) : undefined;
-    const texture = useImage("https://mc-heads.net/skin/" + skinName + ".png");
+    //fetch hat cosmetic when present
+    const {data: playerBalloonModelData, error: playerBalloonModelError} = balloonModel ? useAPI(__dirname + "./assets/3dModels/" + balloonModel.gltf + ".json") : {
+        data: false,
+        error: false
+    };
 
-    if (!mojangUUID.data && !mojangUUID.error) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data...</p>
-    if (mojangUUID.error) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data failed!</p>
+    //fetch backpack cosmetic when present
+    const {data: playerBackpackModelData, error: playerBackpackModelError} = backpackModel ? useAPI(__dirname + "./assets/3dModels/" + backpackModel.gltf + ".json") : {
+        data: false,
+        error: false
+    }
 
-    //check if data loaded or an error accored
-    if (!playerModel.data || !playerHatModel.data) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Model...</p>
-    if (!texture.data) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Texture...</p>
+    if (!playerProfileData) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data...</p>
+    if (playerProfileError) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data failed!</p>
+
+    //check if data loaded or an error accord
+    if (!playerModelData) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Model...</p>
+    if (playerModelError) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Model failed!</p>
 
     // create shadow
     const material = new THREE.ShadowMaterial();
     material.opacity = 0.5;
 
     //get right skin model depending on texture
-    const skinModel = playerModel.data[mojangData.textures?.SKIN?.metadata?.model == "slim" ? "alex" : texture.data.height < 64 ? "steve_old" : "steve_new"];
+    const mojangData = (!!playerProfileData && !playerProfileError) ? JSON.parse(new Buffer(playerProfileData?.raw?.properties[0]?.value, 'base64').toString()) : undefined;
+    const skinModel = playerModelData[mojangData.textures?.SKIN?.metadata?.model == "slim" ? "alex" : ((textureData && !textureError) ? textureData.height : 64) < 64 ? "steve_old" : "steve_new"];
+
 
     //render for 3d Model
-    return <Canvas style={{cursor: "ew-resize"}} shadows>
+    return <Canvas style={{cursor: "ew-resize"}} shadows camera={{fov: 90, near: .1, far: 2000}}>
         <Minecraft3DCharacter
-            skinModel={{gltf: JsonToGltf(skinModel), texture: texture.data.src, positionY: -3}}
-            hatModel={(hatModel && playerHatModel.data && !playerHatModel.error) ? {
-                gltf: JsonToGltf(playerHatModel.data),
+            skinModel={{gltf: JsonToGltf(skinModel), texture: (textureData && !textureError) ? textureData.src : undefined, positionY: -3}}
+            hatModel={(!!hatModel && !!playerHatModelData && !playerHatModelError) ? {
+                gltf: JsonToGltf(playerHatModelData),
                 positionX: hatModel.positionX,
                 positionZ: hatModel.positionZ,
                 positionY: hatModel.positionY,
                 scale: hatModel.scale
+            } : undefined}
+            backpackModel={(!!backpackModel && !!playerBackpackModelData && !playerBackpackModelError) ? {
+                gltf: JsonToGltf(playerBackpackModelData),
+                positionX: backpackModel.positionX,
+                positionZ: backpackModel.positionZ,
+                positionY: backpackModel.positionY,
+                scale: backpackModel.scale
+            } : undefined}
+            balloonModel={(!!playerBalloonModelData && !playerBalloonModelError) ? {
+                gltf: JsonToGltf(playerBalloonModelData),
+                positionX: balloonModel?.positionX,
+                positionZ: balloonModel?.positionZ,
+                positionY: balloonModel?.positionY,
+                scale: balloonModel?.scale
             } : undefined}
             scale={2.5}/>
         <mesh receiveShadow={true} rotation={[-Math.PI / 2, 0, 0]} position={[0, -3, 0]} material={material}>
@@ -58,7 +88,8 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
         </mesh>
         <hemisphereLight intensity={.7} color="white" position={[0, 20, 0]}/>
         <directionalLight castShadow={true} intensity={1} position={[4, 5, 5]} color="#ffffff"/>
-        <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2}/>
+        <OrbitControls autoRotate autoRotateSpeed={5} enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2}/>
+        <PerspectiveCamera makeDefault zoom={(!!playerBalloonModelData && !playerBalloonModelError) ? .75 : 1.1} position={[0, 0, 10]} />
     </Canvas>
 }
 

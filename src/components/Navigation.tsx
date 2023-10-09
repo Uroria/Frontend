@@ -1,6 +1,6 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
 import styles from '../../styles/components/Navigation.module.scss'
-import React, {FunctionComponent, ReactNode, useEffect, useRef, useState} from "react";
+import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import Link from "next/link";
 import Label from "./Label";
 import {useLanguage} from "../hooks/LanguageHook";
@@ -11,6 +11,7 @@ import {Player} from "@lottiefiles/react-lottie-player";
 const Navigation = () => {
 
     const language = useLanguage();
+    const router = useRouter();
 
     return <Navbar collapseOnSelect expand="lg" className={styles.navbar}>
         <Container>
@@ -24,19 +25,22 @@ const Navigation = () => {
             </Navbar.Brand>
             <Navbar.Toggle style={{border: "none"}} aria-controls="responsive-navbar-nav">
                 <NavigationBurger/>
-                {/*<UseAnimations className={styles["nav-menu"]} strokeColor={"white"} reverse={checked} onClick={() => {
-                    setChecked(!checked);
-                }} animation={menu} size={56}/>*/}
             </Navbar.Toggle>
             <Navbar.Collapse className={styles["nav-collapse"]} id="responsive-navbar-nav">
                 <Nav className="me-auto my-2 my-lg-0">
                 </Nav>
                 <Nav className="d-flex">
-                    <Link href={"/"} passHref><NavigationItem>{language["nav.links.home"]}</NavigationItem></Link>
-                    <Link href={"#soon"} passHref><NavigationItem
-                        label={language["nav.label.soon"]}>{language["nav.links.creator"]}</NavigationItem></Link>
-                    <Link href={"#soon"} passHref><NavigationItem
-                        label={language["nav.label.soon"]}>{language["nav.links.shop"]}</NavigationItem></Link>
+                    <div className={styles["navbar__nav-item"] + (router.pathname == getHrefWithoutLocale("/") ? " " + styles["navbar__nav-item-active"] : "")}>
+                        <Link href={"/"}>{language["nav.links.home"]}</Link>
+                    </div>
+                    <div className={styles["navbar__nav-item"] + (router.pathname == getHrefWithoutLocale("/creator") ? " " + styles["navbar__nav-item-active"] : "")}>
+                        <Link href={"#soon"}>{language["nav.links.creator"]}</Link>
+                        <Label onNavigation={true}>{language["nav.label.soon"]}</Label>
+                    </div>
+                    <div className={styles["navbar__nav-item"] + (router.pathname == getHrefWithoutLocale("/shop") ? " " + styles["navbar__nav-item-active"] : "")}>
+                        <Link href={"/shop"}>{language["nav.links.shop"]}</Link>
+                        <Label onNavigation={true}>{language["nav.label.soon"]}</Label>
+                    </div>
                 </Nav>
             </Navbar.Collapse>
         </Container>
@@ -77,24 +81,10 @@ const NavigationBurger: FunctionComponent = () => {
     />;
 }
 
-/* navigation item */
 
-interface NavigationItemProps {
-    children: ReactNode,
-    href?: string,
-    label?: string
-}
-
-const NavigationItem: FunctionComponent<NavigationItemProps> = (props) => {
-    const {children, href = "/", label} = props;
+const getHrefWithoutLocale = (href = "/") => {
     const router = useRouter();
-    const hrefWithoutLocale = router.locale && href.includes(router.locale) ? href.replace(router.locale, "") : href;
-
-    return <div
-        className={styles["navbar__nav-item"] + (router.pathname == hrefWithoutLocale ? " " + styles["navbar__nav-item-active"] : "")}>
-        <a href={href}> {children}</a>
-        {label ? <Label onNavigation={true}>{label}</Label> : null}
-    </div>
+    return router.locale && href.includes(router.locale) ? href.replace(router.locale, "") : href;
 }
 
 export default Navigation;
