@@ -42,7 +42,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
     }
 
     if (!playerProfileData) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data...</p>
-    if (playerProfileError) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data failed!</p>
+    if (playerProfileError || playerProfileData["status"] == "ERR") return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Data failed!</p>
 
     //check if data loaded or an error accord
     if (!playerModelData) return <p style={{position: "absolute", lineHeight: "1", fontFamily: "Luckiest Guy, cursive", fontSize: "1.5rem", textAlign: "center", transform: "translateX(-50%) translateY(-50%)", left: "50%", top: "50%"}}>Loading Player Model...</p>
@@ -51,6 +51,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
     // create shadow
     const material = new THREE.ShadowMaterial();
     material.opacity = 0.5;
+
 
     //get right skin model depending on texture
     const mojangData = (!!playerProfileData && !playerProfileError) ? JSON.parse(new Buffer(playerProfileData?.raw?.properties[0]?.value, 'base64').toString()) : undefined;
