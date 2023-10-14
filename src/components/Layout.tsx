@@ -23,6 +23,13 @@ const Layout: FunctionComponent<LayoutProps> = (props) => {
     if (!data) return <div>Loading...</div>
     if (error) return <div>Failed to load</div>
 
+    const appHeight = () => {
+        const doc = document.documentElement
+        doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+        console.log(window.innerHeight)
+    }
+    appHeight()
+
     const languageProperties = propertiesToJson(data)
 
     return <Language.Provider value={languageProperties}>

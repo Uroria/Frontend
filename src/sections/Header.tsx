@@ -14,8 +14,6 @@ const Header = () => {
                 <h1>{language["header.heading.1"]} <span className="mark">{language["header.heading.1.mark"]}</span></h1><br/>
                 <h1>{language["header.heading.2"]} <span className="mark">{language["header.heading.2.mark"]}</span></h1><br/>
                 <p>{language["header.description"]}</p>
-                {/*<Button buttonSize={"lg"} type={"square"}><IconDeviceGamepad2
-                style={{marginRight: "0.5rem", rotate: "-10deg"}}/>Play now!</Button>*/}
                 <Button href={"https://dc.uroria.com"} buttonSize={"lg"} type={"square"}><IconBrandDiscord
                     style={{marginRight: "0.5rem", rotate: "-10deg"}}/>Discord</Button>
             </div>
