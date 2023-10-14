@@ -1,3 +1,5 @@
+@import "./helpers/media";
+
 @font-face {
   font-family: Poppins;
   src: url('../fonts/Poppins/Poppins-Medium.ttf');
@@ -7,13 +9,24 @@
   font-family: Luckiest Guy;
   src: url('../fonts/heading_font/font.ttf');
 }
-html {
-  height: 100%;
+
+:root {
+  --app-height: 100%;
 }
 
 
-body {
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: var(--app-height);
+  width: 100vw;
+  margin: 0;
+  padding: 0;
   scroll-behavior: smooth !important;
+  position: relative;
+
 }
 
 h1 {
@@ -29,6 +42,14 @@ h1 {
   z-index: 0;
   transform: rotate(-2deg);
   font-size: 3rem;
+
+  @include respond-below(lg) {
+    font-size: 2rem;
+  }
+
+  &:first-child {
+    margin-top: 2rem;
+  }
 
   .mark {
     padding: 0;
@@ -52,6 +73,12 @@ li {
 
 a {
   text-decoration: none;
+}
+
+.remove-on-small-device {
+  @include respond-below(lg) {
+    display: none;
+  }
 }
 
 
