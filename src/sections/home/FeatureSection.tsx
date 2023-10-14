@@ -9,7 +9,7 @@ const FeatureSection = () => {
 
     return <Section id={"features"}>
         <Row>
-            <Col lg={"5"}>
+            <Col lg={"5"} className={"remove-on-small-device"}>
                 <img src={"/assets/images/uroria_render_gebuildet_cropped.png"} height={600}
                      style={{filter: "drop-shadow(0px 0px 20px rgba(0,0,0,.8))"}}/>
             </Col>
