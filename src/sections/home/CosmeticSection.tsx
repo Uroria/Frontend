@@ -71,6 +71,7 @@ const CosmeticSection = () => {
                 <div style={{
                     position: "relative",
                     width: "100%",
+                    minHeight: "500px",
                     height: "100%",
                     maxHeight: "600px"
                 }}>
