@@ -11,9 +11,9 @@ const Header = () => {
     const language = useLanguage();
 
     return <div className={styles.header}>
-        <Container style={{position: "relative", height: "100%"}}>
+        <Container className={styles["header__container"]}>
             <div className={styles.header__content}>
-                <Row>
+                <Row style={{margin: 0, padding: 0}}>
                     <Col xs={12} lg={8}>
                         <h1>{language["header.heading.1"]} <span className="mark">{language["header.heading.1.mark"]}</span>
                         </h1>
@@ -22,25 +22,25 @@ const Header = () => {
                         <p>{language["header.description"]}</p>
                     </Col>
 
-                    <Col xs={12} lg={4}>
+                    <Col xs={12} lg={4} style={{margin: 0, padding: 0}}>
 
-                        <Row>
+                        <Row style={{margin: 0, padding: 0}}>
                             <Col xs={12}>
                                 <News date={new Date()}
                                       title={"Uroria Update 2.0"}
                                       description={"Uroria is an event-hosting network, which allows creators to create an unique..."}
                                       image={"./assets/images/2.png"}/>
                             </Col>
-                            <Col>
-                                <Row>
+                            <Col style={{margin: 0, padding: 0}}>
+                                <Row style={{margin: 0, padding: 0}}>
                                     <Col xs={6}>
                                         <Box>
-                                            <b>{"{{ number.players }}"}</b><br/>players are currently online
+                                            <b>{"28"}</b><br/>players are currently online
                                         </Box>
                                     </Col>
                                     <Col xs={6}>
                                         <Box>
-                                            <b>{"{{ number.registered }}"}</b> <br/>players are registered<br/>on the server
+                                            <b>{"821.141"}</b> <br/>players are registered
                                         </Box>
                                     </Col>
                                 </Row>
