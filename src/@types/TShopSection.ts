@@ -1,4 +1,4 @@
-import {CosmeticsProps} from "../components/Minecraft3DCharacter";
+import {CosmeticsProps} from "../micro-components/Minecraft3DCharacter";
 
 export interface IShopSection {
     title: string,

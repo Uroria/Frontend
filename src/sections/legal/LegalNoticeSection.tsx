@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import Section from "../../components/Section";
+import Section from "../../micro-components/Section";
 import {useLanguage, useLanguageTranslations} from "../../hooks/LanguageHook";
 
 const LegalNoticeSection: FunctionComponent = () => {

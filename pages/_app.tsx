@@ -4,7 +4,7 @@ import 'swiper/css';
 import "swiper/css/pagination";
 import type {AppProps} from 'next/app'
 import Script from "next/script";
-import Layout from "../src/components/Layout";
+import Layout from "../src/micro-components/Layout";
 import {useRouter} from "next/router";
 
 function MyApp({Component, pageProps}: AppProps) {

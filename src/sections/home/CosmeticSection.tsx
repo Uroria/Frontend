@@ -1,12 +1,12 @@
-import Section from "../../components/Section";
+import Section from "../../micro-components/Section";
 import {Col, Row} from "react-bootstrap";
 import {useState} from "react";
-import {CosmeticsProps} from "../../components/Minecraft3DCharacter";
-import CharacterPreview from "../../components/CharacterPreview";
-import Input from "../../components/Input";
-import {Tab, Tabs} from "../../components/Tabs";
+import {CosmeticsProps} from "../../micro-components/Minecraft3DCharacter";
+import CharacterPreview from "../../micro-components/CharacterPreview";
+import Input from "../../micro-components/Input";
+import {Tab, Tabs} from "../../micro-components/Tabs";
 import {useLanguage} from "../../hooks/LanguageHook";
-import {ItemPreview} from "../../components/ItemPreview/ItemPreview";
+import {ItemPreview} from "../../micro-components/ItemPreview/ItemPreview";
 
 const allHats: CosmeticsProps[] = [{
     gltf: "Witch_Hat",

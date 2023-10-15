@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from "react";
-import {CosmeticsProps} from "../components/Minecraft3DCharacter";
-import ShopContainer from "../components/ShopContainer";
+import {CosmeticsProps} from "../micro-components/Minecraft3DCharacter";
+import ShopContainer from "../micro-components/ShopContainer";
 import {IShopSection} from "../@types/TShopSection";
 
 

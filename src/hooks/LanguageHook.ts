@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import Language from "../components/Language";
+import Language from "../micro-components/Language";
 import {ILanguage} from "../@types/TLanguage";
 
 export const useLanguage = (): ILanguage => {

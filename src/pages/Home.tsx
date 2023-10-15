@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import Header from "../sections/Header";
+import Header from "../macro-components/Header/Header";
 import FeatureSection from "../sections/home/FeatureSection";
 import GameSection from "../sections/home/GameSection";
 import CosmeticSection from "../sections/home/CosmeticSection";

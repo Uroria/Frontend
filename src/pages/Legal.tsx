@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import Header from "../sections/Header";
+import Header from "../macro-components/Header/Header";
 import LegalNoticeSection from "../sections/legal/LegalNoticeSection";
 
 const Legal: FunctionComponent = () => {

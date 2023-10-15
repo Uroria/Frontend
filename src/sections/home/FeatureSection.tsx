@@ -1,6 +1,6 @@
 import {Col, Row} from "react-bootstrap";
-import Feature from "../../components/Feature";
-import Section from "../../components/Section";
+import Feature from "../../micro-components/Feature";
+import Section from "../../micro-components/Section";
 import {useLanguage} from "../../hooks/LanguageHook";
 
 const FeatureSection = () => {

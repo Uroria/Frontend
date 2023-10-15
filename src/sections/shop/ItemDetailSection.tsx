@@ -1,9 +1,9 @@
 import {FunctionComponent} from "react";
 import styles from '../../../styles/components/Shop/ShopItemDetailCard.module.scss'
 import {Container} from "react-bootstrap";
-import CharacterPreview from "../../components/CharacterPreview";
-import {CosmeticsProps} from "../../components/Minecraft3DCharacter";
-import {FixedPage} from "../../components/FixedPage/FixedPage";
+import CharacterPreview from "../../micro-components/CharacterPreview";
+import {CosmeticsProps} from "../../micro-components/Minecraft3DCharacter";
+import {FixedPage} from "../../micro-components/FixedPage/FixedPage";
 
 
 const ItemDetailSection: FunctionComponent = () => {

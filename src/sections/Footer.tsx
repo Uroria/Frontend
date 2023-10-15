@@ -1,6 +1,6 @@
-import Section from "../components/Section";
+import Section from "../micro-components/Section";
 import {Col, Row} from "react-bootstrap";
-import Button from "../components/Button";
+import Button from "../micro-components/Button";
 import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube} from "@tabler/icons-react";
 import styles from '../../styles/components/Footer.module.scss'
 import Link from "next/link";
