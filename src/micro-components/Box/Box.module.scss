@@ -1,10 +1,11 @@
 .box {
   background: #3a445f;
   border: 2px solid #5c6889;
-  padding: .5rem;
+  padding: 1rem;
   color: white;
   position: relative;
   margin-bottom: 1.5rem;
+  cursor: pointer;
 
   &[style] {
     &:before {
@@ -24,6 +25,10 @@
   }
   b {
     font-family: 'Luckiest Guy', cursive;
+  }
+
+  &:hover {
+    border-color: black;
   }
 
 }
