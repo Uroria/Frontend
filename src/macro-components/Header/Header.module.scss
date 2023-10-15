@@ -1,10 +1,9 @@
 @import "../../../styles/helpers/media";
 
 .header {
-  overflow: hidden;
-  width: 100%;
   height: var(--app-height);
   position: relative;
+  overflow: hidden;
   background: url("/assets/images/2.png") no-repeat center;
   background-size: cover;
   right: 0;
@@ -14,15 +13,21 @@
   &:before {
     position: absolute;
     content: "";
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: var(--app-height);
     background: #000030;
-    background: radial-gradient(circle, rgba(0, 0, 48, 0.5) 0%, rgba(0, 0, 6, 1) 100%);
+    background: radial-gradient(circle, rgba(0, 0, 48, 0.75) 0%, rgba(0, 0, 6, 1) 100%);
   }
 
+  &__container {
+    position: relative;
+    height: var(--app-height);
+    padding: 0;
+  }
 
   &__content {
     position: absolute;
+    width: 100%;
     top: 50%;
     transform: translateY(-50%);
 
@@ -41,6 +46,11 @@
 
     p {
       color: white;
+      padding: 0;
+
+      @include respond-below(lg) {
+        font-size: .75rem;
+      }
     }
 
   }
@@ -58,6 +68,7 @@
     position: absolute;
     bottom: 2rem;
     left: 50%;
+    box-shadow: 0 0 50px 10px black;
     transform: translateX(-50%);
     animation: header__bottom_moreinfos 4s ease-in-out infinite;
 
