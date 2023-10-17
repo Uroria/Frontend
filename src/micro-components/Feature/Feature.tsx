@@ -1,16 +1,17 @@
 import {FunctionComponent, ReactNode} from "react";
-import styles from '../../styles/components/Feature.module.scss'
+import styles from './Feature.module.scss'
+import Box from "../Box/Box";
 
 type FeatureProps = {
     description: string,
     children: ReactNode
 }
 
-const Feature: FunctionComponent<FeatureProps> = ({description, children}) => <div className={styles.feature}>
-    <div>
+const Feature: FunctionComponent<FeatureProps> = ({description, children}) => <Box>
+    <div className={styles["feature"]}>
         <h2>{children}</h2>
         <span>{description}</span>
     </div>
-</div>
+</Box>
 
 export default Feature;

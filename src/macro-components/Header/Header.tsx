@@ -15,9 +15,11 @@ const Header = () => {
             <div className={styles.header__content}>
                 <Row style={{margin: 0, padding: 0}}>
                     <Col xs={12} lg={8}>
-                        <h1>{language["header.heading.1"]} <span className="mark">{language["header.heading.1.mark"]}</span>
+                        <h1>{language["header.heading.1"]} <span
+                            className="mark">{language["header.heading.1.mark"]}</span>
                         </h1>
-                        <h1>{language["header.heading.2"]} <span className="mark">{language["header.heading.2.mark"]}</span>
+                        <h1>{language["header.heading.2"]} <span
+                            className="mark">{language["header.heading.2.mark"]}</span>
                         </h1>
                         <p>{language["header.description"]}</p>
                     </Col>
@@ -46,9 +48,6 @@ const Header = () => {
                                 </Row>
                             </Col>
                         </Row>
-
-
-
                     </Col>
 
                 </Row>
