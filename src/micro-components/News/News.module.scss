@@ -1,7 +1,11 @@
 .news {
+  position: relative;
+
   &__heading {
     padding-top: 20%;
     display: flex;
+    z-index: 10;
+    position: relative;
     margin: 0;
     justify-content: space-between;
     align-items: center;
@@ -21,6 +25,8 @@
   &__description {
     color: white;
     margin: 0;
+    position: relative;
+    z-index: 10;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -28,8 +34,8 @@
 
   &__tag {
     position: absolute;
-    top: -1rem;
-    left: -1rem;
+    top: 0;
+    left: 0;
     padding: 5px .5rem .25rem .75rem;
     background: black;
     font-size: 1rem;

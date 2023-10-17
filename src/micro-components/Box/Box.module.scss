@@ -1,4 +1,4 @@
-.box {
+#box {
   background: #3a445f;
   border: 2px solid #5c6889;
   padding: 1rem;
@@ -21,7 +21,6 @@
 
   &__content {
     position: relative;
-    z-index: 5;
   }
   b {
     font-family: 'Luckiest Guy', cursive;

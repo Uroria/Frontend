@@ -1,4 +1,4 @@
-import {DetailedHTMLProps, FunctionComponent, HTMLAttributes, InputHTMLAttributes, ReactNode} from "react";
+import {DetailedHTMLProps, FunctionComponent, HTMLAttributes, ReactNode} from "react";
 import styles from "./Box.module.scss"
 
 interface Box extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -14,7 +14,7 @@ const Box: FunctionComponent<Box> = ({children, image, ...args}) => {
             "background": image ? `url(${image})` : "",
             "backgroundSize": "cover"
         }
-    } : "")} className={styles["box"]} {...args}>
+    } : "")} id={styles["box"]} {...args}>
         <div className={styles["box__content"]}>
             {children}
         </div>

@@ -7,11 +7,9 @@ type FeatureProps = {
     children: ReactNode
 }
 
-const Feature: FunctionComponent<FeatureProps> = ({description, children}) => <Box>
-    <div className={styles["feature"]}>
-        <h2>{children}</h2>
-        <span>{description}</span>
-    </div>
+const Feature: FunctionComponent<FeatureProps> = ({description, children}) => <Box className={styles["feature"]}>
+    <h2>{children}</h2>
+    <span>{description}</span>
 </Box>
 
 export default Feature;

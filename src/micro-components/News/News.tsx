@@ -13,7 +13,7 @@ const News: FunctionComponent<News> = (props) => {
 
     const {image, title, date, description} = props;
 
-    return <Box image={image}>
+    return <Box image={image} className={styles["news"]}>
         <div className={styles["news__tag"]}>
             Update
         </div>
