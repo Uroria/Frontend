@@ -1,21 +1,20 @@
-import {FunctionComponent, ReactNode} from "react";
+import {DetailedHTMLProps, FunctionComponent, HTMLAttributes, InputHTMLAttributes, ReactNode} from "react";
 import styles from "./Box.module.scss"
 
-type Box = {
+interface Box extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     readonly image?: string
     readonly children: ReactNode
 }
 
-const Box: FunctionComponent<Box> = (props) => {
+const Box: FunctionComponent<Box> = ({children, image, ...args}) => {
 
-    const {children, image} = props;
 
     return <div {...(image ? {
         style: {
             "background": image ? `url(${image})` : "",
             "backgroundSize": "cover"
         }
-    } : "")} className={styles["box"]}>
+    } : "")} className={styles["box"]} {...args}>
         <div className={styles["box__content"]}>
             {children}
         </div>
