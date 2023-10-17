@@ -1,7 +1,26 @@
 .feature {
-  z-index: 1;
-  cursor: not-allowed;
+  overflow: hidden;
+  padding: 0 !important;
+  cursor: not-allowed !important;
   text-align: center;
+  position: relative;
+  background: rgba(#3a445f, .5) !important;
+
+  &:hover {
+    border-color: black !important;
+  }
+
+  &__container {
+    padding: 1rem;
+  }
+
+  a {
+    position: relative;
+    left: 0;
+    margin-bottom: 2px;
+    width: calc(100% - 4px);
+    cursor: not-allowed !important;
+  }
 
   span {
     position: relative;
@@ -24,11 +43,5 @@
     padding: 0;
     margin: 0;
     line-height: 1;
-  }
-
-  &:hover {
-    h2 {
-      transform: scale(1.1);
-    }
   }
 }

@@ -154,7 +154,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
 
 
                 const geometry = new THREE.BoxGeometry(.5,.5,.5);
-                const color = new THREE.MeshBasicMaterial({color: "#de0000"});
+                const color = new THREE.MeshBasicMaterial({color: "#000000"});
                 const box = new THREE.Mesh(geometry, color);
 
 

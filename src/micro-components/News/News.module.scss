@@ -56,4 +56,8 @@
       clip-path: polygon(0 0, 100% 0, 11% 100%, 0 100%);
     }
   }
+
+  &:hover {
+    border-color: black !important;
+  }
 }
