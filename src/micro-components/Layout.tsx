@@ -19,6 +19,11 @@ const Layout: FunctionComponent<LayoutProps> = (props) => {
     useEffect(() => {
         const doc = document.documentElement
         doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+
+        window.addEventListener("resize", ev => {
+            const doc = document.documentElement
+            doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+        })
     });
 
     const {children, footer = true} = props;
