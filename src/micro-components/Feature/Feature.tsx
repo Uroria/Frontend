@@ -15,7 +15,7 @@ const Feature: FunctionComponent<FeatureProps> = ({description, children}) => <B
         <span>{description}</span>
     </div>
 
-    <Button buttonSize={"md"}>More Info <IconArrowBarToRight/></Button>
+    <Button buttonSize={"md"}>Show Detail</Button>
 </Box>
 
 export default Feature;
