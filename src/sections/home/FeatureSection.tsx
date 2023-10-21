@@ -9,28 +9,28 @@ const FeatureSection = () => {
 
     return <Section id={"features"}>
         <Row>
-            <Col lg={"5"} className={"remove-on-small-device"}>
-                <img src={"/assets/images/uroria_render_gebuildet_cropped.png"} height={600}
-                     style={{filter: "drop-shadow(0px 0px 20px rgba(0,0,0,.8))"}}/>
-            </Col>
             <Col lg={"7"}>
                 <h1><span className="mark">{language["feature.heading.1.mark"]}</span>{language["feature.heading.1"]}</h1><br/>
                 <h1>{language["feature.heading.2"]} <span className="mark">{language["feature.heading.2.mark"]}</span></h1><br/>
                 <p>{language["feature.description"]}</p>
                 <Row>
-                    <Col xs={4} sm={4} md={3} lg={3}>
+                    <Col xs={6} sm={4} md={3} lg={3}>
                         <Feature description={language["feature.events.description"]}>{language["feature.events.heading"]}</Feature>
                     </Col>
-                    <Col xs={4} sm={4} md={3} lg={3}>
+                    <Col xs={6} sm={4} md={3} lg={3}>
                         <Feature description={language["feature.cosmetics.description"]}>{language["feature.cosmetics.heading"]}</Feature>
                     </Col>
-                    <Col xs={4} sm={4} md={3} lg={3}>
+                    <Col xs={6} sm={4} md={3} lg={3}>
                         <Feature description={language["feature.community.description"]}>{language["feature.community.heading"]}</Feature>
                     </Col>
-                    <Col xs={4} sm={4} md={3} lg={3}>
+                    <Col xs={6} sm={4} md={3} lg={3}>
                         <Feature description={language["feature.battles.description"]}>{language["feature.battles.heading"]}</Feature>
                     </Col>
                 </Row>
+            </Col>
+            <Col lg={"5"} className={"remove-on-small-device"} style={{padding: "1rem"}}>
+                <img src={"/assets/images/feature.png"} height={500}
+                     style={{transform: "perspective(500px) rotateY(-10deg)"}}/>
             </Col>
         </Row>
     </Section>
