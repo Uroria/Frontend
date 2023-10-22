@@ -1,6 +1,6 @@
 .input {
-  background: rgba(#202944, .5);
-  outline: 2.5px solid black;
+  background: #202a45;
+  outline: 2px solid black;
   font-family: 'Poppins', sans-serif;
 
   input {
@@ -15,16 +15,16 @@
     line-height: 1;
 
     &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-      color: rgba(white, .5);
+      color: #5c698b;
       opacity: 1; /* Firefox */
     }
 
     &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-      color: rgba(white, .5);
+      color: #5c698b;
     }
 
     &::-ms-input-placeholder { /* Microsoft Edge */
-      color: rgba(white, .5);
+      color: #5c698b;
     }
 
     &:focus {
@@ -32,17 +32,13 @@
     }
   }
 
-  &:hover, &:active, &:focus {
-    outline: 2.5px solid #5c6889;
+  &-active, &:hover, &:active, &:focus {
+    outline-color: white;
   }
 }
 
 .input__wrapper {
   position: relative;
-
-  &__button {
-
-  }
 }
 
 .input__description {
@@ -61,7 +57,7 @@
   right: 0;
   display: inline-block;
   bottom: 0;
-  background: rgba(#202944, .5);
+  background: rgba(#202a45, .5);
   z-index: -1;
   animation: blink 10s linear infinite;
 }

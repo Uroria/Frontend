@@ -1,4 +1,4 @@
-import {DetailedHTMLProps, FunctionComponent, InputHTMLAttributes, useState} from "react";
+import React, {DetailedHTMLProps, FunctionComponent, InputHTMLAttributes, useEffect, useRef, useState} from "react";
 import styles from "../../styles/components/Input.module.scss"
 import {IconInfoCircle, IconArrowBarRight} from "@tabler/icons-react";
 import Button from "./Button";
@@ -16,7 +16,7 @@ const Input: FunctionComponent<InputProps> = ({description, blink = false, onEnt
 
     return <>
         <div className={styles.input__wrapper}>
-            <div style={{width: args.width + "px"}} className={styles.input}>
+            <div style={{width: args.width + "px"}} className={`${styles["input"]} ${focus ? styles["input-active"] : ""}`}>
                 <input {...args} onChange={event => setValue(event.target.value)} onFocus={() => setFocus(true)} onBlur={() => {
                     setFocus(false)
                     onEnter(value)
