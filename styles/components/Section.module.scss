@@ -1,17 +1,13 @@
 @import "../helpers/media";
 
 .section {
-  background: white;
   position: relative;
   height: auto;
-  top: 50px;
   padding: 2.5rem 0;
 
-  @include respond-below(lg) {
-    padding: 2rem 0;
-  }
 
-  &:nth-of-type(odd) {
+  &:last-of-type, &:nth-of-type(odd)  {
+    background: none;
     &:before {
       content: "";
       position: absolute;
@@ -39,19 +35,24 @@
       top: 0;
       left: 0;
     }
+  }
 
-    h1 {
-      color: white;
+  @include respond-below(lg) {
+    padding: 2rem 0;
+  }
 
-      &:after {
-        background: white;
-      }
-    }
+  h1 {
+    color: white;
 
-    p {
-      color: white;
+    &:after {
+      background: white;
     }
   }
+
+  p {
+    color: white;
+  }
+
 
   .section__container {
     overflow-y: hidden;
