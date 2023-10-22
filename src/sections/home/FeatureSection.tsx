@@ -9,7 +9,7 @@ const FeatureSection = () => {
 
     return <Section id={"features"}>
         <Row>
-            <Col lg={"7"}>
+            <Col lg={"8"}>
                 <h1><span className="mark">{language["feature.heading.1.mark"]}</span>{language["feature.heading.1"]}</h1><br/>
                 <h1>{language["feature.heading.2"]} <span className="mark">{language["feature.heading.2.mark"]}</span></h1><br/>
                 <p>{language["feature.description"]}</p>
@@ -28,9 +28,9 @@ const FeatureSection = () => {
                     </Col>
                 </Row>
             </Col>
-            <Col lg={"5"} className={"remove-on-small-device"} style={{padding: "1rem"}}>
-                <img src={"/assets/images/feature.png"} height={500}
-                     style={{transform: "perspective(500px) rotateY(-10deg)"}}/>
+            <Col lg={"4"} className={"remove-on-small-device"} style={{position: "relative", overflow: "hidden", padding: "2rem"}}>
+                <img src={"/assets/images/feature.png"}
+                     style={{transform: "perspective(500px) rotateY(-10deg)", width:"100%", height :"100%", objectFit: "contain"}}/>
             </Col>
         </Row>
     </Section>
