@@ -1,0 +1,36 @@
+.game {
+  position: relative;
+  height: calc(100% - 1rem);
+
+  &__heading {
+
+    display: block;
+    position: relative;
+    padding-top: 20%;
+    margin: 0;
+
+    &__title {
+      z-index: 10;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      display: block;
+      font-family: 'Luckiest Guy', cursive;
+      color: white;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    &__description {
+      color: white;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      z-index: 10;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+}

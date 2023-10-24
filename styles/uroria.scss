@@ -1,3 +1,5 @@
+@import "./helpers/media";
+
 @font-face {
   font-family: Poppins;
   src: url('../fonts/Poppins/Poppins-Medium.ttf');
@@ -8,40 +10,53 @@
   src: url('../fonts/heading_font/font.ttf');
 }
 
-html {
-  scroll-behavior: smooth !important;
+:root {
+  --app-height: 100%;
 }
 
-body {
-  height: 100%;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+  height: var(--app-height);
+  width: 100vw;
+  margin: 0;
+  padding: 0;
   scroll-behavior: smooth !important;
+  position: relative;
+  background: rgba(0, 0, 24, 1);
+
 }
 
 h1 {
-  color: white;
+  color: black;
   font-family: 'Luckiest Guy', cursive;
   display: inline-block;
-  padding: 7.5px 20px 7.5px 20px;
   background: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
   font-weight: 900;
   position: relative;
-  margin-bottom: -0.3rem;
   z-index: 0;
+  transform: rotate(-2deg);
+  font-size: 3rem;
 
-  &:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    clip-path: polygon(0% 15%, 100% 0%, 95% 88%, 3% 90%);
-    background: #000006;
+  @include respond-below(lg) {
+    font-size: 2rem;
+  }
+
+  &:first-child {
+    margin-top: 2rem;
   }
 
   .mark {
+    padding: 0;
     color: #4ae4ff;
+    font-family: 'Luckiest Guy', cursive;
     background: transparent;
   }
 
@@ -56,6 +71,17 @@ p {
 li {
   color: white;
   font-family: 'Poppins', sans-serif;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.remove-on-small-device {
+  @include respond-below(lg) {
+    display: none;
+  }
 }
 
 
