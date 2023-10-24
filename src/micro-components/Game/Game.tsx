@@ -14,9 +14,10 @@ const Game: FunctionComponent<Game> = (props) => {
 
     return <Box image={image} className={styles["game"]}>
         <div className={styles["game__heading"]}>
-            <span className={styles["news__heading__title"]}>{title}</span>
+            <span className={styles["game__heading__title"]}>{title}</span>
+            <p className={styles["game__heading__description"]}>{description}</p>
         </div>
-        <p className={styles["game__description"]}>{description}</p>
+
     </Box>
 }
 
