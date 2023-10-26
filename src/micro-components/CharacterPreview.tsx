@@ -55,7 +55,6 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
 
     //get right skin model depending on texture
     const mojangData = (!!playerProfileData && !playerProfileError) ? JSON.parse(new Buffer(playerProfileData?.textures?.raw?.value, 'base64').toString()) : undefined;
-    console.log(textureData.height)
     const skinModel = playerModelData[mojangData.textures?.SKIN?.metadata?.model == "slim" ? ((textureData && !textureError) ? textureData.height : 64) < 64 ? "steve_old" : "alex" : ((textureData && !textureError) ? textureData.height : 64) < 64 ? "steve_old" : "steve_new"];
 
 
