@@ -1,4 +1,4 @@
-[![Logo](https://github.com/Uroria/.github/blob/main/github_banner.png?raw=true)](https://uroria.com)
+<img src="https://cdn.discordapp.com/attachments/994608594236485692/1167223021803671582/App_Logo-FE.png?ex=654d5826&is=653ae326&hm=74a96b87d1c918c266af258a98f285e4984cb3dbc1f24a489fd2bc96c22aa3a3&" alt="drawing" width="150"/>
 
 # The Frontend
 
