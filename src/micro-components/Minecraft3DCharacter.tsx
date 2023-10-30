@@ -92,7 +92,6 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
                 newHat.scene.traverse(child => child.castShadow = true)
 
                 await object.scene.traverse((child: Object3D) => {
-                    console.log(child.name)
                     if (child.name != "phead_0") return;
                     if (oldhat.oldhat) child.remove(oldhat.oldhat);
                     child.add(newHat.scene);

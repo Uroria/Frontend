@@ -6,7 +6,7 @@
   padding: 2.5rem 0;
 
 
-  &:last-of-type, &:nth-of-type(odd)  {
+  &:last-of-type, &:nth-of-type(even)  {
     background: none;
     &:before {
       content: "";
