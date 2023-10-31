@@ -1,5 +1,5 @@
 import {GLTF, GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
-import {FunctionComponent, useEffect, useRef, useState} from "react";
+import {FunctionComponent, useEffect, useMemo, useRef, useState} from "react";
 import {Group, Object3D, TextureLoader} from "three";
 import * as THREE from "three";
 import {useFrame} from "@react-three/fiber";
@@ -37,7 +37,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
         const [currentBalloon, setCurrentBalloon] = useState<THREE.Group | undefined>(undefined);
 
         //load model
-        useEffect(() => {
+        useMemo(() => {
             const loader = new GLTFLoader();
 
             loader.load(skinModel.gltf, pObject => {
@@ -49,7 +49,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
         }, [skinModel.gltf])
 
         //load texture on minecraft character
-        useEffect(() => {
+        useMemo(() => {
 
             if (!skinModel.texture) return;
             if (object) object.scene.castShadow = true;
@@ -58,7 +58,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
             const texture = new TextureLoader().load(skinModel.texture);
             texture.magFilter = THREE.NearestFilter;
             texture.minFilter = THREE.NearestMipMapNearestFilter;
-            texture.encoding = THREE.sRGBEncoding;
+            texture.colorSpace = THREE.SRGBColorSpace;
 
             const material = new THREE.MeshLambertMaterial({map: texture, transparent: true});
 
@@ -78,7 +78,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
         }, [object, skinModel.texture]);
 
         //load and set cosmetics on minecraft character
-        useEffect(() => {
+        useMemo(() => {
             if (!hatModel || !backpackModel || !object) return;
             const oldhat = {"oldhat": currentHat};
             const hat = new GLTFLoader();
@@ -91,7 +91,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
 
                 newHat.scene.traverse(child => child.castShadow = true)
 
-                await object.scene.traverse((child: Object3D) => {
+                object.scene.traverse((child: Object3D) => {
                     if (child.name != "phead_0") return;
                     if (oldhat.oldhat) child.remove(oldhat.oldhat);
                     child.add(newHat.scene);
@@ -104,7 +104,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
         }, [object, hatModel]);
 
         //load and set cosmetics on minecraft character
-        useEffect(() => {
+        useMemo(() => {
             if (!backpackModel || !object) return;
             const oldbackpack = {"oldbackpack": currentBackpack};
             const backpack = new GLTFLoader();
@@ -118,7 +118,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
                 //newBackpack.scene.rotateOnAxis(new THREE.Vector3(0, 1, 0), 180 * Math.PI / 180)
                 newBackpack.scene.traverse(child => child.castShadow = true)
 
-                await object.scene.traverse((child: Object3D) => {
+                object.scene.traverse((child: Object3D) => {
                     if (child.name != "pbody_2") return;
                     if (oldbackpack.oldbackpack) child.remove(oldbackpack.oldbackpack);
                     child.add(newBackpack.scene);
@@ -131,7 +131,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
         }, [object, backpackModel])
 
         //load and set cosmetics on minecraft character
-        useEffect(() => {
+        useMemo(() => {
             if (!balloonModel || !object) return;
             const balloon = new GLTFLoader();
 
@@ -152,10 +152,9 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
                 const position = new THREE.Vector3(balloonModel.positionX, balloonModel.positionY, balloonModel.positionZ)
 
 
-                const geometry = new THREE.BoxGeometry(.5,.5,.5);
+                const geometry = new THREE.BoxGeometry(.5, .5, .5);
                 const color = new THREE.MeshBasicMaterial({color: "#000000"});
                 const box = new THREE.Mesh(geometry, color);
-
 
 
                 // @ts-ignore
@@ -185,16 +184,5 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
                                    object={object.scene}
                                    scale={scale}/> : null;
     }
-
-const getCenterPoint = (mesh: THREE.Mesh): THREE.Vector | null => {
-
-    if (!mesh || !mesh.geometry.boundingBox) return null;
-
-    mesh.geometry.computeBoundingBox();
-    const center = new THREE.Vector3();
-    mesh.geometry.boundingBox.getCenter( center );
-    mesh.localToWorld( center );
-    return center;
-}
 
 export default Minecraft3DCharacter;
