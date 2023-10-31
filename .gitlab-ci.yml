@@ -1,0 +1,4 @@
+include:
+  - project: uroria/operations/pipeline
+    ref: master
+    file: mirror-trigger.gitlab-ci.yml
