@@ -3,7 +3,7 @@ import Language from "./Language";
 import {useRouter} from "next/router";
 import Navigation from "./Navigation";
 import Footer from "../sections/Footer";
-import { propertiesToJson } from 'properties-file/content'
+import { getProperties } from 'properties-file'
 import useSWR from "swr";
 
 interface LayoutProps {
@@ -33,7 +33,7 @@ const Layout: FunctionComponent<LayoutProps> = (props) => {
     if (!data) return <div>Loading...</div>
     if (error) return <div>Failed to load</div>
 
-    const languageProperties = propertiesToJson(data)
+    const languageProperties = getProperties(data)
 
     return <Language.Provider value={languageProperties}>
         <Navigation/>
