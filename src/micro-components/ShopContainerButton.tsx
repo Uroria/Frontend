@@ -1,3 +1,5 @@
+"use client"
+
 import React, {FunctionComponent} from "react";
 import {useSwiper} from "swiper/react";
 import styles from "../../styles/components/Shop/ShopSection.module.scss";

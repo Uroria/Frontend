@@ -1,3 +1,5 @@
+"use client"
+
 import {Col, Row} from "react-bootstrap";
 import Feature from "../../micro-components/Feature/Feature";
 import Section from "../../micro-components/Section";

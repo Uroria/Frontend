@@ -1,3 +1,5 @@
+"use client"
+
 import {FunctionComponent} from "react";
 import Minecraft3DCharacter, {CosmeticsProps} from "./Minecraft3DCharacter";
 import {OrbitControls, PerspectiveCamera} from "@react-three/drei";

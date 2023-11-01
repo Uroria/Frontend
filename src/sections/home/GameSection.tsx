@@ -1,3 +1,5 @@
+"use client"
+
 import {Col, Row} from "react-bootstrap";
 import Section from "../../micro-components/Section";
 import {useLanguage} from "../../hooks/LanguageHook";
