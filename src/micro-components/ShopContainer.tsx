@@ -1,3 +1,5 @@
+"use client"
+
 import React, {FunctionComponent, useState} from "react";
 import styles from "../../styles/components/Shop/ShopSection.module.scss";
 import {Swiper, SwiperSlide} from "swiper/react";
@@ -18,7 +20,7 @@ interface IShopContainer {
 const ShopContainer: FunctionComponent<IShopContainer> = ({sections}) => {
 
     //const language = useLanguage();
-    const [index, setIndex] = useState<Number>(0);
+    const [index, setIndex] = useState<number>(0);
     const [slidesSizesGrid, setSlidesSizesGrid] = useState<Array<number>>([0, 0]);
 
     const setSlidesSizesGridFunction = (swiper: any) => swiper["slidesSizesGrid"] && setSlidesSizesGrid(swiper["slidesSizesGrid"]);

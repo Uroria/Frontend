@@ -1,3 +1,5 @@
+"use client"
+
 import {GLTF, GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 import {FunctionComponent, useEffect, useMemo, useRef, useState} from "react";
 import {Group, Object3D, TextureLoader} from "three";

@@ -1,3 +1,5 @@
+"use client"
+
 import React, {FunctionComponent} from "react";
 import {useLanguage} from "../hooks/LanguageHook";
 import ItemDetailSection from "../sections/shop/ItemDetailSection";

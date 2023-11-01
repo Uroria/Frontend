@@ -1,3 +1,5 @@
+"use client"
+
 import {ReactElement, useCallback, useState} from "react";
 import styles from '../../styles/components/Tab.module.scss'
 

@@ -1,14 +1,17 @@
+'use client'
+
 import {FunctionComponent, ReactNode, useEffect} from "react";
 import Language from "./Language";
-import {useRouter} from "next/router";
+import {usePathname} from "next/navigation";
+import i18nConfig from '../../i18nConfig';
 import Navigation from "./Navigation";
 import Footer from "../sections/Footer";
 import { getProperties } from 'properties-file'
 import useSWR from "swr";
+import {useCurrentLocale} from "next-i18n-router/client";
 
 interface LayoutProps {
     children: ReactNode
-    footer?: boolean
 }
 
 // @ts-ignore
@@ -26,8 +29,9 @@ const Layout: FunctionComponent<LayoutProps> = (props) => {
         })
     });
 
-    const {children, footer = true} = props;
-    const locale = useRouter().locale;
+    const {children} = props;
+    const locale = useCurrentLocale(i18nConfig);
+    const path = usePathname() || "";
     const { data, error } = useSWR(`${__dirname}./Language/Language_${locale}.properties`, fetcher);
 
     if (!data) return <div>Loading...</div>
@@ -38,7 +42,7 @@ const Layout: FunctionComponent<LayoutProps> = (props) => {
     return <Language.Provider value={languageProperties}>
         <Navigation/>
         {children}
-        {footer ? <Footer/> : null}
+        {path.includes("/shop") ? <Footer/> : null}
     </Language.Provider>
 
 }

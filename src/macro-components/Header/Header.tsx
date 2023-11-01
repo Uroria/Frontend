@@ -1,3 +1,5 @@
+"use client"
+
 import styles from './Header.module.scss'
 import {Col, Container, Row} from "react-bootstrap";
 import Button from "../../micro-components/Button";

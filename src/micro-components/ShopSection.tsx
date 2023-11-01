@@ -1,3 +1,5 @@
+"use client"
+
 import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import {Container, Row} from "react-bootstrap";
 import styles from "../../styles/components/Shop/ShopSection.module.scss"

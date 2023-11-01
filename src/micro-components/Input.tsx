@@ -1,4 +1,6 @@
-import React, {DetailedHTMLProps, FunctionComponent, InputHTMLAttributes, useEffect, useRef, useState} from "react";
+"use client"
+
+import React, {DetailedHTMLProps, FunctionComponent, InputHTMLAttributes, useState} from "react";
 import styles from "../../styles/components/Input.module.scss"
 import {IconInfoCircle, IconArrowBarRight} from "@tabler/icons-react";
 import Button from "./Button";

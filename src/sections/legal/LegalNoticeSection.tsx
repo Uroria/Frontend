@@ -1,3 +1,5 @@
+"use client"
+
 import {FunctionComponent} from "react";
 import Section from "../../micro-components/Section";
 import {useLanguage, useLanguageTranslations} from "../../hooks/LanguageHook";
