@@ -1,4 +1,7 @@
 include:
   - project: uroria/operations/pipeline
     ref: master
+    file: image-build.gitlab-ci.yml
+  - project: uroria/operations/pipeline
+    ref: master
     file: mirror-trigger.gitlab-ci.yml
