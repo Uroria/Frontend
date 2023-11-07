@@ -12,6 +12,7 @@ import {IconHome2} from "@tabler/icons-react";
 import {usePathname} from "next/navigation";
 import {useTranslations} from "next-intl";
 import {useLocale} from 'next-intl';
+import {NavigationBurger} from "./NavigationBurger";
 
 const Navigation = () => {
 
