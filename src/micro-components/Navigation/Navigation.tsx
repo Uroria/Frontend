@@ -3,20 +3,18 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
 import styles from './Navigation.module.scss'
 import React from "react";
-import Link from "next/link";
-import Label from "../Label";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import {IconHome2} from "@tabler/icons-react";
 import {usePathname} from "next/navigation";
-import {useTranslations} from "next-intl";
-import {useLocale} from 'next-intl';
+import {useLocale, useTranslations} from "next-intl";
 import {NavigationBurger} from "./NavigationBurger";
+import {NavItem} from "./NavigationItem/NavItem";
 
 const Navigation = () => {
 
     const t = useTranslations('Index');
-    const locale = useLocale();
     const pathname: string = usePathname() || "";
+    const locale = useLocale();
 
     //filter out current locale and pages with params in the url
     const breadcrumb: string[] = pathname.slice(1, pathname.length).split("/").filter(value => {
@@ -49,20 +47,9 @@ const Navigation = () => {
                     <Nav className="me-auto my-2 my-lg-0">
                     </Nav>
                     <Nav className="d-flex">
-                        <div
-                            className={styles["nav__item"] + ("/" == getHrefWithoutLocale(pathname, locale) ? " " + styles["nav__item--active"] : "")}>
-                            <Link href={"/"}>{t("nav-links-home")}</Link>
-                        </div>
-                        <div
-                            className={styles["nav__item"] + (getHrefWithoutLocale(pathname, locale).includes("/creator") ? " " + styles["nav__item--active"] : "")}>
-                            <Link href={"#soon"}>{t("nav-links-creator")}</Link>
-                            <Label onNavigation={true}>{t("nav-label-soon")}</Label>
-                        </div>
-                        <div
-                            className={styles["nav__item"] + (getHrefWithoutLocale(pathname, locale).includes("/shop") ? " " + styles["nav__item--active"] : "")}>
-                            <Link href={"/shop"}>{t("nav-links-shop")}</Link>
-                            <Label onNavigation={true}>{t("nav-label-soon")}</Label>
-                        </div>
+                        <NavItem href={"/"} lang={"nav-links-home"}/>
+                        <NavItem href={"/creator"} lang={"nav-links-creator"} disabled/>
+                        <NavItem href={"/shop"} lang={"nav-links-shop"} disabled/>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -86,10 +73,4 @@ const Navigation = () => {
         </Container>
     </div>
 }
-
-
-const getHrefWithoutLocale = (href = "/", locale = "en-US") => {
-    return locale && href.includes(locale) ? href.replace(`${locale}`, "") : href;
-}
-
 export default Navigation;
