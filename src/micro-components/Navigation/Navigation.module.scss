@@ -8,8 +8,9 @@
   align-items: center;
   background: linear-gradient(180deg, rgba(#202a45, 1) 0%, rgba(#202a45, 0) 100%);
 
-  @include respond-below(lg) {
-    background: linear-gradient(0deg, rgba(0, 0, 6, 0) 0%, rgba(0, 0, 6, .75) 100%);
+
+  &--collapsed {
+    background: rgba(#202a45, 1)
   }
 
   &__breadcrumbs {
