@@ -54,17 +54,20 @@ const Header = () => {
 
             </div>
 
-            <div className={styles["header__social-media"]}>
-                <Button href={"https://dc.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
-                <Button href={"https://yt.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
-                <Button href={"https://ig.uroria.com"} buttonSize={"sm"} type={"round"}
-                        icon={true}><IconBrandInstagram/></Button>
-            </div>
-            <div className={styles["header__more-infos"]}>
-                <Button href={"#features"} buttonSize={"md"} type={"round"} color={"white"}>
-                    <IconChevronDown size={16} style={{marginRight: "0.5rem"}}/>{t("header-button-moreinfo")}
-                </Button>
-            </div>
+            <Container>
+                <div className={styles["header__social-media"]}>
+                    <Button href={"https://dc.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
+                    <Button href={"https://yt.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
+                    <Button href={"https://ig.uroria.com"} buttonSize={"sm"} type={"round"}
+                            icon={true}><IconBrandInstagram/></Button>
+                </div>
+                <div className={styles["header__more-infos"]}>
+                    <Button href={"#features"} buttonSize={"md"} type={"round"} color={"white"}>
+                        <IconChevronDown size={16} style={{marginRight: "0.5rem"}}/>{t("header-button-moreinfo")}
+                    </Button>
+                </div>
+
+            </Container>
 
         </Container>
     </div>
