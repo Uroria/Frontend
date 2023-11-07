@@ -1,24 +1,38 @@
-FROM node:16.16.0-alpine as dependencies
-WORKDIR /uroria-web
+FROM node:18-alpine AS base
+
+FROM base AS builder
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
 COPY package.json package-lock.json ./
 RUN npm ci
 
-FROM node:16.16.0-alpine as builder
-WORKDIR /uroria-web
 COPY . .
-COPY --from=dependencies /uroria-web/node_modules ./node_modules
+ENV NEXT_TELEMETRY_DISABLED 1
 RUN npm run build
 
-FROM node:16.16.0-alpine as runner
-WORKDIR /uroria-web
+FROM base AS runner
+WORKDIR /app
+
 ENV NODE_ENV production
-COPY --from=builder /uroria-web/next.config.js ./
-COPY --from=builder /uroria-web/i18n.ts ./
-COPY --from=builder /uroria-web/middleware.ts ./
-COPY --from=builder /uroria-web/public ./public
-COPY --from=builder /uroria-web/.next ./.next
-COPY --from=builder /uroria-web/node_modules ./node_modules
-COPY --from=builder /uroria-web/package.json ./package.json
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
 
 EXPOSE 3000
-CMD ["npm", "run", "start"]
+
+ENV PORT 3000
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
