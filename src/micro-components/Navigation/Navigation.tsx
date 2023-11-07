@@ -2,7 +2,7 @@
 
 import {Container, Nav, Navbar} from "react-bootstrap";
 import styles from './Navigation.module.scss'
-import React from "react";
+import React, {useState} from "react";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import {IconHome2} from "@tabler/icons-react";
 import {usePathname} from "next/navigation";
@@ -12,8 +12,8 @@ import {NavItem} from "./NavigationItem/NavItem";
 
 const Navigation = () => {
 
-    const t = useTranslations('Index');
     const pathname: string = usePathname() || "";
+    const [collapsed, setCollapsed] = useState<boolean>(false);
     const locale = useLocale();
 
     //filter out current locale and pages with params in the url
@@ -29,7 +29,7 @@ const Navigation = () => {
     }
 
 
-    return <div className={styles["nav"]}>
+    return <div className={`${styles["nav"]} ${collapsed ? styles["nav--collapsed"] : ""}`}>
         <Container style={{position: "relative"}}>
             <Navbar collapseOnSelect expand="lg" className={styles["nav__bar"]}>
                 <Navbar.Brand href="/">
@@ -41,7 +41,7 @@ const Navigation = () => {
                     />
                 </Navbar.Brand>
                 <Navbar.Toggle style={{border: "none"}} aria-controls="responsive-navbar-nav">
-                    <NavigationBurger/>
+                    <NavigationBurger onCollapse={collapsed => setCollapsed(collapsed)}/>
                 </Navbar.Toggle>
                 <Navbar.Collapse className={styles["nav__collapse"]} id="responsive-navbar-nav">
                     <Nav className="me-auto my-2 my-lg-0">
