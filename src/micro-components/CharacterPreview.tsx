@@ -12,10 +12,11 @@ interface CharacterPreviewProps {
     skinName: string,
     hatModel?: CosmeticsProps,
     backpackModel?: CosmeticsProps,
-    balloonModel?: CosmeticsProps
+    balloonModel?: CosmeticsProps,
+    height?: number
 }
 
-const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, hatModel, backpackModel, balloonModel}) => {
+const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, hatModel, backpackModel, balloonModel, height = 500}) => {
 
 
     //fetch skin texture for player model
@@ -61,7 +62,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
 
 
     //render for 3d Model
-    return <Canvas style={{cursor: "ew-resize"}} shadows camera={{fov: 90, near: .1, far: 2000}}>
+    return <Canvas style={{cursor: "ew-resize", height: `${height}px`}} shadows camera={{fov: 90, near: .1, far: 2000}}>
         <Minecraft3DCharacter
             skinModel={{gltf: JsonToGltf(skinModel), texture: (textureData && !textureError) ? textureData.src : undefined, positionY: -3}}
             hatModel={(!!hatModel && !!playerHatModelData && !playerHatModelError) ? {
