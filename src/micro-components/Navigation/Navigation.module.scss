@@ -1,6 +1,6 @@
 @import "../../../styles/helpers/media";
 
-.navigation {
+.nav {
   position: fixed;
   width: 100vw;
   z-index: 999;
@@ -10,7 +10,7 @@
     background: linear-gradient(0deg, rgba(0, 0, 6, 0) 0%, rgba(0, 0, 6, .75) 100%);
   }
 
-  &__breadcrumb-wrapper {
+  &__breadcrumbs {
     display: inline-flex;
     align-items: center;
     margin-bottom: 1rem;
@@ -24,75 +24,76 @@
     padding: 0;
     margin: 1rem 0 0;
   }
-}
 
-.nav-collapse {
-  transition: 1ms all ease-in-out;
+  &__collapse {
+    transition: 1ms all ease-in-out;
 
-  @include respond-below(lg) {
-    margin-bottom: 100vh;
-  }
-}
-
-.navbar__nav-item {
-  padding: 5px 15px 5px 15px;
-  font-size: 1rem;
-  border: none;
-  color: white;
-  display: inline-block;
-  width: fit-content;
-  background: none;
-  outline: none;
-  position: relative;
-  z-index: 0;
-  margin: 15px;
-  cursor: pointer;
-  font-family: 'Luckiest Guy', cursive;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    clip-path: polygon(0% 11%, 100% 0, 90% 88%, 3% 100%);
-    transition: clip-path 500ms ease-in-out;
-    background: transparent;
-  }
-
-  &:hover, &:active, &.navbar__nav-item-active {
-    color: #000006;
-
-    &:before, &:after {
-      clip-path: polygon(5% 2%, 100% 5%, 100% 90%, 0% 94%);
-      background: white;
+    @include respond-below(lg) {
+      margin-bottom: 100vh;
     }
   }
 
-  &:last-of-type {
-    margin-right: 0;
-  }
-
-  @include respond-below(lg) {
-    margin: 15px 0;
-  }
-}
-
-.nav-menu {
-
-  width: 40px;
-  height: 40px;
-
-  > svg {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(22deg) brightness(105%) contrast(103%);
+  &__item {
+    padding: 5px 15px 5px 15px;
+    font-size: 1rem;
+    border: none;
     color: white;
+    display: inline-block;
+    width: fit-content;
+    background: none;
+    outline: none;
+    position: relative;
+    z-index: 0;
+    margin: 15px;
+    cursor: pointer;
+    font-family: 'Luckiest Guy', cursive;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      clip-path: polygon(0% 11%, 100% 0, 90% 88%, 3% 100%);
+      transition: clip-path 500ms ease-in-out;
+      background: transparent;
+    }
+
+    &:hover, &:active, &--active {
+      color: #000006;
+
+      &:before, &:after {
+        clip-path: polygon(5% 2%, 100% 5%, 100% 90%, 0% 94%);
+        background: white;
+      }
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    @include respond-below(lg) {
+      margin: 15px 0;
+    }
+  }
+
+  &__burger {
+
+    width: 40px;
+    height: 40px;
+
+    > svg {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(22deg) brightness(105%) contrast(103%);
+      color: white;
+    }
+
   }
 
 }
