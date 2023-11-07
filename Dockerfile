@@ -9,6 +9,7 @@ RUN npm ci
 
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
+ENV BUILD_STANDALONE=1
 RUN npm run build
 
 FROM base AS runner
