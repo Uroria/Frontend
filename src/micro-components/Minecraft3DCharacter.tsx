@@ -151,20 +151,6 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
                 setCurrentBalloon(newBalloon.scene);
 
 
-                const position = new THREE.Vector3(balloonModel.positionX, balloonModel.positionY, balloonModel.positionZ)
-
-
-                const geometry = new THREE.BoxGeometry(.5, .5, .5);
-                const color = new THREE.MeshBasicMaterial({color: "#000000"});
-                const box = new THREE.Mesh(geometry, color);
-
-
-                // @ts-ignore
-                box.position.set(balloonModel.scale * position.x + 0.25, balloonModel.scale * position.y + 0.25, balloonModel.scale * position.z + 0.25);
-
-                object.scene.add(box)
-
-
             });
 
         }, [object, balloonModel])
