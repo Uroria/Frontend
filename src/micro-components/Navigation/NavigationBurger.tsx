@@ -1,3 +1,5 @@
+"use client"
+
 import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import {Player} from "@lottiefiles/react-lottie-player";
 import menu from "../../../public/assets/menu.json";
