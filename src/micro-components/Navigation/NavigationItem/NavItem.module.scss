@@ -1,0 +1,44 @@
+@import "../../../../styles/helpers/media";
+
+.nav-item {
+  display: inline-block;
+  width: fit-content;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  margin-right: 1rem;
+  padding: 8.4px 11.2px 8.4px 11.2px;
+
+  &--disabled, &:disabled {
+    pointer-events: none;
+    opacity: 50%;
+    cursor: not-allowed;
+  }
+
+  &--active, &:hover, &:focus {
+    background: rgba(58, 68, 95, 1);
+    box-shadow: inset 0 0 0 2px #5c6889;
+    border-bottom: 4px solid rgba(32, 41, 68, 1);
+    outline: 2px solid black;
+
+    &:hover {
+      outline: 2px solid white;
+    }
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  @include respond-below(lg) {
+    margin: 15px 0;
+  }
+}

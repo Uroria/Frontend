@@ -2,7 +2,7 @@ import Head from "next/head";
 import Script from "next/script";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/uroria.scss'
-import Navigation from "../../src/micro-components/Navigation";
+import Navigation from "../../src/micro-components/Navigation/Navigation";
 import {notFound} from 'next/navigation';
 import {NextIntlClientProvider} from 'next-intl';
 
