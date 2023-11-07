@@ -1,20 +1,18 @@
-"use client"
-
 import {Col, Row} from "react-bootstrap";
 import Section from "../../micro-components/Section";
-import {useLanguage} from "../../hooks/LanguageHook";
 import Game from "../../micro-components/Game/Game";
+import {useTranslations} from "next-intl";
 
 const GameSection = () => {
 
-    const language = useLanguage();
+    const language = useTranslations('Index');
 
     return <Section>
         <Row>
             <Col lg={7}>
-                <h1>{language["game.heading.1"]}</h1><br/>
-                <h1><span className="mark">{language["game.heading.2"]}</span></h1><br/>
-                <p>{language["game.description"]}</p>
+                <h1>{language("game-heading-1")}</h1><br/>
+                <h1><span className="mark">{language("game-heading-2")}</span></h1><br/>
+                <p>{language("game-description")}</p>
             </Col>
             <Col lg={5}>
                 <Row>

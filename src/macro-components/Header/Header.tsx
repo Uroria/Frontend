@@ -1,29 +1,27 @@
-"use client"
-
 import styles from './Header.module.scss'
 import {Col, Container, Row} from "react-bootstrap";
 import Button from "../../micro-components/Button";
 import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube, IconChevronDown} from "@tabler/icons-react";
-import {useLanguage} from "../../hooks/LanguageHook";
 import Box from "../../micro-components/Box/Box";
 import News from "../../micro-components/News/News";
+import {useTranslations} from "next-intl";
 
 const Header = () => {
 
-    const language = useLanguage();
+    const t = useTranslations('Index');
 
     return <div className={styles.header}>
         <Container className={styles["header__container"]}>
             <div className={styles.header__content}>
                 <Row style={{margin: 0, padding: 0}}>
                     <Col xs={12} lg={8}>
-                        <h1>{language["header.heading.1"]} <span
-                            className="mark">{language["header.heading.1.mark"]}</span>
+                        <h1>{t("header-heading-1")} <span
+                            className="mark">{t("header-heading-1-mark")}</span>
                         </h1>
-                        <h1>{language["header.heading.2"]} <span
-                            className="mark">{language["header.heading.2.mark"]}</span>
+                        <h1>{t("header-heading-2")} <span
+                            className="mark">{t("header-heading-2-mark")}</span>
                         </h1>
-                        <p>{language["header.description"]}</p>
+                        <p>{t("header-description")}</p>
                     </Col>
 
                     <Col xs={12} lg={4} style={{margin: 0, padding: 0}}>
@@ -64,7 +62,7 @@ const Header = () => {
             </div>
             <div className={styles["header__more-infos"]}>
                 <Button href={"#features"} buttonSize={"md"} type={"round"} color={"white"}>
-                    <IconChevronDown size={16} style={{marginRight: "0.5rem"}}/>{language["header.button.moreinfo"]}
+                    <IconChevronDown size={16} style={{marginRight: "0.5rem"}}/>{t("header-button-moreinfo")}
                 </Button>
             </div>
 
