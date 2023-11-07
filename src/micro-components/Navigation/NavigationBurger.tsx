@@ -5,22 +5,29 @@ import {Player} from "@lottiefiles/react-lottie-player";
 import menu from "../../../public/assets/menu.json";
 import styles from "./Navigation.module.scss";
 
-export const NavigationBurger: FunctionComponent = () => {
+type NavigationBurger = {
+    onCollapse?: (collapsed: boolean) => void
+}
 
-    const playerref = useRef<Player>();
+export const NavigationBurger: FunctionComponent<NavigationBurger> = ({onCollapse}) => {
+
+    const playerRef = useRef<Player>();
     const [checked, setChecked] = useState<boolean>(false);
 
     useEffect(() => {
+
+        onCollapse && onCollapse(checked);
+
         if (checked) {
-            playerref.current?.setPlayerDirection(1);
+            playerRef.current?.setPlayerDirection(1);
         } else {
-            playerref.current?.setPlayerDirection(-1);
+            playerRef.current?.setPlayerDirection(-1);
         }
 
     }, [checked])
 
     // @ts-ignore
-    return <Player ref={playerref}
+    return <Player ref={playerRef}
                    src={menu}
                    className={styles["nav__burger"]}
                    renderer={"svg"}
@@ -30,8 +37,8 @@ export const NavigationBurger: FunctionComponent = () => {
 
                        if (event != "load") return;
 
-                       playerref.current?.container?.addEventListener("click", () => {
-                           playerref.current?.play();
+                       playerRef.current?.container?.addEventListener("click", () => {
+                           playerRef.current?.play();
                            setChecked(prevState => !prevState);
                        })
                    }}
