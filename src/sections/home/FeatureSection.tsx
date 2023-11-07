@@ -1,32 +1,30 @@
-"use client"
-
 import {Col, Row} from "react-bootstrap";
 import Feature from "../../micro-components/Feature/Feature";
 import Section from "../../micro-components/Section";
-import {useLanguage} from "../../hooks/LanguageHook";
+import {useTranslations} from "next-intl";
 
 const FeatureSection = () => {
 
-    const language = useLanguage();
+    const language = useTranslations('Index');
 
     return <Section id={"features"}>
         <Row>
             <Col lg={"8"}>
-                <h1><span className="mark">{language["feature.heading.1.mark"]}</span>{language["feature.heading.1"]}</h1><br/>
-                <h1>{language["feature.heading.2"]} <span className="mark">{language["feature.heading.2.mark"]}</span></h1><br/>
-                <p>{language["feature.description"]}</p>
+                <h1><span className="mark">{language("feature-heading-1-mark")}</span>{language("feature-heading-1")}</h1><br/>
+                <h1>{language("feature-heading-2")} <span className="mark">{language("feature-heading-2-mark")}</span></h1><br/>
+                <p>{language("feature-description")}</p>
                 <Row>
                     <Col xs={6} sm={4} md={3} lg={3}>
-                        <Feature description={language["feature.events.description"]}>{language["feature.events.heading"]}</Feature>
+                        <Feature description={language("feature-events-description")}>{language("feature-events-heading")}</Feature>
                     </Col>
                     <Col xs={6} sm={4} md={3} lg={3}>
-                        <Feature description={language["feature.cosmetics.description"]}>{language["feature.cosmetics.heading"]}</Feature>
+                        <Feature description={language("feature-cosmetics-description")}>{language("feature-cosmetics-heading")}</Feature>
                     </Col>
                     <Col xs={6} sm={4} md={3} lg={3}>
-                        <Feature description={language["feature.community.description"]}>{language["feature.community.heading"]}</Feature>
+                        <Feature description={language("feature-community-description")}>{language("feature-community-heading")}</Feature>
                     </Col>
                     <Col xs={6} sm={4} md={3} lg={3}>
-                        <Feature description={language["feature.battles.description"]}>{language["feature.battles.heading"]}</Feature>
+                        <Feature description={language("feature-battles-description")}>{language("feature-battles-heading")}</Feature>
                     </Col>
                 </Row>
             </Col>

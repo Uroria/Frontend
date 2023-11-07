@@ -2,13 +2,13 @@
 
 import Section from "../../micro-components/Section";
 import {Col, Row} from "react-bootstrap";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {CosmeticsProps} from "../../micro-components/Minecraft3DCharacter";
 import CharacterPreview from "../../micro-components/CharacterPreview";
 import Input from "../../micro-components/Input";
 import {Tab, Tabs} from "../../micro-components/Tabs";
-import {useLanguage} from "../../hooks/LanguageHook";
 import {ItemPreview} from "../../micro-components/ItemPreview/ItemPreview";
+import {useTranslations} from "next-intl";
 
 const allHats: CosmeticsProps[] = [{
     gltf: "Witch_Hat",
@@ -61,61 +61,61 @@ const allBalloons: CosmeticsProps[] = [{
 
 const CosmeticSection = () => {
 
+    const language = useTranslations('Index');
+
     const [currentHat, setCurrentHat] = useState(allHats[0]);
     const [currentBackpack, setCurrentBackpack] = useState(allBackpacks[0]);
     const [currentBalloon, setCurrentBalloon] = useState(allBalloons[0]);
     const [currentSkinName, setCurrentSkinName] = useState("MHF_Steve");
-    const language = useLanguage();
+    const ref = useRef<HTMLDivElement>(null)
 
     return <Section>
         <Row style={{position: "relative"}}>
-            <Col lg={"5"} style={{position: "relative", display: "flex", height: "100% !important", justifyContent: "center", alignItems: "center"}}>
+            <Col lg={"5"} ref={ref} style={{position: "relative", display: "flex", height: "100% !important", justifyContent: "center", alignItems: "center"}}>
                 <div style={{
                     position: "relative",
                     width: "100%",
-                    minHeight: "500px",
-                    height: "100%",
-                    maxHeight: "600px"
+                    minHeight: "600px"
                 }}>
-                    <CharacterPreview skinName={currentSkinName} hatModel={currentHat} backpackModel={currentBackpack} balloonModel={currentBalloon}/>
+                    <CharacterPreview height={ref?.current?.offsetHeight || 600} skinName={currentSkinName} hatModel={currentHat} backpackModel={currentBackpack} balloonModel={currentBalloon}/>
                     <div style={{position: "absolute", bottom: "0", left: "50%", transform: "translateX(-50%)"}}>
                         <Input maxLength={16} blink={true}
-                               description={language["cosmetic.skin.input.description"]}
+                               description={language("cosmetic-skin-input-description")}
                                width={300} placeholder={"username"} onEnter={value => value && value != "" && value != currentSkinName ? setCurrentSkinName(value.toLocaleLowerCase()) : undefined}/>
                     </div>
                 </div>
             </Col>
             <Col lg={"7"}>
-                <h1>{language["cosmetic.heading.1"]} <span className="mark">{language["cosmetic.heading.1.mark"]}</span></h1><br/>
-                <h1>{language["cosmetic.heading.2"]} <span className="mark">{language["cosmetic.heading.2.mark"]}</span></h1><br/>
-                <p>{language["cosmetic.description"]}</p>
+                <h1>{language("cosmetic-heading-1")} <span className="mark">{language("cosmetic-heading-1-mark")}</span></h1><br/>
+                <h1>{language("cosmetic-heading-2")} <span className="mark">{language("cosmetic-heading-2-mark")}</span></h1><br/>
+                <p>{language("cosmetic-description")}</p>
 
                 <Tabs>
-                    <Tab title={language["cosmetic.tab.hat"]}>
+                    <Tab title={language("cosmetic-tab-hat")}>
                         <Row>
                             {
                                 allHats.map((hat, index) => {
                                     return <Col xs={4} sm={4} md={3} key={index}
                                                 onClick={() => currentHat != allHats[index] ? setCurrentHat(allHats[index]) : null} style={{marginBottom: "1.5rem"}}>
-                                        <ItemPreview image={"./magic_backpack-2.png"} type={"hat"} rareness={"common"}/>
+                                        <ItemPreview image={"/magic_backpack-2.png"} type={"hat"} rareness={"common"}/>
                                     </Col>
                                 })
                             }
                         </Row>
                     </Tab>
-                    <Tab title={language["cosmetic.tab.backpack"]}>
+                    <Tab title={language("cosmetic-tab-backpack")}>
                         <Row>
                             {
                                 allBackpacks.map((backpack, index) => {
                                     return <Col xs={4} sm={4} md={3} key={index}
                                                 onClick={() => currentBackpack != allBackpacks[index] ? setCurrentBackpack(allBackpacks[index]) : null} style={{marginBottom: "1.5rem"}}>
-                                        <ItemPreview image={"./magic_backpack-2.png"} type={"backpack"} rareness={"common"}/>
+                                        <ItemPreview image={"/magic_backpack-2.png"} type={"backpack"} rareness={"common"}/>
                                     </Col>
                                 })
                             }
                         </Row>
                     </Tab>
-                    <Tab title={language["cosmetic.tab.balloon"]}>
+                    <Tab title={language("cosmetic-tab-balloon")}>
                         <p>Balloon Cosmetics coming soon</p>
                     </Tab>
                 </Tabs>

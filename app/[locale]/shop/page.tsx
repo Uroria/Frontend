@@ -1,8 +1,8 @@
-import React, {FunctionComponent} from "react";
-import {CosmeticsProps} from "../micro-components/Minecraft3DCharacter";
-import ShopContainer from "../micro-components/ShopContainer";
-import {IShopSection} from "../@types/TShopSection";
-
+import {NextPage} from "next";
+import {CosmeticsProps} from "../../../src/micro-components/Minecraft3DCharacter";
+import {IShopSection} from "../../../src/@types/TShopSection";
+import ShopContainer from "../../../src/micro-components/ShopContainer";
+import React from "react";
 
 const allHats: CosmeticsProps[] = [{
     gltf: "Witch_Hat",
@@ -36,8 +36,7 @@ const allHats: CosmeticsProps[] = [{
     scale: 0.6
 }];
 
-
-const Shop: FunctionComponent = () => {
+const ShopPage: NextPage = () => {
 
 
     const test: IShopSection[] = [{
@@ -242,4 +241,4 @@ const Shop: FunctionComponent = () => {
     </>
 }
 
-export default Shop;
+export default ShopPage;

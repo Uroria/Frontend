@@ -3,21 +3,20 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
 import styles from '../../styles/components/Navigation.module.scss'
 import React, {FunctionComponent, useEffect, useRef, useState} from "react";
-import { useCurrentLocale } from 'next-i18n-router/client';
-import i18nConfig from '../../i18nConfig';
 import Link from "next/link";
 import Label from "./Label";
-import {useLanguage} from "../hooks/LanguageHook";
 import menu from "../../public/assets/menu.json"
 import {Player} from "@lottiefiles/react-lottie-player";
-import {ILanguage} from "../@types/TLanguage";
 import Breadcrumb from "./Breadcrumb/Breadcrumb";
 import {IconHome2} from "@tabler/icons-react";
 import {usePathname} from "next/navigation";
+import {useTranslations} from "next-intl";
 
 const Navigation = () => {
 
-    const language: ILanguage = useLanguage();
+    const t = useTranslations('Index');
+    const locale = useLocale();
+
     const pathname: string = usePathname() || "";
     const breadcrumb: string[] = pathname.slice(1, pathname.length).split("/").filter(value => {
         return !(value.startsWith("[") && value.endsWith("]"))
@@ -49,17 +48,17 @@ const Navigation = () => {
                     <Nav className="d-flex">
                         <div
                             className={styles["navbar__nav-item"] + (pathname == getHrefWithoutLocale("/") ? " " + styles["navbar__nav-item-active"] : "")}>
-                            <Link href={"/"}>{language["nav.links.home"]}</Link>
+                            <Link href={"/"}>{t("nav-links-home")}</Link>
                         </div>
                         <div
                             className={styles["navbar__nav-item"] + (pathname == getHrefWithoutLocale("/creator") ? " " + styles["navbar__nav-item-active"] : "")}>
-                            <Link href={"#soon"}>{language["nav.links.creator"]}</Link>
-                            <Label onNavigation={true}>{language["nav.label.soon"]}</Label>
+                            <Link href={"#soon"}>{t("nav-links-creator")}</Link>
+                            <Label onNavigation={true}>{t("nav-label-soon")}</Label>
                         </div>
                         <div
                             className={styles["navbar__nav-item"] + (pathname == getHrefWithoutLocale("/shop") ? " " + styles["navbar__nav-item-active"] : "")}>
-                            <Link href={"/shop"}>{language["nav.links.shop"]}</Link>
-                            <Label onNavigation={true}>{language["nav.label.soon"]}</Label>
+                            <Link href={"/shop"}>{t("nav-links-shop")}</Link>
+                            <Label onNavigation={true}>{t("nav-label-soon")}</Label>
                         </div>
                     </Nav>
                 </Navbar.Collapse>

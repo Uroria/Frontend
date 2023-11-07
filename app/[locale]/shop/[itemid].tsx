@@ -1,8 +1,9 @@
 import {NextPage} from "next";
-import ShopDetail from "../../../src/pages/ShopDetail";
+import ItemDetailSection from "../../../src/sections/shop/ItemDetailSection";
+import React from "react";
 
 const ShopItemPage: NextPage = () => {
-    return <ShopDetail/>
+    return <ItemDetailSection/>;
 }
 
 export default ShopItemPage;

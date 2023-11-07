@@ -1,8 +1,14 @@
 import {NextPage} from "next";
-import Legal from "../../../src/pages/Legal";
+import Header from "../../../src/macro-components/Header/Header";
+import LegalNoticeSection from "../../../src/sections/legal/LegalNoticeSection";
+import Footer from "../../../src/sections/Footer";
 
 const LegalPage: NextPage = () => {
-    return <Legal/>
+    return <>
+        <Header/>
+        <LegalNoticeSection/>
+        <Footer/>
+    </>
 }
 
 export default LegalPage;
