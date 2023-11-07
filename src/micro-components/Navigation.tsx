@@ -121,7 +121,7 @@ const NavigationBurger: FunctionComponent = () => {
 
 
 const getHrefWithoutLocale = (href = "/") => {
-    const locale = useCurrentLocale(i18nConfig);
+    const locale = "en-US"
     return locale && href.includes(locale) ? href.replace(locale, "") : href;
 }
 
