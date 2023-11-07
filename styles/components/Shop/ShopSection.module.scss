@@ -51,7 +51,7 @@
 
 .shop-section__button-down {
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   bottom: 5rem !important;
   transform: translateX(-50%);
   left: 50%;
@@ -59,7 +59,7 @@
 
 .shop-section__button-up {
   position: fixed;
-  z-index: 4;
+  z-index: 10;
   top: 5rem !important;
   transform: translateX(-50%);
   left: 50%;

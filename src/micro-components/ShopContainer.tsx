@@ -32,7 +32,7 @@ const ShopContainer: FunctionComponent<IShopContainer> = ({sections}) => {
                 centeredSlides={true} slidesPerView={2} spaceBetween={25}
                 pagination={{clickable: true}}
                 onSlideChangeTransitionStart={swiper => setIndex(swiper.activeIndex)}
-                style={{position: "absolute", height: "100%", width: "100%"}}>
+                style={{position: "absolute", height: "100%", width: "100%", zIndex: 100}}>
 
             {/** show button when there is a new slide to reach at the top **/}
             {index > 0 ? <ShopContainerButton type={"up"}/> : null}

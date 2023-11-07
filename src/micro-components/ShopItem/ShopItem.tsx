@@ -76,7 +76,7 @@ const ShopItem: FunctionComponent<IShopItem> = (props) => {
     return <Item name={name} price={price} discount={discount} className={styles["shop-item"]} rareness={rareness} tag={tag} tagBackgroundRed={tagColor} type={type}>
 
         <div className={styles["shop-item__image"]}>
-            <img src={image} alt={""}/>
+            <img src={`.${image}`} alt={""}/>
         </div>
 
 

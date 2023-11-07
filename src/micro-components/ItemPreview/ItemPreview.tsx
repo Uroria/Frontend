@@ -17,7 +17,7 @@ export const ItemPreview: FunctionComponent<IItemPreview> = (props) => {
 
     return <Item name={""} rareness={rareness} tag={tag} disabled={disabled} className={`${styles["item-preview"]}`}>
         <div className={styles["item-preview__image"]}>
-            <img src={image} alt={""}/>
+            <Image width={100} height={100} src={image} alt={""}/>
         </div>
         <div className={styles["item-preview__icons"]}>
             <Image width={15} height={15} src={`/assets/images/icon__${type}.png`} alt={""}/>
