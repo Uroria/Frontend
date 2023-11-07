@@ -1,35 +1,35 @@
-"use client"
-
 import {FunctionComponent} from "react";
 import Section from "../../micro-components/Section";
-import {useLanguage, useLanguageTranslations} from "../../hooks/LanguageHook";
+import {useTranslations} from "next-intl";
 
 const LegalNoticeSection: FunctionComponent = () => {
 
-    const language = useLanguage();
+    const language = useTranslations();
 
     return <Section>
-        <h1>{language["legal.heading"]}</h1>
+        <h1>{language("legal-heading")}</h1>
 
         <p>
-            <b>{language["legal.tmg"]}</b><br/>
+            <b>{language("legal-tmg")}</b><br/>
 
-            {useLanguageTranslations("legal.tmg").map((value, index) => {
-                return language["legal.tmg." + (index + 2)] ? <>{value}<br/></> : <>{value}</>;
-            })}
+            {language("legal-tmg-1")}<br/>
+            {language("legal-tmg-2")}<br/>
+            {language("legal-tmg-3")}
         </p>
         <p>
-            <b>{language["legal.contact"]}</b><br/>
-            {useLanguageTranslations("legal.contact").map((value, index) => {
-                return language["legal.contact." + (index+2)] ? <>{value}<br/></> : <>{value}</>
-            })}
+            <b>{language("legal-contact")}</b><br/>
+
+            {language("legal-contact-1")}<br/>
+            {language("legal-contact-2")}<br/>
+            {language("legal-contact-3")}
         </p>
 
         <p>
-            <b>{language["legal.responsible"]}</b><br/>
-            {useLanguageTranslations("legal.responsible").map((value, index) => {
-                return language["legal.responsible." + (index+2)] ? <>{value}<br/></> : <>{value}</>
-            })}
+            <b>{language("legal-responsible")}</b><br/>
+
+            {language("legal-responsible-1")}<br/>
+            {language("legal-responsible-2")}<br/>
+            {language("legal-responsible-3")}
         </p>
 
         <a href={"https://www.e-recht24.de/impressum-generator.html"}>
