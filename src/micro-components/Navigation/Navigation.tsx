@@ -6,7 +6,7 @@ import React, {useState} from "react";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import {IconHome2} from "@tabler/icons-react";
 import {usePathname} from "next/navigation";
-import {useLocale, useTranslations} from "next-intl";
+import {useLocale} from "next-intl";
 import {NavigationBurger} from "./NavigationBurger";
 import {NavItem} from "./NavigationItem/NavItem";
 
