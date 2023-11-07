@@ -4,7 +4,7 @@ import {useTranslations} from "next-intl";
 
 const LegalNoticeSection: FunctionComponent = () => {
 
-    const language = useTranslations();
+    const language = useTranslations("Index");
 
     return <Section>
         <h1>{language("legal-heading")}</h1>
