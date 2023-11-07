@@ -1,13 +1,13 @@
 "use client"
 
 import {Container, Nav, Navbar} from "react-bootstrap";
-import styles from '../../styles/components/Navigation.module.scss'
+import styles from './Navigation.module.scss'
 import React, {FunctionComponent, useEffect, useRef, useState} from "react";
 import Link from "next/link";
-import Label from "./Label";
-import menu from "../../public/assets/menu.json"
+import Label from "../Label";
+import menu from "../../../public/assets/menu.json"
 import {Player} from "@lottiefiles/react-lottie-player";
-import Breadcrumb from "./Breadcrumb/Breadcrumb";
+import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import {IconHome2} from "@tabler/icons-react";
 import {usePathname} from "next/navigation";
 import {useTranslations} from "next-intl";
