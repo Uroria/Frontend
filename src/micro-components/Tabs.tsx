@@ -3,25 +3,25 @@
 import {ReactElement, useCallback, useState} from "react";
 import styles from '../../styles/components/Tab.module.scss'
 
-interface TabTitleProps {
+type TabTitle = {
     title: string
     index: number
     setSelectedTab: (index: number) => void;
     isActive?: boolean
 }
 
-interface TabPaneProps {
+type Tab = {
     title: string
     isActive?: boolean
     children: ReactElement | ReactElement[]
 }
 
-interface TabsProps {
-    children: ReactElement<TabPaneProps>[]
+type Tabs = {
+    children: ReactElement<Tab>[]
     preSelectedTabIndex?: number
 }
 
-export const TabTitle = (props: TabTitleProps): JSX.Element => {
+export const TabTitle = (props: TabTitle): JSX.Element => {
     const {title, setSelectedTab, index, isActive} = props;
 
     const handleOnClick = useCallback(() => {
@@ -35,11 +35,11 @@ export const TabTitle = (props: TabTitleProps): JSX.Element => {
     );
 };
 
-export const Tab = ({children, isActive}: TabPaneProps): JSX.Element => {
+export const Tab = ({children, isActive}: Tab): JSX.Element => {
     return <div style={{display: isActive ? "block" : "none"}}>{children}</div>;
 }
 
-export const Tabs = (props: TabsProps): JSX.Element => {
+export const Tabs = (props: Tabs): JSX.Element => {
     const {children, preSelectedTabIndex} = props;
 
     // First tab is shown by default
