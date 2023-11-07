@@ -20,7 +20,7 @@ const Navigation = () => {
 
     const pathname: string = usePathname() || "";
     const breadcrumb: string[] = pathname.slice(1, pathname.length).split("/").filter(value => {
-        return !(value.startsWith("[") && value.endsWith("]"))
+        return !(value.startsWith("[") && value.endsWith("]") || value.includes(locale))
     });
     const breadcrumbLink = (index: number): string => {
         return breadcrumb.map((value, tindex) => {
