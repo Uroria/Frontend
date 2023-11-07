@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "concurrently \"next dev\" \"npm run --prefix strapi develop\"",
     "build": "next build",
-    "start": "next start",
+    "start": "concurrently \"next start\"",
     "lint": "next lint"
   },
   "dependencies": {
