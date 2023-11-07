@@ -13,6 +13,8 @@ FROM node:16.16.0-alpine as runner
 WORKDIR /uroria-web
 ENV NODE_ENV production
 COPY --from=builder /uroria-web/next.config.js ./
+COPY --from=builder /uroria-web/i18n.ts ./
+COPY --from=builder /uroria-web/middleware.ts ./
 COPY --from=builder /uroria-web/public ./public
 COPY --from=builder /uroria-web/.next ./.next
 COPY --from=builder /uroria-web/node_modules ./node_modules
