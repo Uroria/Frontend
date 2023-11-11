@@ -48,8 +48,12 @@ h1, h2, h3 {
     font-size: 2rem;
   }
 
-  &:first-child {
+  &:first-of-type {
     margin-top: 2rem;
+  }
+
+  &:last-of-type {
+    margin-bottom: 2rem;
   }
 
   .mark {
@@ -61,14 +65,7 @@ h1, h2, h3 {
 
 }
 
-h2 {
-  margin: 2rem 0 !important;
-}
 
-h3 {
-  margin: 0 !important;
-  transform: none !important;
-}
 
 p {
   color: white;

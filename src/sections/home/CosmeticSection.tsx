@@ -1,6 +1,6 @@
 "use client"
 
-import Section from "../../micro-components/Section";
+import Section from "../../micro-components/Section/Section";
 import {Col, Row} from "react-bootstrap";
 import {useRef, useState} from "react";
 import {CosmeticsProps} from "../../micro-components/Minecraft3DCharacter";

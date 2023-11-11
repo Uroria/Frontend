@@ -1,5 +1,5 @@
 import {Col, Row} from "react-bootstrap";
-import Section from "../../micro-components/Section";
+import Section from "../../micro-components/Section/Section";
 import Game from "../../micro-components/Game/Game";
 import {useTranslations} from "next-intl";
 

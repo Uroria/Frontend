@@ -1,6 +1,6 @@
 import {Col, Row} from "react-bootstrap";
 import Feature from "../../micro-components/Feature/Feature";
-import Section from "../../micro-components/Section";
+import Section from "../../micro-components/Section/Section";
 import {useTranslations} from "next-intl";
 
 const FeatureSection = () => {

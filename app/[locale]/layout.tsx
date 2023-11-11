@@ -1,12 +1,11 @@
-import Head from "next/head";
-import Script from "next/script";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../styles/uroria.scss'
+
+import Head from "next/head";
+import Script from "next/script";
 import Navigation from "../../src/micro-components/Navigation/Navigation";
 import {notFound} from 'next/navigation';
 import {NextIntlClientProvider} from 'next-intl';
-
-const locales = ['en-US', 'de-DE'];
 
 export default async function RootLayout({children, params: {locale}}: {
     children: React.ReactNode,
@@ -38,7 +37,4 @@ export default async function RootLayout({children, params: {locale}}: {
         </html>
     )
 }
-
-// @ts-ignore
-const fetcher = (...args: any[]) => fetch(...args).then(res => res.text())
 

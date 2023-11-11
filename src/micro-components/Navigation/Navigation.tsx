@@ -1,6 +1,6 @@
 "use client"
 
-import {Container, Nav, Navbar} from "react-bootstrap";
+import {Nav, Navbar} from "react-bootstrap";
 import styles from './Navigation.module.scss'
 import React, {useState} from "react";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
@@ -9,6 +9,7 @@ import {usePathname} from "next/navigation";
 import {useLocale} from "next-intl";
 import {NavigationBurger} from "./NavigationBurger";
 import {NavItem} from "./NavigationItem/NavItem";
+import Container from "../Container/Container";
 
 const Navigation = () => {
 
@@ -30,7 +31,7 @@ const Navigation = () => {
 
 
     return <div className={`${styles["nav"]} ${collapsed ? styles["nav--collapsed"] : ""}`}>
-        <Container style={{position: "relative"}}>
+        <Container>
             <Navbar collapseOnSelect expand="lg" className={styles["nav__bar"]}>
                 <Navbar.Brand href="/">
                     <img

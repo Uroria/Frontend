@@ -1,5 +1,5 @@
 import {FunctionComponent} from "react";
-import Section from "../../micro-components/Section";
+import Section from "../../micro-components/Section/Section";
 import {useTranslations} from "next-intl";
 
 const LegalNoticeSection: FunctionComponent = () => {

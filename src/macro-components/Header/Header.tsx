@@ -1,17 +1,18 @@
 import styles from './Header.module.scss'
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import Button from "../../micro-components/Button";
 import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube, IconChevronDown} from "@tabler/icons-react";
 import Box from "../../micro-components/Box/Box";
 import News from "../../micro-components/News/News";
 import {useTranslations} from "next-intl";
+import Container from "../../micro-components/Container/Container";
 
 const Header = () => {
 
     const t = useTranslations('Index');
 
     return <div className={styles.header}>
-        <Container className={styles["header__container"]}>
+        <Container>
             <div className={styles.header__content}>
                 <Row style={{margin: 0, padding: 0}}>
                     <Col xs={12} lg={8}>
@@ -27,7 +28,7 @@ const Header = () => {
                     <Col xs={12} lg={4} style={{margin: 0, padding: 0}}>
 
                         <Row style={{margin: 0, padding: 0}}>
-                            <Col xs={12}>
+                            <Col xs={12} style={{marginBottom: "1.5rem"}}>
                                 <News date={new Date()}
                                       title={"Uroria Update 2.0"}
                                       description={"Uroria is an event-hosting network, which allows creators to create an unique..."}

@@ -1,4 +1,4 @@
-import Section from "../micro-components/Section";
+import Section from "../micro-components/Section/Section";
 import {Col, Row} from "react-bootstrap";
 import Button from "../micro-components/Button";
 import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube} from "@tabler/icons-react";
