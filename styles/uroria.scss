@@ -31,7 +31,7 @@ body, html {
 
 }
 
-h1 {
+h1, h2, h3 {
   color: white;
   font-family: 'Luckiest Guy', cursive;
   display: inline-block;
@@ -43,7 +43,6 @@ h1 {
   position: relative;
   z-index: 0;
   transform: rotate(-2deg);
-  font-size: 3rem;
 
   @include respond-below(lg) {
     font-size: 2rem;
@@ -60,6 +59,15 @@ h1 {
     background: transparent;
   }
 
+}
+
+h2 {
+  margin: 2rem 0 !important;
+}
+
+h3 {
+  margin: 0 !important;
+  transform: none !important;
 }
 
 p {
@@ -83,5 +91,4 @@ a {
     display: none;
   }
 }
-
 
