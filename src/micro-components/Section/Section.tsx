@@ -1,6 +1,6 @@
 import {Container} from "react-bootstrap";
 import {FunctionComponent, ReactNode} from "react";
-import styles from "../../styles/components/Section.module.scss";
+import styles from "./Section.module.scss";
 
 type SectionProps = {
     id?: string,
