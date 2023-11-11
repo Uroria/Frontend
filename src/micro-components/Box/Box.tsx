@@ -8,7 +8,6 @@ interface Box extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivE
 
 const Box: FunctionComponent<Box> = ({children, image, ...args}) => {
 
-
     return <div {...(image ? {
         style: {
             "background": image ? `url(${image})` : "",
