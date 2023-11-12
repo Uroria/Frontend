@@ -22,12 +22,13 @@
 
 body, html {
   height: var(--app-height);
-  width: 100vw;
+  width: 100%;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth !important;
   position: relative;
-  background: rgba(0, 0, 24, 1);
+  background: #000030;
+  background: radial-gradient(circle, rgba(0, 0, 48, 1) 0%, rgba(0, 0, 6, 1) 100%);
 
 }
 
@@ -70,7 +71,7 @@ h1, h2, h3 {
 p {
   color: white;
   font-family: 'Poppins', sans-serif;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 li {
