@@ -21,6 +21,7 @@ module.exports = createCoreController('api::post.post',  ({ strapi }) =>  ({
       where: { slug: id },
       populate: sanitizedQueryParams.populate
     });
+
     const sanitizedResults = await this.sanitizeOutput(entity, ctx);
 
 
