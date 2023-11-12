@@ -6,10 +6,9 @@
   width: 100%; //to prevent bugs with content that is not properly sizes
   overflow: hidden;
   position: relative;
+  background: transparent;
 
-
-  &:last-of-type, &:nth-of-type(even) {
-    background: none;
+  &:nth-of-type(even) {
 
     &:before {
       content: "";
