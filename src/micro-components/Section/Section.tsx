@@ -7,7 +7,7 @@ type SectionProps = {
     children: ReactNode,
 }
 
-const Section: FunctionComponent<SectionProps> = ({children, id}) => <div className={styles.section}>
+const Section: FunctionComponent<SectionProps> = ({children, id}) => <div id={id} className={styles.section}>
     <Container>
         {children}
     </Container>
