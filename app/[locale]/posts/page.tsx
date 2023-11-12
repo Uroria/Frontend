@@ -10,6 +10,7 @@ const PostsPage: NextPage = () => {
             dolore magna aliquyam erat, sed diam voluptua.
         </SmallHeader>
         <Posts/>
+        <PostFeatured/>
     </>
 }
 
