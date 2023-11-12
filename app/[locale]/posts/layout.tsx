@@ -5,7 +5,7 @@ const PostsLayout = async ({children}: {
 }) => {
     return <>
         {children}
-
+        <Footer/>
     </>
 }
 
