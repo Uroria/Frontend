@@ -14,7 +14,7 @@ const Header = () => {
     return <div className={styles.header}>
         <Container>
             <div className={styles.header__content}>
-                <Row style={{margin: 0, padding: 0}}>
+                <Row>
                     <Col xs={12} lg={8}>
                         <h1>{t("header-heading-1")} <span
                             className="mark">{t("header-heading-1-mark")}</span>
@@ -52,10 +52,8 @@ const Header = () => {
                     </Col>
 
                 </Row>
-
             </div>
 
-            <Container>
                 <div className={styles["header__social-media"]}>
                     <Button href={"https://dc.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandDiscord/></Button>
                     <Button href={"https://yt.uroria.com"} buttonSize={"sm"} type={"round"} icon={true}><IconBrandYoutube/></Button>
@@ -67,8 +65,6 @@ const Header = () => {
                         <IconChevronDown size={16} style={{marginRight: "0.5rem"}}/>{t("header-button-moreinfo")}
                     </Button>
                 </div>
-
-            </Container>
 
         </Container>
     </div>
