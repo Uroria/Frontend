@@ -23,6 +23,7 @@ module.exports = createCoreController('api::post.post',  ({ strapi }) =>  ({
     });
     const sanitizedResults = await this.sanitizeOutput(entity, ctx);
 
+
     return this.transformResponse(sanitizedResults);
   }
 }));
