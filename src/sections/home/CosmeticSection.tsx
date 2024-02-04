@@ -11,48 +11,60 @@ import {ItemPreview} from "../../micro-components/ItemPreview/ItemPreview";
 import {useTranslations} from "next-intl";
 
 const allHats: CosmeticsProps[] = [{
-    gltf: "Witch_Hat",
+    gltf: "adventure/adventure_hat",
     positionY: 0.15,
     positionX: -0.5,
     positionZ: -0.5,
     scale: 0.9
 }, {
-    gltf: "propeller_hat",
-    positionY: -0.15,
-    positionX: -0.5,
-    positionZ: -0.5,
-    scale: 0.65
-}, {
-    gltf: "cowboy_hat",
-    positionY: 0.15,
-    positionX: -0.5,
-    positionZ: -0.5,
-    scale: 0.95
-}, {
-    gltf: "crocodile_hat",
+    gltf: "kebap/kebap_hat",
     positionY: -0.2,
     positionX: -0.5,
-    positionZ: -0.7,
-    scale: 0.75
+    positionZ: -0.5,
+    scale: 0.9
 }, {
-    gltf: "santa_hat",
-    positionY: 0.15,
+    gltf: "space/space_hat",
+    positionY: -0.3,
     positionX: -0.5,
     positionZ: -0.5,
-    scale: 0.6
+    scale: 0.9
 }];
 
 const allBackpacks: CosmeticsProps[] = [{
-    gltf: "candy_backpack",
-    positionY: 0.3,
-    positionX: 0,
-    positionZ: -0.25,
-    scale: 0.6
+    gltf: "adventure/adventure_backpack",
+    positionY: 0,
+    positionX: -0.5,
+    positionZ: -0.1,
+    scale: 0.9
+}, {
+    gltf: "kebap/kebap_backpack",
+    positionY: -0.1,
+    positionX: -0.5,
+    positionZ: 0.2,
+    scale: 0.5
+}, {
+    gltf: "space/space_backpack",
+    positionY: 0,
+    positionX: -0.5,
+    positionZ: -0.23,
+    scale: 0.7
 }];
 
 const allBalloons: CosmeticsProps[] = [{
-    gltf: "space_shuttle",
-    positionX: 2,
+    gltf: "adventure/adventure_balloon",
+    positionX: 1.5,
+    positionZ: 1,
+    positionY: 4.5,
+    scale: .5
+}, {
+    gltf: "kebap/kebap_balloon",
+    positionX: 1.5,
+    positionZ: 1,
+    positionY: 4.5,
+    scale: .5
+}, {
+    gltf: "space/space_balloon",
+    positionX: 1.5,
     positionZ: 1,
     positionY: 5.5,
     scale: .5
@@ -97,7 +109,7 @@ const CosmeticSection = () => {
                                 allHats.map((hat, index) => {
                                     return <Col xs={4} sm={4} md={3} key={index}
                                                 onClick={() => currentHat != allHats[index] ? setCurrentHat(allHats[index]) : null} style={{marginBottom: "1.5rem"}}>
-                                        <ItemPreview image={"/magic_backpack-2.png"} type={"hat"} rareness={"common"}/>
+                                        <ItemPreview image={`/assets/images/3dModels/${hat.gltf}.png`} type={"hat"} rareness={"common"}/>
                                     </Col>
                                 })
                             }
@@ -109,14 +121,23 @@ const CosmeticSection = () => {
                                 allBackpacks.map((backpack, index) => {
                                     return <Col xs={4} sm={4} md={3} key={index}
                                                 onClick={() => currentBackpack != allBackpacks[index] ? setCurrentBackpack(allBackpacks[index]) : null} style={{marginBottom: "1.5rem"}}>
-                                        <ItemPreview image={"/magic_backpack-2.png"} type={"backpack"} rareness={"common"}/>
+                                        <ItemPreview image={`/assets/images/3dModels/${backpack.gltf}.png`} type={"backpack"} rareness={"common"}/>
                                     </Col>
                                 })
                             }
                         </Row>
                     </Tab>
                     <Tab title={language("cosmetic-tab-balloon")}>
-                        <p>Balloon Cosmetics coming soon</p>
+                        <Row>
+                            {
+                                allBalloons.map((balloon, index) => {
+                                    return <Col xs={4} sm={4} md={3} key={index}
+                                                onClick={() => currentBalloon != allBalloons[index] ? setCurrentBalloon(allBalloons[index]) : null} style={{marginBottom: "1.5rem"}}>
+                                        <ItemPreview image={`/assets/images/3dModels/${balloon.gltf}.png`} type={"balloon"} rareness={"common"}/>
+                                    </Col>
+                                })
+                            }
+                        </Row>
                     </Tab>
                 </Tabs>
             </Col>

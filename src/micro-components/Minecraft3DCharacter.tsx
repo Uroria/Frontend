@@ -82,12 +82,12 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
         //load and set cosmetics on minecraft character
         useMemo(() => {
             if (!hatModel || !backpackModel || !object) return;
-            const oldhat = {"oldhat": currentHat};
             const hat = new GLTFLoader();
 
             hat.load(hatModel.gltf, async newHat => {
                 newHat.scene.castShadow = true;
                 newHat.scene.receiveShadow = true;
+
                 newHat.scene.scale.set(hatModel.scale ?? 1, hatModel.scale ?? 1, hatModel.scale ?? 1);
                 newHat.scene.position.set((hatModel.positionX ?? 0) * (hatModel.scale ?? 1), (hatModel.positionY ?? 0) * (hatModel.scale ?? 1), (hatModel.positionZ ?? 0) * (hatModel.scale ?? 1))
 
@@ -95,7 +95,7 @@ const Minecraft3DCharacter: FunctionComponent<Minecraft3DCharacterProps> =
 
                 object.scene.traverse((child: Object3D) => {
                     if (child.name != "phead_0") return;
-                    if (oldhat.oldhat) child.remove(oldhat.oldhat);
+                    if (currentHat) child.remove(currentHat);
                     child.add(newHat.scene);
                 })
 

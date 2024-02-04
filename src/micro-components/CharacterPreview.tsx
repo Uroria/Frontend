@@ -92,7 +92,7 @@ const CharacterPreview: FunctionComponent<CharacterPreviewProps> = ({skinName, h
         </mesh>
         <hemisphereLight intensity={.7} color="white" position={[0, 20, 0]}/>
         <directionalLight castShadow={true} intensity={1} position={[4, 5, 5]} color="#ffffff"/>
-        <OrbitControls autoRotate autoRotateSpeed={5} enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2}/>
+        <OrbitControls enablePan={false} enableZoom={false} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2}/>
         <PerspectiveCamera makeDefault zoom={(!!playerBalloonModelData && !playerBalloonModelError) ? .75 : 1.1} position={[0, 0, 10]} />
     </Canvas>
 }

@@ -5,9 +5,9 @@
  */
 
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const {createCoreController} = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::post.post',  ({ strapi }) =>  ({
+module.exports = createCoreController('api::post.post', ({strapi}) => ({
   async findOne(ctx) {
 
     await this.validateQuery(ctx);
@@ -19,7 +19,7 @@ module.exports = createCoreController('api::post.post',  ({ strapi }) =>  ({
     // sanitizeQuery to remove any query params that are invalid or the user does not have access to
     // It is strongly recommended to use sanitizeQuery even if validateQuery is used
     const entity = await strapi.service('api::post.post').find({
-      where: { slug: id },
+      where: {slug: id},
       populate: sanitizedQueryParams.populate
     });
 

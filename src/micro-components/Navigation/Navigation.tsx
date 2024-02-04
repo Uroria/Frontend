@@ -28,6 +28,7 @@ const Navigation = () => {
             return index >= tindex ? `/${value}` : "";
         }).toString();
     }
+    
 
 
     return <div className={`${styles["nav"]} ${collapsed ? styles["nav--collapsed"] : ""}`}>
