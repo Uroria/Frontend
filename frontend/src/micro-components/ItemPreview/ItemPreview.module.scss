@@ -1,0 +1,43 @@
+.item-preview {
+  position: relative;
+  aspect-ratio: 50/50;
+
+  &__image {
+    height: 100%;
+    position: relative;
+    display: inline-block;
+    padding: 2rem;
+
+    > img {
+      position: relative;
+      transition: all ease-in-out 200ms;
+      height: 100%;
+      width: 100%;
+      object-fit: scale-down;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    position: absolute;
+    bottom: .5rem;
+    right: 1rem;
+
+    &__rareness {
+      background: linear-gradient(90deg, var(--color-first), var(--color-second));
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      margin-left: .5rem;
+      border-radius: 50rem;
+    }
+  }
+
+  &:hover, &:active, &:focus {
+
+    .item-preview__image > img {
+      transform: scale(1.1);
+    }
+
+  }
+}
