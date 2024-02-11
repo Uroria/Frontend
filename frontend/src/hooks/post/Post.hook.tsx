@@ -8,14 +8,14 @@ const PostsContext = React.createContext<PostsContextType | null>(null)
 export const usePosts = () => React.useContext(PostsContext) as PostsContextType
 export const usePost = (slug: string): PostContextType => {
     const {posts} = usePosts()
-    if (!posts) return {post: undefined}
+    if (!posts || posts.length <= 0) return {post: undefined}
 
     return {post: posts.find(post => post.slug == slug) || null}
 }
 
 export const useFeaturedPost = (): PostContextType => {
     const {posts} = usePosts()
-    if (!posts) return {post: undefined}
+    if (!posts || posts.length <= 0) return {post: undefined}
 
     return {
         post: posts.find(post => post.featured) || posts.reduce((postA, postB) => {
@@ -26,7 +26,7 @@ export const useFeaturedPost = (): PostContextType => {
 
 export const useNewestPost = (): PostContextType => {
     const {posts} = usePosts()
-    if (!posts) return {post: undefined}
+    if (!posts || posts.length <= 0) return {post: undefined}
 
     return {
         post: posts.reduce((postA, postB) => {
