@@ -7,6 +7,14 @@ include:
       image_suffix: '/frontend'
       context: 'frontend'
       dockerfile: 'frontend/Dockerfile'
+  - project: uroria/operations/pipeline
+    ref: master
+    file: image-build.gitlab-ci.yml
+    inputs:
+      name: 'backend'
+      image_suffix: '/backend'
+      context: 'backend'
+      dockerfile: 'backend/Dockerfile'
 
   - project: uroria/operations/pipeline
     ref: master
