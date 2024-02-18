@@ -6,14 +6,21 @@ import Button from "../../micro-components/Button";
 import {IconBrandDiscord, IconBrandInstagram, IconBrandYoutube, IconChevronDown} from "@tabler/icons-react";
 import Box from "../../micro-components/Box/Box";
 import News from "../../micro-components/News/News";
+import {notFound} from 'next/navigation';
 import {useTranslations} from "next-intl";
 import Container from "../../micro-components/Container/Container";
 import {useNewestPost} from "../../hooks/post/Post.hook";
+import useConfig from '../../utils/config.hook';
 
 const Header = () => {
 
+    const [config, error] = useConfig();
+
     const t = useTranslations('Index');
     const {post} = useNewestPost()
+
+    if(!config) return <></>
+    if(error) notFound()
 
     return <div className={styles.header}>
         <Container>
@@ -36,7 +43,7 @@ const Header = () => {
                                 <News slug={post?.slug ?? ""} date={post?.publishedAt ?? new Date()}
                                       title={post?.title ?? ""}
                                       description={post?.description ?? ""}
-                                      image={`http://localhost:1337${post?.mediumImage?.url}`}/>
+                                      image={`${config.strapi}${post?.mediumImage?.url}`}/>
                             </Col>
                             <Col style={{margin: 0, padding: 0}}>
                                 <Row style={{margin: 0, padding: 0}}>

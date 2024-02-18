@@ -1,7 +1,9 @@
 "use client"
 
-import React, {FunctionComponent, ReactNode, useState} from "react";
+import React, {FunctionComponent, ReactNode, useEffect, useState} from "react";
 import {Post, PostContextType, PostsContextType} from "./Post.types";
+import useConfig from "../../utils/config.hook";
+import { notFound } from "next/navigation";
 
 const PostsContext = React.createContext<PostsContextType | null>(null)
 
@@ -36,11 +38,18 @@ export const useNewestPost = (): PostContextType => {
 }
 
 const PostsProvider: FunctionComponent<{ children: ReactNode }> = ({children}) => {
-
+    const [config, error] = useConfig()
     const [posts, setPosts] = useState<Post[] | undefined>(undefined)
+    useEffect(() => console.log(posts), [posts])
+
+    if(!config) return <></>
+    if(error) notFound()
 
     if (posts === undefined) {
-        fetchPosts().then(setPosts).catch(reason => setPosts([]))
+        fetchPosts(config).then(setPosts).catch(reason => {
+            setPosts([])
+            console.log(reason)
+        })
     }
 
     return <PostsContext.Provider value={{posts}}>
@@ -50,9 +59,8 @@ const PostsProvider: FunctionComponent<{ children: ReactNode }> = ({children}) =
 
 export default PostsProvider
 
-const fetchPosts = (): Promise<Post[]> => new Promise((resolve, reject) => {
-
-    fetch("http://localhost:1337/api/posts?populate[0]=thumbnail", {
+const fetchPosts = (config: any): Promise<Post[]> => new Promise((resolve, reject) => {
+    fetch(`${config.strapi}/api/posts?populate[0]=thumbnail`, {
         method: "GET"
     }).then(res => res.json()).then(json => {
 
